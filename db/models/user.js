@@ -5,7 +5,20 @@ const Sequelize = require('sequelize')
 const db = require('APP/db')
 
 const User = db.define('users', {
-  name: Sequelize.STRING,  
+  firstName: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
+  lastName: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
   email: {
     type: Sequelize.STRING,
     validate: {
@@ -13,12 +26,19 @@ const User = db.define('users', {
 			notEmpty: true,
 		}
   },
-
+  adminStatus: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
+  },
+  shoppingCart: {
+    type: Sequelize.ARRAY(Sequelize.INTEGER),
+    defaultValue: []
+  },
   // We support oauth, so users may or may not have passwords.
   password_digest: Sequelize.STRING,
 	password: Sequelize.VIRTUAL
 }, {
-	indexes: [{fields: ['email'], unique: true,}],
+	indexes: [{fields: ['email'], unique: true}],
   hooks: {
     beforeCreate: setEmailAndPassword,
     beforeUpdate: setEmailAndPassword,
@@ -30,7 +50,20 @@ const User = db.define('users', {
           (err, result) =>
             err ? reject(err) : resolve(result))
         )
-    }    
+    }
+  },
+  getterMethods: {
+    fullName: function() {
+      return this.firstName + ' ' + this.lastName;
+    }
+  },
+  setterMethods: {
+    fullName: function(value) {
+      let names = value.split(' ');
+
+      this.setDataValue('firstName', names.slice(0, -1).join(' '))
+      this.setDataValue('lastName', names.slice(-1).join(' '))
+    }
   }
 })
 
