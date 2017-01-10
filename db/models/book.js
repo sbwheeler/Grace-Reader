@@ -52,7 +52,7 @@ const Book = db.define('books', {
           const length = ratings.length;
           let ratingsArr = ratings.map(instance => instance.rating);
           return ratingsArr.reduce((a, b) => {
-            return a + b; }) / length;
+            return a + b; },0) / length;
         });
     }
   }
