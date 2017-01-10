@@ -26,15 +26,28 @@ router.get('/:id', mustBeLoggedIn, (req, res, next) => {
     .catch(next)
 })
 
+//does not yet require login
+router.put('/:id', (req, res, next) => {
+  User.update(req.body, {
+      where: { id: req.params.id },
+      returning: true
+    })
+    .then(user => {
+      const updated = user[1][0];
+      res.send(updated);
+    })
+    .catch(next)
+})
+
 //implement so only admins can delete or users can delete themselves?
 router.delete('/:id', mustBeLoggedIn, (req, res, next) => {
   User.destroy({
-    where: {
-      id: req.params.id
-    }
-  })
-  .then(() => {
-    res.sendStatus(204);
-  })
-  .catch(next)
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(() => {
+      res.sendStatus(204);
+    })
+    .catch(next)
 })
