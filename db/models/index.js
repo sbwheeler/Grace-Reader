@@ -11,4 +11,4 @@ const Review = require('./review');
 Review.belongsTo(Book);
 Book.hasMany(Review);
 
-module.exports = { User, Book, Review }
+module.exports = { User, Book, Review };
