@@ -4,7 +4,7 @@ const db = require('APP/db')
 const Orders = require('./orders')
 const {expect} = require('chai')
 
-describe.only('book', () => {
+describe('book', () => {
   before('wait for the db', () => db.didSync);
 
   beforeEach(function() {
