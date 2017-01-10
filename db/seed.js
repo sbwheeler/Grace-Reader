@@ -10,11 +10,18 @@ const seedOrders = () => db.Promise.map([
   {books: [{id: 2, price: 4.00, quantity: 2}]}
 ], order => db.model('orders').create(order))
 
+const seedReviews = () => db.Promise.map([
+  {rating: 3.2, content: "dfkjshdjkahsjkdhasdhakdh"},
+  {rating: 5.0, content: "LOLOLOLOLOLOLOLLLLLLLLLLLLLLLL"}
+], review => db.model('reviews').create(review))
+
 db.didSync
   .then(() => db.sync({force: true}))
   .then(seedUsers)
   .then(users => console.log(`Seeded ${users.length} users OK`))
   .then(seedOrders)
   .then(orders => console.log(`Seeded ${orders.length} orders OK`))
+  .then(seedReviews)
+  .then(reviews => console.log(`Seeded ${reviews.length} reviews OK`))
   .catch(error => console.error(error))
   .finally(() => db.close())
