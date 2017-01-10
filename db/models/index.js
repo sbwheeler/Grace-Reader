@@ -7,8 +7,10 @@
 const User = require('./user');
 const Book = require('./book');
 const Review = require('./review');
+const Order = require('./orders');
 
 Review.belongsTo(Book);
 Book.hasMany(Review);
 
-module.exports = { User, Book, Review };
+module.exports = { User, Book, Review, Order }
+
