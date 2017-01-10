@@ -4,7 +4,7 @@ const db = require('APP/db')
 const Review = require('APP/db/models/review')
 const app = require('./start')
 
-describe.only('Review routes', () => {
+describe('Review routes', () => {
   before('wait for the db', () => db.didSync);
 
   beforeEach(() => {
