@@ -1,0 +1,241 @@
+$dark-theme: #181818;
+
+.logo {
+    width: 60px;
+    height: 60px;
+    img {
+      display: block;
+      margin: 8px auto;
+      width: 24px;
+      height: auto;
+      @media (max-width: 960px) {
+            display: block;
+            margin: 5px 15px;
+            width: auto;
+            height: auto;
+      }
+    }
+    background: $logo-background;
+    display: block;
+    padding: 8px 0;
+
+    @media (max-width: 960px) {
+          float: left;
+          padding: 2px 0;
+          margin-right: 20px;
+    }
+}
+
+@media (max-width: 960px) {
+    .logo > img:first-child {
+        height: 30px;
+    }
+}
+
+#mobile-menu {
+      display: none;
+      @media (max-width: 530px) {
+          font-size: 30px;
+          color: $primary-color;
+          float: right;
+          margin: 10px 20px 10px 10px;
+          display: block;
+      }
+}
+
+#navigation {
+
+    color: $default-color;
+    background: $dark-theme;
+    height: 60px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    min-height: 0;
+    @media (max-width: 960px) {
+          width: 100%;
+          height: 60px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 3;
+          min-height: 0;
+    }
+
+
+
+    nav {
+
+            width: 42%;
+            position: absolute;
+            left: 50%;
+            margin-left: -19%;
+            float: left;
+            overflow: hidden;
+            text-align: center;
+            height: 60px;
+            top: 0;
+            margin-top: 0;
+
+      @media (max-width: 530px)
+      {
+          width: 100%;
+          position: fixed;
+          left: 100%;
+          opacity: 0;
+          margin-left: 0;
+          float: left;
+          overflow: hidden;
+          text-align: center;
+          height: 60px;
+          top: 60px;
+          margin-top: 0;
+          background: $dark-theme;
+          -webkit-transition: all 0.3s ease-out;
+          transition: all 0.3s ease-out;
+      }
+
+      a {
+        font-size: 24px;
+        color: $default-color;
+        display: block;
+        line-height: 45px;
+        height: 45px;
+        position: relative;
+
+        @media (max-width: 960px)
+        {
+              float: left;
+              margin-left: 12%;
+              line-height: 60px;
+              height: 60px;
+        }
+
+        @media (max-width: 750px)
+        {
+            margin-left: 10%;
+        }
+
+        @media (max-width: 530px)
+        {
+            float: left;
+            margin-left: 0 !important;
+            line-height: 60px;
+            height: 60px;
+            width: 20%;
+
+        }
+      }
+
+      a.active {
+        color: $primary-color;
+      }
+
+      a:hover {
+          color: $primary-color;
+      }
+
+      a:after {
+        content: '';
+        font-size: 9px;
+        position: absolute;
+        bottom: 0px;
+        display: block;
+        width: 20px;
+        text-align: center;
+        opacity: 0;
+        -webkit-transition: all 0.3s ease-out;
+        transition: all 0.3s ease-out;
+      }
+
+      a:first-child:after {
+          content: 'HOME';
+      }
+
+      a:first-child + a:after {
+          content: 'ABOUT';
+      }
+
+      a:first-child + a + a:after {
+          content: 'SKILLS';
+      }
+
+      a:first-child + a + a + a:after {
+          content: 'PROJECTS';
+      }
+
+      a:first-child + a + a + a + a:after {
+          content: 'CONTACT';
+      }
+
+      a:hover:after{
+          opacity: 1;
+      }
+
+      a:hover i {
+          opacity: 0;
+      }
+
+      i {
+        color: $default-color;
+        -webkit-transition: all 0.3s ease-out;
+        transition: all 0.3s ease-out;
+      }
+    }
+
+    @media (max-width: 530px) {
+      nav.show {
+        opacity: 1;
+        left: 0;
+      }
+    }
+
+    ul {
+        a {
+          color: $default-color;
+        }
+        position: absolute;
+        bottom: 20px;
+        width: 100%;
+        display: block;
+        padding: 0;
+        list-style: none;
+        text-align: center;
+        margin: 0;
+        @media (max-width: 960px)
+        {
+            position: static;
+            bottom: 20px;
+            width: auto;
+            height: 60px;
+            line-height: 60px;
+            display: block;
+            padding: 0;
+            list-style: none;
+            text-align: center;
+            margin: 0;
+            float: right;
+        }
+        @media (max-width: 530px)
+        {
+            display: none;
+        }
+
+        li {
+
+          a:hover {
+              color: $primary-color;
+          }
+
+          @media (max-width: 960px)
+          {
+              float: right;
+              height: 60px;
+              line-height: 60px;
+              margin: 0 10px;
+          }
+        }
+    }
+}

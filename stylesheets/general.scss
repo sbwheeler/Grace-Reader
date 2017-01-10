@@ -1,0 +1,46 @@
+$primary-color: #fdb608;
+$default-color: #4d4d4e;
+$dark-theme: #181818;
+$logo-background: #070707;
+$background: #252627;
+
+html {
+    color: #222;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+body {
+    background: $background;
+    overflow: hidden;
+    display: block;
+}
+
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: $default-color;
+}
+
+audio, canvas, iframe, img, svg, video {
+    vertical-align: middle;
+}
+
+*, *:after, *:before {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #04A4CC;
+    color: #FFF;
+    text-shadow: none;
+}
