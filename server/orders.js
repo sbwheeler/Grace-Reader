@@ -30,7 +30,6 @@ router.put('/:id', (req, res, next) =>
       }
     })
     .then((count, updated)  => {
-      console.log('this is updated', updated)
       res.status(201).json(updated[0])
     })
     .catch(next))
