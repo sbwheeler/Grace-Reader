@@ -4,7 +4,7 @@ const { Review, Book } = require('./index');
 
 //BASIC TESTING FOR BOOKS AND REVIEWS
 
-describe.only('Book model', () => {
+describe('Book model', () => {
   //have not implemented validation tests for the books / review models however manual testing shows the validations are working
   before('wait for the db', () => db.didSync);
 
