@@ -18,9 +18,7 @@ const Book = db.define('books', {
   genre: Sequelize.ARRAY(Sequelize.STRING),
   price: {
     type: Sequelize.FLOAT,
-    validate: {
-      allowNull: false
-    }
+    allowNull: false
   },
   description: {
     type: Sequelize.TEXT,
@@ -39,23 +37,23 @@ const Book = db.define('books', {
       isUrl: true
     }
   }
-},
-{
+  // average: Sequelize.INTEGER
+}, {
   getterMethods: {
     //pulls the average rating from reviews of the book
     ratingAverage: function() {
-      let average;
-      Review.findAll({
-        attributes: ['rating'],
-        where: {
-          bookId: this.id
-        }
-      })
-      .then(ratings => {
-        console.log(ratings);
-      })
-
-      return average || 0;
+      return Review.findAll({
+          attributes: ['rating'],
+          where: {
+            book_id: this.id
+          }
+        })
+        .then(ratings => {
+          const length = ratings.length;
+          let ratingsArr = ratings.map(instance => instance.rating);
+          return ratingsArr.reduce((a, b) => {
+            return a + b; }) / length;
+        });
     }
   }
 });

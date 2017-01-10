@@ -13,3 +13,4 @@ Review.belongsTo(Book);
 Book.hasMany(Review);
 
 module.exports = { User, Book, Review, Order }
+
