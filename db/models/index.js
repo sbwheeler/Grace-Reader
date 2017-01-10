@@ -12,5 +12,8 @@ const Order = require('./orders');
 Review.belongsTo(Book);
 Book.hasMany(Review);
 
+Order.belongsTo(User);
+User.hasMany(Order);
+
 module.exports = { User, Book, Review, Order }
 
