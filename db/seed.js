@@ -53,7 +53,6 @@ const seedReviews = () => db.Promise.map([
   {rating: 1.5, content: 'very disappointing book', 'book_id': 3}
 ], review => db.model('reviews').create(review))
 
-
 db.didSync
   .then(() => db.sync({force: true}))
   .then(seedUsers)
