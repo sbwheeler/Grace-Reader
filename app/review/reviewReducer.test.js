@@ -4,7 +4,7 @@ import { createStore } from 'redux';
 import reducer from './reviewReducer';
 import { RECEIVE_REVIEWS, RECEIVE_REVIEW } from './reviewActionCreator';
 
-describe('Review Reducers', () => {
+describe.only('Review Reducers', () => {
   let testStore;
   beforeEach('Create testing store', () => {
     testStore = createStore(reducer);
@@ -12,8 +12,8 @@ describe('Review Reducers', () => {
 
   it('has the expected initial state', () => {
     expect(testStore.getState()).to.deep.equal({
-      selected: '',
-      list: []
+      selectedReview: '',
+      allReviews: []
     })
   })
 
@@ -23,17 +23,17 @@ describe('Review Reducers', () => {
 
     const newState = testStore.getState();
 
-    expect(newState.list).to.deep.equal(manyReviews)
-    expect(newState.selected).to.equal('')
+    expect(newState.allReviews).to.deep.equal(manyReviews)
+    expect(newState.selectedReview).to.equal('')
   })
 
   it('RECEIVE_REVIEW', () => {
-    const selectedReview = 'something something something'
-    testStore.dispatch({type: RECEIVE_REVIEW, review: selectedReview })
+    const review = 'something something something'
+    testStore.dispatch({type: RECEIVE_REVIEW, review: review })
 
     const newState = testStore.getState();
 
-    expect(newState.list).to.deep.equal([])
-    expect(newState.selected).to.equal(selectedReview)
+    expect(newState.allReviews).to.deep.equal([])
+    expect(newState.selectedReview).to.equal(review)
   })
 })

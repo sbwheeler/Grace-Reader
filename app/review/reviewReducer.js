@@ -1,8 +1,8 @@
 import { RECEIVE_REVIEWS, RECEIVE_REVIEW } from './reviewActionCreator';
 
 const reviewsInitialState = {
-  selected: '',
-  list: []
+  selectedReview: '',
+  allReviews: []
 }
 
 export default (state = reviewsInitialState, action) => {
@@ -10,10 +10,10 @@ export default (state = reviewsInitialState, action) => {
 
   switch (action.type) {
     case RECEIVE_REVIEW:
-      newState.selected = action.review;
+      newState.selectedReview = action.review;
       break;
     case RECEIVE_REVIEWS:
-      newState.list = action.reviews;
+      newState.allReviews = action.reviews;
       break;
     default:
       return state;
