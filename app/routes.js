@@ -1,30 +1,30 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import App from './';
-import bookListContainer from './book/bookListContainer';
+// import React from 'react';
+// import { connect } from 'react-redux';
+// import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+// import App from './';
+// import bookListContainer from './book/bookListContainer';
 
-import { fetchAllBooks } from './book/book-actions';
+// import { fetchAllBooks } from './book/book-actions';
 
-/* -----------------    COMPONENT     ------------------ */
+// /* -----------------    COMPONENT     ------------------ */
 
-const Routes = ({ fetchAllData }) => (
-  <Router history={browserHistory}>
-    <Route path="/" component={App} onEnter={fetchAllData}>
-      <IndexRoute component={ bookListContainer } />
-        <Route path="booklist" component={ bookListContainer }/>
-    </Route>
-  </Router>
-);
+// const Routes = ({ fetchAllData }) => (
+//   <Router history={browserHistory}>
+//     <Route path="/" component={App} onEnter={fetchAllData}>
+//       <IndexRoute component={ bookListContainer } />
+//         <Route path="booklist" component={ bookListContainer }/>
+//     </Route>
+//   </Router>
+// );
 
-/* -----------------    CONTAINER     ------------------ */
+// /* -----------------    CONTAINER     ------------------ */
 
-const mapState = null;
+// const mapState = null;
 
-const mapDispatch = dispatch => ({
- fetchAllData: () => {
-    dispatch(fetchAllBooks())
-  }
-})
+// const mapDispatch = dispatch => ({
+//  fetchAllData: () => {
+//     dispatch(fetchAllBooks())
+//   }
+// })
 
-export default connect(mapState, mapDispatch)(Routes);
+// export default connect(mapState, mapDispatch)(Routes);
