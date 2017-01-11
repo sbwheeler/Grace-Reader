@@ -22,7 +22,7 @@ describe.only('Review Action Creators', () => {
 
       const newAction = receiveReview(review);
       expect(newAction.type).to.deep.equal(RECEIVE_REVIEW)
-      expect(newAction.reviews).to.deep.equal(review)
+      expect(newAction.review).to.deep.equal(review)
     })
   })
 })
