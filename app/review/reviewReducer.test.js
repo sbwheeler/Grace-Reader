@@ -1,24 +1,39 @@
 import { expect } from 'chai';
+import { createStore } from 'redux';
+
 import reducer from './reviewReducer';
 import { RECEIVE_REVIEWS, RECEIVE_REVIEW } from './reviewActionCreator';
 
 describe('Review Reducers', () => {
-  it('should return the initial state if no action is passed in', () => {
-    const initialState = reducer(undefined, {type: 'jibberish'})
-    expect(initialState).to.deep.equal({ selected: '', list: [] })
+  let testStore;
+  beforeEach('Create testing store', () => {
+    testStore = createStore(reducer);
   })
 
-  it('should return the correct state', () => {
-    const selectedReview = 'something something something'
-    const actionForOne = {type: RECEIVE_REVIEW, review: selectedReview }
-    const newStateSelectedChanged = reducer(undefined, actionForOne)
+  it('has the expected initial state', () => {
+    expect(testStore.getState()).to.deep.equal({
+      selectedReview: '',
+      allReviews: []
+    })
+  })
 
-    expect(newStateSelectedChanged.selected).to.equal(selectedReview)
-
+  it('RECEIVE_REVIEWS', () => {
     const manyReviews = ['', 'sdadasd', '1231231']
-    const actionForMany = {type: RECEIVE_REVIEWS, reviews: manyReviews }
-    const newStateListChanged = reducer(undefined, actionForMany)
+    testStore.dispatch({type: RECEIVE_REVIEWS, reviews: manyReviews })
 
-    expect(newStateListChanged.list).to.deep.equal(manyReviews)
+    const newState = testStore.getState();
+
+    expect(newState.allReviews).to.deep.equal(manyReviews)
+    expect(newState.selectedReview).to.equal('')
+  })
+
+  it('RECEIVE_REVIEW', () => {
+    const review = 'something something something'
+    testStore.dispatch({type: RECEIVE_REVIEW, review: review })
+
+    const newState = testStore.getState();
+
+    expect(newState.allReviews).to.deep.equal([])
+    expect(newState.selectedReview).to.equal(review)
   })
 })
