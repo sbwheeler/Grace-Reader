@@ -3,19 +3,25 @@ import { expect } from 'chai';
 import { shallow } from 'enzyme';
 
 import ReviewListComponent from './reviewListComponent';
-import SingleReviewComponent from './singleReviewComponent';
 
 describe('Review List Component', () => {
+
+  const reviewsPassedDown = [
+    { id: 0, rating: 1.0, content:'something something' },
+    { id: 1, rating: 3.2, content: 'another review' },
+    { id: 2, rating: 4.9, content: 'a different review'}
+  ]
+
   let reviewList;
   beforeEach('Create component', () => {
-    reviewList = shallow(<ReviewListComponent />)
+    reviewList = shallow(<ReviewListComponent reviews={reviewsPassedDown} />)
   })
 
   it('should be a <div> with an expected background', () => {
     expect(reviewList.is('div')).to.be.true
   })
 
-  it('uses <SingleReviewComponent />', () => {
-    expect(reviewList.find(SingleReviewComponent).length).to.equal(1)
+  it('should have reviews on its prop', () => {
+    expect(reviewList.instance().props.reviews).to.equal(reviewsPassedDown)
   })
 })

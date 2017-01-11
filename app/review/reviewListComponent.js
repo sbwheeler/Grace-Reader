@@ -1,11 +1,15 @@
 import React from 'react';
 import SingleReviewComponent from './singleReviewComponent';
 
-const ReviewListComponent = () => {
+const ReviewListComponent = ({ reviews }) => {
   return (
-  <div>
-    <SingleReviewComponent />
-  </div>
+    <div>
+      { reviews && reviews.map(review => {
+        return (
+          <SingleReviewComponent key={review.id} rating={reviews.rating} content={reviews.content} />
+        )
+      })}
+    </div>
   )
 }
 
