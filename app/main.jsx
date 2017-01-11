@@ -9,6 +9,7 @@ import {connect, Provider} from 'react-redux'
 import store from './store'
 // import NavBar from './navbar';
 import App from './'
+import bookListContainer from './book/bookListContainer';
 // import Jokes from './components/Jokes'
 // import Login from './components/Login'
 // import WhoAmI from './components/WhoAmI'
@@ -31,7 +32,7 @@ render (
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={App}>
-
+      <Route path='booklist' component={bookListContainer} />
       </Route>
     </Router>
   </Provider>,
