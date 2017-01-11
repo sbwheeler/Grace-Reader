@@ -20,7 +20,7 @@ class AllUsersComponent extends Component {
               <Link to={`/users/${user.id}`}>
                 <div >
                   <h5>
-                    <span>{ user.name }</span>
+                    <span id={`temp${user.id}`}>{ user.name }</span>
                   </h5>
                 </div>
               </Link>

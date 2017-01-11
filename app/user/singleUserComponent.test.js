@@ -14,6 +14,10 @@ describe.only('Single user component', () => {
   })
 
   it('Should have the correct current user prop', () => {
+    expect(singleUser.instance().props).to.be.deep.equal({ currentUser: currentUser } )
+  })
+
+  it('Should display the correct user prop name within the H1 element', () => {
     expect(singleUser.find('h1').text()).to.be.deep.equal(currentUser.name);
   })
 })
