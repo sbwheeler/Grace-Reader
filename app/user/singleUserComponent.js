@@ -12,7 +12,7 @@ class SingleUserComponent extends Component {
 
     return (
       <div>
-      <h1>{user.title}</h1>
+      <h1>{user.name}</h1>
         <div>
         </div>
       </div>

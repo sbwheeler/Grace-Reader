@@ -2,7 +2,7 @@ import { expect } from 'chai'
 
 import { getAllUsers, getSingleUser, FETCH_ALL_USERS, FETCH_SINGLE_USER } from './user-actions'
 
-describe.only('User actions', () => {
+describe('User actions', () => {
   describe('Fetch all users', () => {
     it('returns the properly formatted action', () => {
       const testUsers = [{}, {}, 'this', 'is', 'an', 'array', 'of', 'test', 'users']
