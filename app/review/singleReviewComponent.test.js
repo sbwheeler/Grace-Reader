@@ -1,13 +1,13 @@
-import { expect } from 'chai';
 import React from 'react';
+import { expect } from 'chai';
 import { shallow } from 'enzyme';
 
-import ReviewComponent from './reviewComponent';
+import SingleReviewComponent from './singleReviewComponent';
 
-describe.only('Review Component', () => {
+describe('Single Review Component', () => {
   let review;
   beforeEach('Create component', () => {
-    review = shallow(<ReviewComponent />)
+    review = shallow(<SingleReviewComponent />)
   })
 
   it('should be a <div> with an expected background', () => {
