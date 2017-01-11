@@ -5,7 +5,7 @@ import { spy } from 'sinon';
 
 import SingleUserComponent from './singleUserComponent';
 
-describe.only('Single user component', () => {
+describe('Single user component', () => {
   let singleUser;
   let currentUser = {name: 'this is a test'};
 
