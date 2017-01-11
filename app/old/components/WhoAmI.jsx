@@ -7,7 +7,8 @@ export const WhoAmI = ({ user, logout }) => (
   </div>
 )
 
-import {logout} from 'APP/app/reducers/auth'
+// EI: wrong import path was breaking stuff
+import {logout} from 'APP/app/old/reducers/auth'
 import {connect} from 'react-redux'
 
 export default connect (

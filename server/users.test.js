@@ -4,7 +4,8 @@ const db = require('APP/db')
 const User = require('APP/db/models/user')
 const app = require('./start')
 
-describe.only('/api/users', () => {
+// EI: clean up `describe.only` before committing to master
+describe('/api/users', () => {
   before('wait for the db', () => db.didSync);
 
   afterEach(() => {
@@ -65,6 +66,7 @@ describe.only('/api/users', () => {
       })
     })
 
+    // EI: look at auth.test.js, starting at line 41
     //THIS WILL FAIL UNLESS YOU TAKE OUT FORBIDDEN IN USERS ROUTING GET REQUEST
     it('GET returns a list of all the users', () => {
       return request(app)

@@ -4,8 +4,8 @@ const Book = require('APP/db/models/book')
 const app = require('./start')
 const {expect} = require('chai')
 
-
-describe.only('Book Routes', () => {
+// EI: clean up `describe.only` before committing to master
+describe('Book Routes', () => {
   before('wait for the db', () => db.didSync);
 
   beforeEach('Make a Book', () => {

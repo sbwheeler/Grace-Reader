@@ -11,7 +11,8 @@ export const Login = ({ login }) => (
   </form>
 )
 
-import {login} from 'APP/app/reducers/auth'
+// EI: wrong import path was breaking stuff
+import {login} from 'APP/app/old/reducers/auth'
 import {connect} from 'react-redux'
 
 export default connect (
