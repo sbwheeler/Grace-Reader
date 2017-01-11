@@ -32,7 +32,7 @@ render (
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={App}>
-      <Route path='booklist' component={bookListContainer} />
+      <Route path="booklist" component={bookListContainer} />
       </Route>
     </Router>
   </Provider>,
