@@ -2,14 +2,13 @@
 import '../stylesheets/style.scss';
 
 import React from 'react'
-import {Router, Route, IndexRedirect, browserHistory} from 'react-router'
+import {Router, Route, IndexRedirect, browserHistory, IndexRoute} from 'react-router'
 import {render} from 'react-dom'
 import {connect, Provider} from 'react-redux'
 
 import store from './store'
-
+import Routes from './routes';
 import App from './'
-
 import bookListContainer from './book/bookListContainer';
 import orderListContainer from './order/orderListContainer';
 
@@ -33,12 +32,7 @@ import orderListContainer from './order/orderListContainer';
         // <Route path="/jokes" component={Jokes} />
 render (
   <Provider store={store}>
-    <Router history={browserHistory}>
-      <Route path="/" component={App}>
-      <Route path="booklist" component={bookListContainer} />
-        <Route path="orderlist" component={orderListContainer} />
-      </Route>
-    </Router>
+    <Routes />
   </Provider>,
   document.getElementById('main')
 )

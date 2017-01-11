@@ -15,6 +15,12 @@ class SingleBookComponent extends Component {
       <div>
         <h1>{book.title}</h1>
         <div>
+          <div>
+            {book.author}
+          </div>
+          <div>
+            {book.price}
+          </div>
         </div>
       </div>
     )
