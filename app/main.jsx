@@ -11,7 +11,7 @@ import Routes from './routes';
 import App from './'
 import bookListContainer from './book/bookListContainer';
 import orderListContainer from './order/orderListContainer';
-import ReviewContainer from './review/reviewContainer';
+import ReviewListContainer from './review/reviewListContainer';
 import SingleReviewContainer from './review/singleReviewContainer';
 
 // import Jokes from './components/Jokes'
@@ -38,7 +38,7 @@ render (
       <Route path="/" component={App}>
         <Route path="booklist" component={bookListContainer} />
         <Route path="orderlist" component={orderListContainer} />
-        <Route path="reviews" component={ReviewContainer} />
+        <Route path="reviews" component={ReviewListContainer} />
         <Route path="reviews/reviewId" component={SingleReviewContainer} />
       </Route>
     </Router>
