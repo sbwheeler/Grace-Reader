@@ -8,7 +8,7 @@ class OrderListComponent extends Component {
   }
 
   render() {
-    const orders = this.props.orders;
+    const orders = this.props.total;
 
     return (
       <div>
@@ -20,7 +20,7 @@ class OrderListComponent extends Component {
               <Link to={`/orders/${order.id}`}>
                 <div >
                   <h5>
-                    <span id="price">Pay me{order.price}</span>
+                    <span>Total is { order.total }</span>
                   </h5>
                 </div>
               </Link>
