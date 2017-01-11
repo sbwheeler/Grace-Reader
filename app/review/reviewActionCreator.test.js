@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { RECEIVE_REVIEWS, RECEIVE_REVIEW, receiveReviews, receiveReview} from './reviewActionCreator'
 
-describe.only('Review Action Creators', () => {
+describe('Review Action Creators', () => {
   describe('receiveReviews', () => {
     it('should return the correct object', () => {
       const reviews = [

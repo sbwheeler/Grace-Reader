@@ -1,19 +1,19 @@
 import { RECEIVE_REVIEWS, RECEIVE_REVIEW } from './reviewActionCreator';
 
 const reviewsInitialState = {
-  selected: {},
+  selected: '',
   list: []
 }
 
-export default reducer = (state = reviewsInitialState, action) => {
+export default (state = reviewsInitialState, action) => {
   const newState = Object.assign({}, state);
 
   switch (action.type) {
     case RECEIVE_REVIEW:
-      newState.selected = action.receiveReview;
+      newState.selected = action.review;
       break;
     case RECEIVE_REVIEWS:
-      newState.list = action.receiveReviews;
+      newState.list = action.reviews;
       break;
     default:
       return state;
