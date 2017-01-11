@@ -2,18 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-
-class SingleBookComponent extends Component {
+class SingleOrder extends Component {
   constructor(props){
     super(props)
   }
 
   render() {
-    const book = this.props.currentBook;
+    const order = this.props.books;
 
     return (
       <div>
-        <h1>{book.title}</h1>
+        <h1>{order.books}</h1>
         <div>
         </div>
       </div>
@@ -21,4 +20,4 @@ class SingleBookComponent extends Component {
   }
 }
 
-export default SingleBookComponent;
+export default SingleOrder;
