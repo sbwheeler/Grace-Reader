@@ -8,11 +8,11 @@ class SingleOrder extends Component {
   }
 
   render() {
-    const order = this.props.books;
+    const order = this.props.currentOrder;
 
     return (
       <div>
-        <h1>{order.books}</h1>
+        <h1>{order.total}</h1>
         <div>
         </div>
       </div>
