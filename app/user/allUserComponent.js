@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-class OrderListComponent extends Component {
+
+class AllUsersComponent extends Component {
   constructor(props){
     super(props)
   }
 
   render() {
-    const orders = this.props.orders;
+    const users = this.props.users;
 
     return (
       <div>
-      <h1>Order LIST</h1>
+      <h1>ALL USERS</h1>
         <div>
         {
-          orders && orders.map(order => (
-            <div key={ order.id }>
-              <Link to={`/orders/${order.id}`}>
+          users && users.map(user => (
+            <div key={ user.id }>
+              <Link to={`/users/${user.id}`}>
                 <div >
                   <h5>
-                    <span id="price">Pay me{order.price}</span>
+                    <span id={`temp${user.id}`}>{ user.name }</span>
                   </h5>
                 </div>
               </Link>
@@ -33,4 +33,4 @@ class OrderListComponent extends Component {
   }
 }
 
-export default OrderListComponent;
+export default AllUsersComponent;

@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-class SingleOrder extends Component {
+
+class SingleUserComponent extends Component {
   constructor(props){
     super(props)
   }
 
   render() {
-    const order = this.props.currentOrder;
+    const user = this.props.currentUser;
 
     return (
       <div>
-        <h1>{order.total}</h1>
+      <h1>{user.name}</h1>
         <div>
         </div>
       </div>
@@ -20,4 +20,4 @@ class SingleOrder extends Component {
   }
 }
 
-export default SingleOrder;
+export default SingleUserComponent;

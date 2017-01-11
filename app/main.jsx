@@ -11,6 +11,8 @@ import Routes from './routes';
 import App from './'
 import bookListContainer from './book/bookListContainer';
 import orderListContainer from './order/orderListContainer';
+import ReviewContainer from './review/reviewContainer';
+import SingleReviewContainer from './review/singleReviewContainer';
 
 // import Jokes from './components/Jokes'
 // import Login from './components/Login'
@@ -32,7 +34,14 @@ import orderListContainer from './order/orderListContainer';
         // <Route path="/jokes" component={Jokes} />
 render (
   <Provider store={store}>
-    <Routes />
+    <Router history={browserHistory}>
+      <Route path="/" component={App}>
+        <Route path="booklist" component={bookListContainer} />
+        <Route path="orderlist" component={orderListContainer} />
+        <Route path="reviews" component={ReviewContainer} />
+        <Route path="reviews/reviewId" component={SingleReviewContainer} />
+      </Route>
+    </Router>
   </Provider>,
   document.getElementById('main')
 )
