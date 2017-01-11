@@ -26,7 +26,7 @@ export const getReviewById = reviewId => dispatch => {
     .then(data => dispatch(receiveReview(data)))
 }
 
-export const getAllRevieww = reviews => dispatch => {
+export const getAllReviews = () => dispatch => {
   axios.get('api/reviews/')
     .then(res => res.data)
     .then(data => dispatch(receiveReviews(data)))
