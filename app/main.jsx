@@ -2,14 +2,13 @@
 import '../stylesheets/style.scss';
 
 import React from 'react'
-import {Router, Route, IndexRedirect, browserHistory} from 'react-router'
+import {Router, Route, IndexRedirect, browserHistory, IndexRoute} from 'react-router'
 import {render} from 'react-dom'
 import {connect, Provider} from 'react-redux'
 
 import store from './store'
-
+import Routes from './routes';
 import App from './'
-
 import bookListContainer from './book/bookListContainer';
 import orderListContainer from './order/orderListContainer';
 import ReviewContainer from './review/reviewContainer';
