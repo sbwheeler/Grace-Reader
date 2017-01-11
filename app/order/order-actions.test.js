@@ -3,7 +3,7 @@ import {expect} from 'chai';
 import {getAllOrders, getSingleOrder} from './order-actions';
 
 
-describe.only('Order actions', () => {
+describe('Order actions', () => {
 
     describe('getAllOrders', () => {
 

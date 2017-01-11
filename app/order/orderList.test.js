@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 
 import OrderList from './orderList';
 
-describe.only('OrderList component', () => {
+describe('OrderList component', () => {
 
     let list, orders;
     beforeEach('Create component', () => {

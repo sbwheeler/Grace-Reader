@@ -3,7 +3,7 @@ import {expect} from 'chai';
 import {createStore} from 'redux';
 import orderReducer from './order-reducer';
 
-describe.only('Order reducer', () => {
+describe('Order reducer', () => {
 
     let testStore;
     beforeEach('Create testing store', () => {

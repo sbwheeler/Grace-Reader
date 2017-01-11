@@ -4,7 +4,7 @@ import {shallow} from 'enzyme';
 
 import SingleOrder from './singleOrder';
 
-describe.only('<SingleOrder /> component', () => {
+describe('<SingleOrder /> component', () => {
 
     let order, total;
     beforeEach('Create component', () => {
