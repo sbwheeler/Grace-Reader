@@ -33,3 +33,14 @@ export function fetchAllBooks() {
     .catch(console.error)
   }
 }
+
+export function fetchSingleBooks(id) {
+  return function (dispatch) {
+    axios.get(`/api/books/${id}`)
+    .then(res => res.data)
+    .then(foundBook => {
+      dispatch(getSingleBook(foundBook))
+    })
+    .catch(console.error)
+  }
+}

@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 
-class BookList extends Component {
+class BookListComponent extends Component {
   constructor(props){
     super(props)
   }
 
   render() {
-    const books = props.allBooks;
+    const books = this.props.allBooks;
 
     return (
       <div>
@@ -35,4 +35,4 @@ class BookList extends Component {
   }
 }
 
-export default BookList;
+export default BookListComponent;

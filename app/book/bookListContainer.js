@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import BookList from './bookListComponent';
+import BookListComponent from './bookListComponent';
 import store from '../store';
 
 function mapStateToProps(state) {
@@ -11,6 +11,6 @@ function mapStateToProps(state) {
 function mapDispatchToProps(state) {
   return {};
 }
-const BookListContainer = connect(mapStateToProps, mapDispatchToProps)(BookList);
+const BookListContainer = connect(mapStateToProps, mapDispatchToProps)(BookListComponent);
 
 export default BookListContainer;
