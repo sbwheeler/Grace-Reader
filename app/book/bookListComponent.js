@@ -34,5 +34,4 @@ class BookListComponent extends Component {
     )
   }
 }
-
 export default BookListComponent;
