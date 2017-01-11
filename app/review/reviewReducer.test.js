@@ -4,7 +4,7 @@ import { createStore } from 'redux';
 import reducer from './reviewReducer';
 import { RECEIVE_REVIEWS, RECEIVE_REVIEW } from './reviewActionCreator';
 
-describe.only('Review Reducers', () => {
+describe('Review Reducers', () => {
   let testStore;
   beforeEach('Create testing store', () => {
     testStore = createStore(reducer);

@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import ReviewListComponent from './reviewListComponent';
 
 const mapStateToProps = (state, getState) => {
-  return {}
+  return {
+    reviews: state.allReviews
+  }
 }
 
 const mapDispatchToProps = (dispatch, getState) => {
