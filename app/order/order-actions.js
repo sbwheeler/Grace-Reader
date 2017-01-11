@@ -3,7 +3,7 @@ import axios from 'axios';
 /*********************************CONSTS******************************/
 
 export const FETCH_ALL_ORDERS = 'FETCH_ALL_ORDERS';
-export const FETCH_SINGLE_ORDER = 'FETCH_SINGLE_ODER';
+export const FETCH_SINGLE_ORDER = 'FETCH_SINGLE_ORDER';
 
 
 /****************************ACTION CREATORS****************************/
