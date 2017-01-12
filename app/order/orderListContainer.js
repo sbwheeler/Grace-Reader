@@ -4,7 +4,7 @@ import store from '../store';
 
 function mapStateToProps(state) {
   return {
-    allOrders: state.allOrders
+    allOrders: state.orders.allOrders
   };
 }
 

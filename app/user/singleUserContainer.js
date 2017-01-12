@@ -4,7 +4,7 @@ import store from '../store';
 
 function mapStateToProps(state) {
   return {
-    currentUser: state.currentUser
+    currentUser: state.users.currentUser
   };
 }
 
