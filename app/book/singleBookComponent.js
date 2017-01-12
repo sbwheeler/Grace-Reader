@@ -16,7 +16,7 @@ const SingleBookComponent = ({ currentBook }) => {
       {
         currentBook.reviews && currentBook.reviews.map(review => (
           <div key={review.id}>
-            <Link to={`reviews/${review.id}`}>
+            <Link to={`/reviews/${review.id}`}>
               <SingleBookReview review={review} />
             </Link>
           </div>
