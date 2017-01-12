@@ -8,7 +8,7 @@ describe('Single Book Component', () => {
   let book = {title: 'Harry Potter', price: 15}
   let newSingleBook;
   beforeEach('Create component', () => {
-     newSingleBook = shallow(<SingleBookComponent book={book} />)
+     newSingleBook = shallow(<SingleBookComponent currentBook={book} />)
   })
 
   it('should be a <div>', () => {
@@ -16,7 +16,7 @@ describe('Single Book Component', () => {
   })
 
   it('should have title and price on its prop', () => {
-    expect(newSingleBook.instance().props.book.title).to.equal('Harry Potter')
-    expect(newSingleBook.instance().props.book.price).to.equal(15)
+    expect(newSingleBook.instance().props.currentBook.title).to.equal('Harry Potter')
+    expect(newSingleBook.instance().props.currentBook.price).to.equal(15)
   })
 })

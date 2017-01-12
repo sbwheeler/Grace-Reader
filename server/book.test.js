@@ -9,9 +9,8 @@ const {expect} = require('chai')
 describe('Book Routes', () => {
   before('wait for the db', () => db.didSync);
 
-  beforeEach('Make a Book', () => {
-    return Promise.all([
-      Book.create({
+  before('Make a Book', () => {
+    return Book.create({
       title: 'Harry Potter',
       author: 'J.K Rowling',
       genre: ['sci-fi'],
@@ -19,19 +18,23 @@ describe('Book Routes', () => {
       description: 'a book about some dude that becomes a wizard',
       stockCount: 2,
       imageUrl: 'http://www.chestersu.com/wp-content/uploads/2013/01/241153480-30235112.jpg'
-      }),
-      Review.create({ rating: 4.5, content: 'this book was pretty good', book_id: 1
-      }),
-      Review.create({ rating: 2, content: 'this book was alright but i thought hagrid was overrated', book_id: 1
       })
-    ])
   })
 
-  afterEach('Synchronize and clear database', () => db.sync({
+  after('Synchronize and clear database', () => db.sync({
     force: true
   }));
 
   describe('routing checks', () => {
+    before('make reviews', () => {
+      return Promise.all([
+            Review.create({ rating: 4.5, content: 'this book was pretty good', book_id: 1
+            }),
+            Review.create({ rating: 2, content: 'this book was alright but i thought hagrid was overrated', book_id: 1
+            })
+        ])
+      })
+
     it('GET /api/books', () => {
        return request(app)
         .get(`/api/books`)
