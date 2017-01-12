@@ -5,8 +5,8 @@ import { shallow } from 'enzyme';
 import SingleBookComponent from './singleBookComponent';
 
 describe('Single Book Component', () => {
-  const title = 'Harry Potter';
-  const price = '20';
+  const price = 15;
+  const title = 'harry potter';
   let newSingleBook;
   beforeEach('Create component', () => {
      newSingleBook = shallow(<SingleBookComponent title={title} price={price} />)
