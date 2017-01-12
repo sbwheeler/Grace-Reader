@@ -4,7 +4,8 @@ import store from '../store';
 
 function mapStateToProps(state) {
   return {
-    books: state.allBooks
+    books: state.allBooks,
+    allBooks: state.books.allBooks
   };
 }
 

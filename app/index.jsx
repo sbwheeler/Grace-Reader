@@ -5,7 +5,9 @@ const App = ({ children }) => {
   return (
     <div>
       <NavBar />
-      { children }
+      <div id="mainDisplay" className="container">
+        { children }
+      </div>
     </div>
   )
 }
