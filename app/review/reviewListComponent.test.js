@@ -4,6 +4,7 @@ import { shallow } from 'enzyme';
 
 import ReviewListComponent from './reviewListComponent';
 import SingleReviewComponent from './singleReviewComponent';
+import { Link } from 'react-router';
 
 describe.only('Review List Component', () => {
 
@@ -26,7 +27,8 @@ describe.only('Review List Component', () => {
     expect(reviewList.instance().props.reviews).to.equal(reviewsPassedDown)
   })
 
-  it('should have 3 singleReview components', () => {
-    expect(reviewList.get(0).props.children.length).to.equal(3)
+  it('should have 3 links and 3 singleReviewComponents', () => {
+    expect(reviewList.find(Link)).to.have.length(3)
+    expect(reviewList.find(SingleReviewComponent)).to.have.length(3)
   })
 })
