@@ -9,37 +9,28 @@ import {connect, Provider} from 'react-redux'
 import store from './store'
 import Routes from './routes';
 import App from './'
+
+import {fetchAllBooks} from './book/book-actions';
+
 import bookListContainer from './book/bookListContainer';
 import orderListContainer from './order/orderListContainer';
 import ReviewListContainer from './review/reviewListContainer';
 import SingleReviewContainer from './review/singleReviewContainer';
 
-// import Jokes from './components/Jokes'
-// import Login from './components/Login'
-// import WhoAmI from './components/WhoAmI'
 
-// const ExampleApp = connect(
-//   ({ auth }) => ({ user: auth })
-// ) (
-//   ({ user, children }) =>
-//     <div>
-//       <nav>
-//         {user ? <WhoAmI/> : <Login/>}
-//       </nav>
-//       {children}
-//     </div>
-// )
+function onAppEnter() {
+  store.dispatch(fetchAllBooks());
+}
 
-        // <IndexRedirect to="/jokes" />
-        // <Route path="/jokes" component={Jokes} />
 render (
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={App}>
+      <Route path="/" onEnter={onAppEnter} component={App}>
         <Route path="booklist" component={bookListContainer} />
         <Route path="orderlist" component={orderListContainer} />
         <Route path="reviews" component={ReviewListContainer} />
         <Route path="reviews/reviewId" component={SingleReviewContainer} />
+        <IndexRoute component={bookListContainer} />
       </Route>
     </Router>
   </Provider>,

@@ -10,7 +10,6 @@ class BookListComponent extends Component {
 
   render() {
     const books = this.props.allBooks;
-    console.log(books)
     return (
       <div className="container-fluid">
         <h1>BOOK LIST</h1>
