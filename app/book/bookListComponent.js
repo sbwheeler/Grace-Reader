@@ -11,9 +11,9 @@ class BookListComponent extends Component {
   render() {
     const books = this.props.allBooks;
     return (
-      <div className="container-fluid">
+      <div className="row">
         <h1>BOOK LIST</h1>
-          <ul className="row-fluid">
+          <ul>
           {
             books && books.map(book => (
               <li key={ book.id }>
@@ -21,7 +21,7 @@ class BookListComponent extends Component {
                   <img src={ book.imageUrl } />
                   <div >
                     <h5>
-                      <span>{ book.name }</span>
+                      <span>{ book.title }</span>
                     </h5>
                   </div>
                 </Link>
