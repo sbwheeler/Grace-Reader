@@ -27,9 +27,9 @@ describe('Book Routes', () => {
     ])
   })
 
-  // afterEach('Synchronize and clear database', () => db.sync({
-  //   force: true
-  // }));
+  afterEach('Synchronize and clear database', () => db.sync({
+    force: true
+  }));
 
   describe('routing checks', () => {
     it('GET /api/books', () => {
