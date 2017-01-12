@@ -21,13 +21,13 @@ export const receiveReview = review => {
 
 // doesn't exist in backend routes yet
 export const getReviewById = reviewId => dispatch => {
-  axios.get(`api/reviews/${reviewId}`)
+  axios.get(`/api/reviews/${reviewId}`)
     .then(res => res.data)
     .then(data => dispatch(receiveReview(data)))
 }
 
 export const getAllReviews = () => dispatch => {
-  axios.get('api/reviews/')
+  axios.get('/api/reviews/')
     .then(res => res.data)
     .then(data => dispatch(receiveReviews(data)))
 }

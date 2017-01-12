@@ -1,15 +1,15 @@
 import React from 'react';
 import StarRatingComponent from 'react-star-rating-component';
 
-const SingleReviewComponent = (props) => {
+const SingleReviewComponent = ({ selectedReview }) => {
   return (
     <div>
       <StarRatingComponent
         name="rate1"
         editing={false}
         starCount={5}
-        value={props.rating} />
-      <p>{ props.content }</p>
+        value={selectedReview.rating} />
+      <p>{ selectedReview.content }</p>
     </div>
   )
 }

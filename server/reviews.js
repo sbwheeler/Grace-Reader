@@ -12,6 +12,14 @@ router.get('/', (req, res, next) => {
   .catch(next)
 })
 
+router.get('/:id', (req, res, next) => {
+  Review.findById(req.params.id)
+  .then(foundReview => {
+    res.send(foundReview)
+  })
+  .catch(next)
+})
+
 router.post('/', (req, res, next) => {
   Review.create(req.body)
   .then(createdReview => {
