@@ -3,8 +3,9 @@ import { expect } from 'chai';
 import { shallow } from 'enzyme';
 
 import ReviewListComponent from './reviewListComponent';
+import SingleReviewComponent from './singleReviewComponent';
 
-describe('Review List Component', () => {
+describe.only('Review List Component', () => {
 
   const reviewsPassedDown = [
     { id: 0, rating: 1.0, content:'something something' },
@@ -23,5 +24,9 @@ describe('Review List Component', () => {
 
   it('should have reviews on its prop', () => {
     expect(reviewList.instance().props.reviews).to.equal(reviewsPassedDown)
+  })
+
+  it('should have 3 singleReview components', () => {
+    expect(reviewList.get(0).props.children.length).to.equal(3)
   })
 })
