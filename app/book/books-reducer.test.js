@@ -13,7 +13,7 @@ describe('Book Reducer', () => {
     it('has expected initial state', () => {
         expect(testStore.getState()).to.be.deep.equal({
             allBooks: [],
-            currentBook: {}
+            selectedBook: {}
         });
     });
 
@@ -36,7 +36,7 @@ describe('Book Reducer', () => {
               genre: 'fantasy'
             }});
             const newState = testStore.getState();
-            expect(newState.currentBook).to.be.deep.equal({
+            expect(newState.selectedBook).to.be.deep.equal({
               id: 1,
               title: 'harry potter',
               genre: 'fantasy'
@@ -50,7 +50,7 @@ describe('Book Reducer', () => {
               genre: 'fantasy'
             }});
             const newState = testStore.getState();
-            expect(newState.currentBook).to.be.deep.equal({
+            expect(newState.selectedBook).to.be.deep.equal({
               id: 2,
               title: 'enders game',
               genre: 'fantasy'
