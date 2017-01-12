@@ -6,7 +6,7 @@ import ReviewListComponent from './reviewListComponent';
 import SingleReviewComponent from './singleReviewComponent';
 import { Link } from 'react-router';
 
-describe.only('Review List Component', () => {
+describe('Review List Component', () => {
 
   const reviewsPassedDown = [
     { id: 0, rating: 1.0, content:'something something' },
