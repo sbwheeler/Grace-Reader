@@ -9,7 +9,9 @@ const SingleBookReview = ({ review }) => {
         name="rate1"
         editing={false}
         starCount={5}
-        value={review.rating} />
+        value={review.rating}
+        renderStarIconHalf={() => <span className="fa fa-star-half-full" />}
+         />
       <span>   {review.content}</span>
     </div>
   )
