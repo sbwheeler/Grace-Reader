@@ -4,7 +4,7 @@ import SingleReviewComponent from './singleReviewComponent';
 
 const mapStateToProps = (state, getState) => {
   return {
-    selectedReview: state.selectedReview
+    selectedReview: state.reviews.selectedReview
   }
 }
 

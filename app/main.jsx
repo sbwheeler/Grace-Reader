@@ -10,27 +10,33 @@ import store from './store'
 import Routes from './routes';
 import App from './'
 
-import {fetchAllBooks} from './book/book-actions';
+import {fetchAllBooks, fetchSingleBook} from './book/book-actions';
 
-import bookListContainer from './book/bookListContainer';
-import orderListContainer from './order/orderListContainer';
+import BookListContainer from './book/bookListContainer';
+import OrderListContainer from './order/orderListContainer';
 import ReviewListContainer from './review/reviewListContainer';
 import SingleReviewContainer from './review/singleReviewContainer';
+import SingleBookContainer from './book/singleBookContainer';
 
 
 function onAppEnter() {
   store.dispatch(fetchAllBooks());
+}
+function onBookEnter(nextRouterState) {
+  store.dispatch(fetchSingleBook(nextRouterState.params.id));
 }
 
 render (
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" onEnter={onAppEnter} component={App}>
-        <Route path="booklist" component={bookListContainer} />
-        <Route path="orderlist" component={orderListContainer} />
+        <Route path="books" component={BookListContainer}>
+          <Route path="book/:bookId" onEnter={onBookEnter} component={SingleBookContainer} />
+        </Route>
+        <Route path="orderlist" component={OrderListContainer} />
         <Route path="reviews" component={ReviewListContainer} />
-        <Route path="reviews/reviewId" component={SingleReviewContainer} />
-        <IndexRoute component={bookListContainer} />
+        <Route path="reviews/:reviewId" component={SingleReviewContainer} />
+        <IndexRoute component={BookListContainer} />
       </Route>
     </Router>
   </Provider>,

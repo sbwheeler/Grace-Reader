@@ -4,7 +4,7 @@ import store from '../store';
 
 function mapStateToProps(state) {
   return {
-    currentOrder: state.books
+    currentOrder: state.orders.currentOrder
   };
 }
 

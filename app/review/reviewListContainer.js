@@ -4,7 +4,7 @@ import ReviewListComponent from './reviewListComponent';
 
 const mapStateToProps = (state, getState) => {
   return {
-    reviews: state.allReviews
+    reviews: state.reviews.allReviews
   }
 }
 
