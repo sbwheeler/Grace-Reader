@@ -27,7 +27,7 @@ router.get('/:id', mustBeLoggedIn, (req, res, next) => {
 })
 
 //does not yet require login
-router.put('/:id', (req, res, next) => {
+router.put('/:id', mustBeLoggedIn, (req, res, next) => {
   User.update(req.body, {
       where: { id: req.params.id },
       returning: true
