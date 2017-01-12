@@ -34,7 +34,7 @@ export function fetchAllBooks() {
   }
 }
 
-export function fetchSingleBooks(id) {
+export function fetchSingleBook(id) {
   return function (dispatch) {
     axios.get(`/api/books/${id}`)
     .then(res => res.data)

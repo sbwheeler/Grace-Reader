@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 
-const SingleBookComponent = ({ book }) => {
+const SingleBookComponent = ({ currentBook }) => {
   return (
-    <div className="book">
+    <div className="currentBook">
       <div>
-        <h3>{book.title}</h3>
-        <div>{book.author}</div>
-        <img src={book.imageUrl} className="img-thumbnail" />
+        <h3>{currentBook.title}</h3>
+        <div>{currentBook.author}</div>
+        <img src={currentBook.imageUrl} className="img-thumbnail" />
       </div>
     </div>
   )
