@@ -23,16 +23,15 @@ function onAppEnter() {
   store.dispatch(fetchAllBooks());
 }
 function onBookEnter(nextRouterState) {
-  store.dispatch(fetchSingleBook(nextRouterState.params.id));
+  store.dispatch(fetchSingleBook(nextRouterState.params.bookId));
 }
 
 render (
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" onEnter={onAppEnter} component={App}>
-        <Route path="books" component={BookListContainer}>
-          <Route path="book/:bookId" onEnter={onBookEnter} component={SingleBookContainer} />
-        </Route>
+        <Route path="books" component={BookListContainer} />
+        <Route path="books/book/:bookId" onEnter={onBookEnter} component={SingleBookContainer} />
         <Route path="orderlist" component={OrderListContainer} />
         <Route path="reviews" component={ReviewListContainer} />
         <Route path="reviews/:reviewId" component={SingleReviewContainer} />
