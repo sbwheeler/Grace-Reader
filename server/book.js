@@ -2,6 +2,7 @@
 
 const db = require('APP/db');
 const Book = db.model('books');
+const Review = db.model('reviews');
 const router = require('express').Router()
 
 router.get('/', (req, res, next) => {
@@ -11,8 +12,17 @@ router.get('/', (req, res, next) => {
 })
 
 router.get('/:bookId', (req, res, next) => {
-  Book.findById(req.params.bookId)
-  .then(foundBook => res.send(foundBook))
+  Book.findOne({
+    where: {
+      id: req.params.bookId
+    },
+    include: [{model: Review,
+      where: { book_id: req.params.bookId }
+    }]
+  })
+  .then(foundBook => {
+    res.send(foundBook)
+  })
   .catch(next)
 })
 
