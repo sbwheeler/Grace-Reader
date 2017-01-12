@@ -22,7 +22,6 @@ import SingleBookContainer from './book/singleBookContainer';
 function onAppEnter() {
   store.dispatch(fetchAllBooks());
 }
-
 function onBookEnter(nextRouterState) {
   store.dispatch(fetchSingleBook(nextRouterState.params.id));
 }
@@ -32,7 +31,7 @@ render (
     <Router history={browserHistory}>
       <Route path="/" onEnter={onAppEnter} component={App}>
         <Route path="books" component={BookListContainer}>
-          <Route path="book/:bookId" component={SingleBookContainer} />
+          <Route path="book/:bookId" onEnter={onBookEnter} component={SingleBookContainer} />
         </Route>
         <Route path="orderlist" component={OrderListContainer} />
         <Route path="reviews" component={ReviewListContainer} />
