@@ -16,8 +16,11 @@ router.get('/:bookId', (req, res, next) => {
     where: {
       id: req.params.bookId
     },
-    include: [{model: Review,
-      where: { book_id: req.params.bookId }
+    include: [{
+      model: Review,
+      where: {
+        book_id: req.params.bookId
+      }
     }]
   })
   .then(foundBook => {
