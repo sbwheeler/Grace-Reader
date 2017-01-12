@@ -17,7 +17,7 @@ class BookListComponent extends Component {
           {
             books && books.map(book => (
               <div className="col-xs-4" key={ book.id }>
-                <Link className="thumbnail" to={`/books/${book.id}`}>
+                <Link className="thumbnail" to={`/books/book/${book.id}`}>
                   <img src={ book.imageUrl } />
                   <div className="caption">
                     <h5>
