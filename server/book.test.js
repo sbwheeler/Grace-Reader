@@ -42,7 +42,7 @@ describe('Book Routes', () => {
         })
     })
 
-    it.only('GET /api/books/1', () => {
+    it('GET /api/books/1', () => {
        return request(app)
         .get(`/api/books/1`)
         .expect(200)

@@ -31,8 +31,3 @@ export const getAllReviews = () => dispatch => {
     .then(res => res.data)
     .then(data => dispatch(receiveReviews(data)))
 }
-
-// export const getReviewsOfBook = bookId => dispatch => {
-//   axios.get(`api/reviews/`)
-//     .then
-// }
