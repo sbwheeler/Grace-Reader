@@ -4,7 +4,7 @@ import store from '../store';
 
 function mapStateToProps(state) {
   return {
-    currentBook: state.currentBook
+    currentBook: state.books.currentBook
   };
 }
 

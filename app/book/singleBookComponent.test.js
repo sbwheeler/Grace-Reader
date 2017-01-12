@@ -5,11 +5,10 @@ import { shallow } from 'enzyme';
 import SingleBookComponent from './singleBookComponent';
 
 describe('Single Book Component', () => {
-  const price = 15;
-  const title = 'harry potter';
+  let book = {title: 'Harry Potter', price: 15}
   let newSingleBook;
   beforeEach('Create component', () => {
-     newSingleBook = shallow(<SingleBookComponent title={title} price={price} />)
+     newSingleBook = shallow(<SingleBookComponent book={book} />)
   })
 
   it('should be a <div>', () => {
@@ -17,7 +16,7 @@ describe('Single Book Component', () => {
   })
 
   it('should have title and price on its prop', () => {
-    expect(newSingleBook.instance().props.title).to.equal(title)
-    expect(newSingleBook.instance().props.price).to.equal(price)
+    expect(newSingleBook.instance().props.book.title).to.equal('Harry Potter')
+    expect(newSingleBook.instance().props.book.price).to.equal(15)
   })
 })
