@@ -1,11 +1,15 @@
 import React from 'react'
 
-export const WhoAmI = ({ user, logout }) => (
+export const WhoAmI = ({ user, logout }) => {
+  console.log('WHOAMI USER: ', user)
+  return (
   <div className="whoami">
-    <span className="whoami-user-name">{user && user.name}</span>
+    <span className="whoami-user-name">{user && `${user.firstName} ${user.lastName}`}</span>
     <button className="logout" onClick={logout}>Logout</button>
   </div>
 )
+
+}
 
 import {logout} from 'APP/app/auth/reducers/auth'
 import {connect} from 'react-redux'
