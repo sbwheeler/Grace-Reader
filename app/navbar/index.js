@@ -29,7 +29,7 @@ export default class Navbar extends Component {
         </a>
         <nav className={this.state.menuClicked ? 'show' : '' }>
           <div> {this.props.user ? <WhoAmI user={this.props.user}/> : <Login />} </div>
-          <Link to={'/newuser'}> Sign Up </Link>
+          {!this.props.user && <Link to={'/newuser'}> Sign Up </Link> }
         <h1>NAV BAR</h1>
           {
             // links && links.map( (link, index) => {
