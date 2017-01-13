@@ -1,15 +1,28 @@
-import React, { PropTypes } from 'react'
+import React, { Component } from 'react';
 
-const ProductsList = ({ title, children }) => (
-  <div>
-    <h3>{title}</h3>
-    <div>{children}</div>
-  </div>
-)
+class ProductsList extends Component {
+  constructor(props){
+    super(props);
+  }
 
-ProductsList.propTypes = {
-  children: PropTypes.node,
-  title: PropTypes.string.isRequired
+  render() {
+    const books = this.props.allBooks
+    return (
+    <div>
+      <div>
+        <h1>PRODUCTS LISTTT</h1>
+        <div>{books.length}</div>
+      </div>
+    </div>
+    )
+  }
 }
+
+//NEED THE SHOPPING CART AND ORDERS B COMPONENT
+
+// ProductsList.propTypes = {
+//   children: PropTypes.node,
+//   title: PropTypes.string.isRequired
+// }
 
 export default ProductsList

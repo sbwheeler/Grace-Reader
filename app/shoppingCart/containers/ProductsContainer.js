@@ -1,9 +1,12 @@
-import React, { PropTypes } from 'react'
-import { connect } from 'react-redux'
-import { addToCart } from '../actions'
-import { getVisibleProducts } from '../reducers/products'
-import ProductItem from '../components/ProductItem'
-import ProductsList from '../components/ProductsList'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import store from '../../store.jsx';
+import ProductsList from '../components/ProductsList';
+
+// import { addToCart } from '../actions'
+// import { getVisibleProducts } from '../reducers/products'
+// import ProductItem from '../components/ProductItem'
+// import ProductsList from '../components/ProductsList'
 
 // const ProductsContainer = ({ products, addToCart }) => (
 //   <ProductsList title="Products">
@@ -32,9 +35,9 @@ import ProductsList from '../components/ProductsList'
 
 function mapStateToProps(state) {
   return {
-    currentBook: state.books.currentBook
+    allBooks: state.books.allBooks
   }
 }
 
-export default connect(
-  mapStateToProps, mapDispatchToProps)(ProductsContainer)
+
+export default connect(mapStateToProps)(ProductsList);

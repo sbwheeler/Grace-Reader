@@ -1,6 +1,7 @@
 import React from 'react'
 import ProductsContainer from './ProductsContainer'
-import CartContainer from './CartContainer'
+
+// import CartContainer from './CartContainer'
 
 const Shopping = () => (
   <div>
@@ -8,8 +9,8 @@ const Shopping = () => (
     <hr/>
     <ProductsContainer />
     <hr/>
-    <CartContainer />
   </div>
 )
 
 export default Shopping;
+    // <CartContainer />
