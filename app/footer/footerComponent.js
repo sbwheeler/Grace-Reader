@@ -7,7 +7,7 @@ export default class Footer extends Component {
 
   render() {
     return (
-      <section id="footer">
+      <div id="footer">
         <a className="logo">
         </a>
         <h1>HELOOOOOOOOO</h1>
@@ -25,7 +25,7 @@ export default class Footer extends Component {
             // })
           }
         </ul>
-      </section>
+      </div>
     );
 
   }

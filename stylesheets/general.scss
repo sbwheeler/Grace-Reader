@@ -1,10 +1,18 @@
+//++++++++++++++++++++++COLORS++++++++++++++++++++++
 $primary-color: #fdb608;
 $default-color: #4d4d4e;
 $dark-theme: #181818;
 $logo-background: #070707;
 $background: #252627;
+//++++++++++++++++++++++COLORS++++++++++++++++++++++
+
+
+//++++++++++++++++++++++HEIGHTS+++++++++++++++++++++
+$footer-height: 180px;
+//++++++++++++++++++++++HEIGHTS+++++++++++++++++++++
 
 html {
+    height: 100%;
     color: #222;
     font-size: 1em;
     line-height: 1.4;
@@ -15,9 +23,21 @@ li {
 }
 
 body {
+    height: 100%;
+    margin: 0;
     background: $background;
     //overflow: hidden;
     display: block;
+}
+
+#main {
+    height: 100%;
+    div[data-reactroot] {
+        height: 100%;
+        #mainDisplay {
+            height: 100%
+        }
+    }
 }
 
 a {

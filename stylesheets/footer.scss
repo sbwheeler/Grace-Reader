@@ -1,8 +1,6 @@
 #footer {
-  right: 0;
-  bottom: 0;
-  left: 0;
+  height: $footer-height;
   padding: 1rem;
-  background-color: #dark-theme;
+  background-color: $primary-color;
   text-align: center;
 }
