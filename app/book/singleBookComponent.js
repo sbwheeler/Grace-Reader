@@ -3,15 +3,19 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import SingleBookReview from './singleBookReview'
 
-
 const SingleBookComponent = ({ currentBook }) => {
   return (
     <div className="currentBook">
-      <div>
-        <h3>{currentBook.title}</h3>
-        <div>{currentBook.author}</div>
+      <Link to="/">
+        <button className="btn btn-primary pull-right">
+          Home Page
+        </button>
+      </Link>
         <img src={currentBook.imageUrl} className="img-thumbnail" />
-      </div>
+        <h3>Title: {currentBook.title}</h3>
+        <div>Author: {currentBook.author}</div>
+        <div>Description: {currentBook.description}</div>
+        <div>Genre: {currentBook.genre}</div>
       <h3>REVIEWS</h3>
       {
         currentBook.reviews && currentBook.reviews.map(review => (
