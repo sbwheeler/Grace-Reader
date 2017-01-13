@@ -26,15 +26,14 @@ export default class Navbar extends Component {
         <a className="logo">
         </a>
         <nav className={this.state.menuClicked ? 'show' : '' }>
+          <div> {this.props.user ? <WhoAmI /> : <Login />} </div>
         <h1>HELOOOOOOOOO</h1>
           {
             // links && links.map( (link, index) => {
             //   return <Link key={index} to={`/${link.to}`}><i className={`fa fa-${link.faClass}`}></i></Link>
             // })
           }
-            {this.props.user ? <WhoAmI style={
-              {'z-index': 10}
-            } /> : <Login style={{'z-index': 10}} />}
+
         </nav>
 
         <ul>
