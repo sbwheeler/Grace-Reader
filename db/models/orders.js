@@ -2,7 +2,7 @@ const db = require('APP/db');
 const Sequelize = require('sequelize');
 
 const Orders = db.define('orders', {
-  books: {
+  selected: {
     type: Sequelize.ARRAY(Sequelize.JSON)
   },
   total: {
@@ -14,7 +14,7 @@ const Orders = db.define('orders', {
 
     // set total to order
     beforeCreate: function (orders, options, fn) {
-      const total = orders.books.reduce((initial, book) => {
+      const total = orders.selected.reduce((initial, book) => {
         return initial + book.price * book.quantity
       }, 0)
 

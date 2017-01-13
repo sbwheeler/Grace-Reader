@@ -10,6 +10,7 @@ api
   .use('/users', require('./users'))
   .use('/reviews', require('./reviews'))
   .use('/books', require('./book'))
+  .use('/cart', require('./selectedBooks'))
 
 // Send along any errors
 api.use((err, req, res, next) => {

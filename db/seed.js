@@ -13,13 +13,13 @@ const seedUsers = () => db.Promise.map([
 ], user => db.model('users').create(user))
 
 const seedOrders = () => db.Promise.map([
-  {books: [{id: 5, price: 5.00, quantity: 1}, {id: 3, price: 30.05, quantity: 100}]},
-  {books: [{id: 3, price: 19.95, quantity: 2}, {id: 5, price: 30.05, quantity: 100}]},
-  {books: [{id: 7, price: 19.95, quantity: 2}, {id: 8, price: 30.05, quantity: 10}]},
-  {books: [{id: 7, price: 19.95, quantity: 2}, {id: 1, price: 30.05, quantity: 100}]},
-  {books: [{id: 2, price: 11.95, quantity: 2}, {id: 2, price: 11.95, quantity: 100}]},
-  {books: [{id: 8, price: 11.95, quantity: 2}, {id: 6, price: 11.95, quantity: 100}]},
-  {books: [{id: 3, price: 11.95, quantity: 2}, {id: 6, price: 11.95, quantity: 100}]}
+  {selected: [{id: 5, price: 5.00, quantity: 1}, {id: 3, price: 30.05, quantity: 100}]},
+  {selected: [{id: 3, price: 19.95, quantity: 2}, {id: 5, price: 30.05, quantity: 100}]},
+  {selected: [{id: 7, price: 19.95, quantity: 2}, {id: 8, price: 30.05, quantity: 10}]},
+  {selected: [{id: 7, price: 19.95, quantity: 2}, {id: 1, price: 30.05, quantity: 100}]},
+  {selected: [{id: 2, price: 11.95, quantity: 2}, {id: 2, price: 11.95, quantity: 100}]},
+  {selected: [{id: 8, price: 11.95, quantity: 2}, {id: 6, price: 11.95, quantity: 100}]},
+  {selected: [{id: 3, price: 11.95, quantity: 2}, {id: 6, price: 11.95, quantity: 100}]}
 ], order => db.model('orders').create(order))
 
 const seedBooks = () => db.Promise.map([
@@ -53,6 +53,17 @@ const seedReviews = () => db.Promise.map([
   {rating: 1.5, content: 'very disappointing book', 'book_id': 3}
 ], review => db.model('reviews').create(review))
 
+
+const seedSelectedBooks = () => db.Promise.map([
+  {'order_id': 1, 'book_id': 1, quantity: 5},
+  {'order_id': 2, 'book_id': 1, quantity: 2},
+  {'order_id': 3, 'book_id': 4, quantity: 3},
+  {'order_id': 4, 'book_id': 5, quantity: 1},
+  {'order_id': 4, 'book_id': 6, quantity: 2},
+  {'order_id': 4, 'book_id': 7, quantity: 1},
+  {'order_id': 1, 'book_id': 4, quantity: 7}], selectedBook => db.model('selectedBooks').create(selectedBook))
+
+
 db.didSync
   .then(() => db.sync({force: true}))
   .then(seedUsers)
@@ -63,5 +74,7 @@ db.didSync
   .then(books => console.log(`Seeded ${books.length} books OK`))
   .then(seedReviews)
   .then(reviews => console.log(`Seeded ${reviews.length} reviews OK`))
+  .then(seedSelectedBooks)
+  .then(selectedBooks => console.log(`Seeded ${selectedBooks.length} selected books OK`))
   .catch(error => console.error(error))
   .finally(() => db.close())
