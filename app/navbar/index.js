@@ -21,12 +21,13 @@ export default class Navbar extends Component {
   }
 
   render() {
+    console.log('USER: ', this.props.user)
     return (
       <section id="navigation">
         <a className="logo">
         </a>
         <nav className={this.state.menuClicked ? 'show' : '' }>
-          <div> {this.props.user ? <WhoAmI /> : <Login />} </div>
+          <div> {this.props.user ? <WhoAmI user={this.props.user}/> : <Login />} </div>
         <h1>HELOOOOOOOOO</h1>
           {
             // links && links.map( (link, index) => {
