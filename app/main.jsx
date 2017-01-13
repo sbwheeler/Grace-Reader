@@ -19,6 +19,8 @@ import ReviewListContainer from './review/reviewListContainer';
 import SingleReviewContainer from './review/singleReviewContainer';
 import SingleBookContainer from './book/singleBookContainer';
 
+import newUser from './auth/components/newUserComponent'
+
 
 function onAppEnter() {
   store.dispatch(fetchAllBooks());
@@ -36,6 +38,7 @@ render (
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" onEnter={onAppEnter} component={App}>
+        <Route path="newuser" component={newUser} />
         <Route path="books" component={BookListContainer} />
         <Route path="books/book/:bookId" onEnter={onBookEnter} component={SingleBookContainer} />
         <Route path="orderlist" component={OrderListContainer} />

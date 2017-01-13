@@ -1,5 +1,5 @@
 import React from 'react'
-import {login} from 'APP/app/auth/reducers/auth'
+import {login} from '../reducers/auth'
 import {connect} from 'react-redux'
 
 export const Login = ({ login }) => (

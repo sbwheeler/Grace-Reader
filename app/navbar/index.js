@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import WhoAmI from '../auth/components/WhoAmI'
 import Login from '../auth/components/Login'
+import newUser from '../auth/components/newUserComponent'
+import { Link } from 'react-router'
 
 export default class Navbar extends Component {
   constructor(props) {
@@ -21,14 +23,14 @@ export default class Navbar extends Component {
   }
 
   render() {
-    console.log('USER: ', this.props.user)
     return (
       <section id="navigation">
         <a className="logo">
         </a>
         <nav className={this.state.menuClicked ? 'show' : '' }>
           <div> {this.props.user ? <WhoAmI user={this.props.user}/> : <Login />} </div>
-        <h1>HELOOOOOOOOO</h1>
+          <Link to={'/newuser'}> Sign Up </Link>
+        <h1>NAV BAR</h1>
           {
             // links && links.map( (link, index) => {
             //   return <Link key={index} to={`/${link.to}`}><i className={`fa fa-${link.faClass}`}></i></Link>
