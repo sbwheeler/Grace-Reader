@@ -8,7 +8,7 @@ import {connect, Provider} from 'react-redux'
 
 import store from './store'
 import Routes from './routes';
-import App from './'
+import App from './app'
 
 import {fetchAllBooks, fetchSingleBook} from './book/book-actions';
 import { getReviewById } from './review/reviewActionCreator';
@@ -47,3 +47,5 @@ render (
   </Provider>,
   document.getElementById('main')
 )
+
+

@@ -12,6 +12,7 @@ const SingleBookComponent = ({ currentBook }) => {
         <h3>{currentBook.title}</h3>
         <div>{currentBook.author}</div>
         <div>
+        <Link to={`/user/cart`}>Add to cart</Link>
         <StarRatingComponent
           name="rate1"
           editing={false}
@@ -30,7 +31,7 @@ const SingleBookComponent = ({ currentBook }) => {
               <SingleBookReview review={review} />
             </Link>
           </div>
-          ))
+        ))
       }
     </div>
   )

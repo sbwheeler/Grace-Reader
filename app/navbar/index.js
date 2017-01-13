@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import WhoAmI from '../auth/components/WhoAmI'
+import Login from '../auth/components/Login'
 
 export default class Navbar extends Component {
   constructor(props) {
@@ -30,7 +32,11 @@ export default class Navbar extends Component {
             //   return <Link key={index} to={`/${link.to}`}><i className={`fa fa-${link.faClass}`}></i></Link>
             // })
           }
+            {this.props.user ? <WhoAmI style={
+              {'z-index': 10}
+            } /> : <Login style={{'z-index': 10}} />}
         </nav>
+
         <ul>
           {
             // socialLinks && socialLinks.map( (el, index) => {
