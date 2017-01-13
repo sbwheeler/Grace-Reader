@@ -23,6 +23,11 @@ import newUser from './auth/components/newUserComponent'
 
 import { login } from './auth/reducers/auth';
 
+import Shopping from './shoppingCart/containers/App';
+// import CartContainer from './shoppingCart/containers/CartContainer';
+// import ProductsContainer from './shoppingCart/containers/ProductsContainer';
+
+
 function onAppEnter() {
   store.dispatch(fetchAllBooks());
 }
@@ -35,7 +40,7 @@ function onSingleReviewEnter(nextRouterState) {
   store.dispatch(getReviewById(nextRouterState.params.reviewId));
 }
 
-render (
+render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" onEnter={onAppEnter} component={App}>
@@ -44,7 +49,8 @@ render (
         <Route path="books/book/:bookId" onEnter={onBookEnter} component={SingleBookContainer} />
         <Route path="orderlist" component={OrderListContainer} />
         <Route path="reviews" component={ReviewListContainer} />
-        <Route path="reviews/:reviewId" component={SingleReviewContainer} onEnter={onSingleReviewEnter}/>
+        <Route path="reviews/:reviewId" component={SingleReviewContainer} onEnter={onSingleReviewEnter} />
+        <Route path="checkout" component={Shopping} onEnter={onAppEnter} />
         <IndexRoute component={BookListContainer} />
       </Route>
     </Router>
