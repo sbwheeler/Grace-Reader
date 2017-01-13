@@ -9,9 +9,9 @@ const SingleReviewComponent = ({ selectedReview }) => {
         editing={false}
         starCount={5}
         value={selectedReview.rating}
-        // renderStarIcon={(index, value) => {
-        //   return <span className={index <= value ? 'fa fa-star' : 'fa fa-star-o'} />;
-        // }}
+        renderStarIcon={(index, value) => {
+          return <span className={index <= value ? 'fa fa-star' : 'fa fa-star-o'} />;
+        }}
         renderStarIconHalf={() => <span className="fa fa-star-half-full" />}
          />
       <p>{ selectedReview.content }</p>
