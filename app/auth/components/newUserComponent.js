@@ -4,7 +4,6 @@ import {login, signUp } from '../reducers/auth'
 import axios from 'axios';
 import store from '../../store'
 
-
 export default class NewUser extends Component {
   constructor(props) {
     super(props);
@@ -21,7 +20,6 @@ export default class NewUser extends Component {
     event.preventDefault();
     store.dispatch(signUp(this.state));
   }
-
 
   render() {
           return (
