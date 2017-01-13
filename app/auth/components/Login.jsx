@@ -13,7 +13,6 @@ export const Login = ({ login }) => (
   </form>
 )
 
-
 export default connect (
   state => ({}),
   {login}

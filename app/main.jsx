@@ -21,6 +21,7 @@ import SingleBookContainer from './book/singleBookContainer';
 
 import newUser from './auth/components/newUserComponent'
 
+import { login } from './auth/reducers/auth';
 
 function onAppEnter() {
   store.dispatch(fetchAllBooks());

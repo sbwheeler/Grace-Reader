@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Link, browserHistory } from 'react-router';
-import {login} from '../reducers/auth'
+import {login, signUp } from '../reducers/auth'
 import axios from 'axios';
+import store from '../../store'
+
 
 export default class NewUser extends Component {
   constructor(props) {
@@ -17,14 +19,7 @@ export default class NewUser extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    axios.post('api/users', this.state)
-    .then(newUser => {
-      return login(this.state.email, this.state.password)
-    })
-    .then(data => {
-      browserHistory.push('/');
-    })
-    .catch(console.error)
+    store.dispatch(signUp(this.state));
   }
 
 
