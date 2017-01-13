@@ -2,7 +2,7 @@ import React from 'react'
 import ProductsContainer from './ProductsContainer'
 import CartContainer from './CartContainer'
 
-const App = () => (
+const Shopping = () => (
   <div>
     <h2>Shopping Cart Example</h2>
     <hr/>
@@ -12,4 +12,4 @@ const App = () => (
   </div>
 )
 
-export default App
+export default Shopping;

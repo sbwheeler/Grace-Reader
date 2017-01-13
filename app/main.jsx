@@ -19,6 +19,9 @@ import ReviewListContainer from './review/reviewListContainer';
 import SingleReviewContainer from './review/singleReviewContainer';
 import SingleBookContainer from './book/singleBookContainer';
 
+import Shopping from './shoppingCart/containers/App';
+import CartContainer from './shoppingCart/containers/CartContainer';
+import ProductsContainer from './shoppingCart/containers/ProductsContainer';
 
 function onAppEnter() {
   store.dispatch(fetchAllBooks());
@@ -40,6 +43,9 @@ render (
         <Route path="books/book/:bookId" onEnter={onBookEnter} component={SingleBookContainer} />
         <Route path="orderlist" component={OrderListContainer} />
         <Route path="reviews" component={ReviewListContainer} />
+        <Route path="cart" component={CartContainer} />
+        <Route path="cart" component={CartContainer} />
+        <Route path="cart" component={CartContainer} />
         <Route path="reviews/:reviewId" component={SingleReviewContainer} onEnter={onSingleReviewEnter}/>
         <IndexRoute component={BookListContainer} />
       </Route>

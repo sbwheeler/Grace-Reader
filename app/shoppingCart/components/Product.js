@@ -1,4 +1,6 @@
-import React, { PropTypes } from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 const Product = ({ price, quantity, title }) => (
   <div>
@@ -6,10 +8,10 @@ const Product = ({ price, quantity, title }) => (
   </div>
 )
 
-Product.propTypes = {
-  price: PropTypes.number,
-  quantity: PropTypes.number,
-  title: PropTypes.string
-}
+// Product.propTypes = {
+//   price: PropTypes.number,
+//   quantity: PropTypes.number,
+//   title: PropTypes.string
+// }
 
 export default Product
