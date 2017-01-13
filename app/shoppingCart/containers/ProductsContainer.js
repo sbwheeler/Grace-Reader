@@ -3,6 +3,22 @@ import { connect } from 'react-redux';
 import store from '../../store.jsx';
 import ProductsList from '../components/ProductsList';
 
+function mapStateToProps(state) {
+  return {
+    allBooks: state.books.allBooks
+  }
+}
+
+
+export default connect(mapStateToProps)(ProductsList);
+
+
+
+
+
+
+
+
 // import { addToCart } from '../actions'
 // import { getVisibleProducts } from '../reducers/products'
 // import ProductItem from '../components/ProductItem'
@@ -33,11 +49,5 @@ import ProductsList from '../components/ProductsList';
 //   products: getVisibleProducts(state.products)
 // })
 
-function mapStateToProps(state) {
-  return {
-    allBooks: state.books.allBooks
-  }
-}
 
 
-export default connect(mapStateToProps)(ProductsList);
