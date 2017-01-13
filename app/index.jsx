@@ -1,5 +1,6 @@
 import React from 'react';
 import NavBar from './navbar/';
+import Footer from './footer/footerComponent'
 import { Link } from 'react-router'
 
 const App = ({ children }) => {
@@ -9,6 +10,7 @@ const App = ({ children }) => {
       <div id="mainDisplay" className="container">
         { children }
       </div>
+      <Footer />
     </div>
   )
 }
