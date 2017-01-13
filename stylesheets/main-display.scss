@@ -1,5 +1,8 @@
 #mainDisplay {
+  display:table;
+  width:100%;
   padding-top: 60px;
   color: $primary-color;
   margin-bottom: -$footer-height;
+  padding-bottom: $footer-height;
 }
