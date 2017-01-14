@@ -11,7 +11,7 @@ describe('/api/orders', () => {
     before('wait for the db', () => db.didSync);
     beforeEach(function() {
       return Order.create({
-          books: [
+          selected: [
             {id: 1, price: 1.00, quantity: 1},
             {id: 2, price: 2.00, quantity: 2},
             {id: 3, price: 3.21, quantity: 3}
@@ -34,7 +34,7 @@ describe('/api/orders', () => {
         .get(`/api/orders/1`)
         .expect(200)
         .then( res => {
-           return expect(res.body.books.length).to.equal(3);
+           return expect(res.body.selected.length).to.equal(3);
         })
     )
 
@@ -42,7 +42,7 @@ describe('/api/orders', () => {
       request(app)
         .post('/api/orders')
         .send({
-          books: [
+          selected: [
           {id: 1, price: 1, quantity: 2},
           {id: 2, price: 5, quantity: 4}]
         })
@@ -52,14 +52,14 @@ describe('/api/orders', () => {
     it('PUT undates the element ', () =>
       request(app)
         .put('/api/orders/1')
-        .send({books: [
+        .send({selected: [
           {id: 1, price: 1, quantity: 2},
           {id: 2, price: 5, quantity: 4}]
         })
         .then(updatedOrder => {
           return Order.findById(1)
           .then( order => {
-            return expect(order.books[1].price).to.equal(5);
+            return expect(order.selected[1].price).to.equal(5);
           })
         })
     )
