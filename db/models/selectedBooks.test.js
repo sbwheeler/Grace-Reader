@@ -6,7 +6,7 @@ const {expect} = require('chai')
 const Orders = require('./orders')
 const Book = require('./book');
 
-describe.only('selectedBooks', () => {
+describe('selectedBooks', () => {
   before('wait for the db', () => db.didSync);
 
   beforeEach(function() {
@@ -38,13 +38,14 @@ describe.only('selectedBooks', () => {
 
     describe('beforeCreate', () => {
       it('gets an items from database', () => {
-        return SelectedBooks.findAll({
+        return SelectedBooks.findOne({
           where: {
-            'order_id': 1
+            'order_id': 1,
+            'book_id': 1
           }
         })
           .then(foundSelectedBooks => {
-            expect(foundSelectedBooks[0].quantity).to.equal(5)
+            expect(foundSelectedBooks.quantity).to.equal(5)
           })
       })
     })
