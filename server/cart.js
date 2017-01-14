@@ -32,7 +32,6 @@ router.get('/:orderId', (req, res, next) => {
 router.post('/add', (req, res, next) => {
   let bookId = req.body.bookId;
   let orderId = req.body.orderId;
-  console.log(bookId, orderId, req.body)
   SelectedBooks.findOrCreate({
     where: {
       order_id: orderId,
@@ -44,15 +43,21 @@ router.post('/add', (req, res, next) => {
     }
   })
   .spread((selectedBook, created) => {
-    res.send(200)
-    console.log('This is SELECTED BOOK:', selectedBook, 'This is CREATED SELECTED BOOK:', created);
+    if (!created) {
+      if (selectedBook) {
+        return selectedBook.update({quantity: selectedBook.incrementQuantity()})
+      } else {
+        throw Error(404)
+      }
+    } else {
+      res.status(200).send(created)
+      return created;
+    }
   })
-
-  // Book.findById(bookId)
-  // .then( foundBook => {
-
-  // })
-  // SelectedBooks.findOrCreate();
+  .then( result => {
+    res.status(201).send(result)
+  })
+  .catch(next)
 })
 
 
