@@ -29,26 +29,31 @@ router.get('/:orderId', (req, res, next) => {
   .catch(next)
 });
 
-// router.post('/add', (req, res, next) => {
-//   let bookId = req.body.bookId;
-//   let orderId = req.body.orderId;
+router.post('/add', (req, res, next) => {
+  let bookId = req.body.bookId;
+  let orderId = req.body.orderId;
+  console.log(bookId, orderId, req.body)
+  SelectedBooks.findOrCreate({
+    where: {
+      order_id: orderId,
+      book_id: bookId
+    },
+    defaults: {
+      order_id: orderId,
+      book_id: bookId
+    }
+  })
+  .spread((selectedBook, created) => {
+    res.send(200)
+    console.log('This is SELECTED BOOK:', selectedBook, 'This is CREATED SELECTED BOOK:', created);
+  })
 
-//   SelectedBooks.findOrCreate({
-//     where: {
-//       order_id: orderId,
-//       book_id: bookId
-//     }
-//   })
-//   .then( (selectedBook, created) => {
-//     console.log(selectedBook, created)
-//   })
+  // Book.findById(bookId)
+  // .then( foundBook => {
 
-//   // Book.findById(bookId)
-//   // .then( foundBook => {
-
-//   // })
-//   // SelectedBooks.findOrCreate();
-// })
+  // })
+  // SelectedBooks.findOrCreate();
+})
 
 
 module.exports = router;
