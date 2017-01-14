@@ -9,7 +9,7 @@ describe('book', () => {
 
   beforeEach(function() {
     return Orders.create({
-        books: [
+        selected: [
           {id: 1, price: 1.00, quantity: 1},
           {id: 2, price: 2.00, quantity: 2},
           {id: 3, price: 3.21, quantity: 3}
