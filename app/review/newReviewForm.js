@@ -16,9 +16,6 @@ export default class NewReviewForm extends Component {
   handleSubmit(event) {
     //removed event.preventdefault to have page refresh with the new review once you submit it
     axios.post('/api/reviews', { rating: this.state.rating, content: this.state.content, book_id: this.props.book.id })
-    .then(newReview => {
-      browserHistory.push(`/books/${this.props.book.id}`)
-    })
 
   }
 
