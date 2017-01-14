@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import {login, signUp } from '../reducers/auth'
 import axios from 'axios';
 import store from '../../store'
