@@ -41,7 +41,7 @@ render (
       <Route path="/" onEnter={onAppEnter} component={App}>
         <Route path="newuser" component={newUser} />
         <Route path="books" component={BookListContainer} />
-        <Route path="books/book/:bookId" onEnter={onBookEnter} component={SingleBookContainer} />
+        <Route path="books/:bookId" onEnter={onBookEnter} component={SingleBookContainer} />
         <Route path="orderlist" component={OrderListContainer} />
         <Route path="reviews" component={ReviewListContainer} />
         <Route path="reviews/:reviewId" component={SingleReviewContainer} onEnter={onSingleReviewEnter}/>

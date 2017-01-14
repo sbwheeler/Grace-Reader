@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import SingleBookReview from './singleBookReview'
 import StarRatingComponent from 'react-star-rating-component'
+import NewReviewForm from '../review/newReviewForm'
 
 
 const SingleBookComponent = ({ currentBook }) => {
@@ -33,6 +34,7 @@ const SingleBookComponent = ({ currentBook }) => {
           </div>
         ))
       }
+      <NewReviewForm book={currentBook} />
     </div>
   )
 }
