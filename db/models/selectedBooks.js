@@ -6,6 +6,12 @@ const SelectedBooks = db.define('selectedBooks', {
     type: Sequelize.INTEGER,
     defaultValue: 1
   }
+}, {
+  instanceMethods: {
+    incrementQuantity: function() {
+      return this.quantity + 1;
+    }
+  }
 });
 
 module.exports =  SelectedBooks;
