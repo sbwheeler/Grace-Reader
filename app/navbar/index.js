@@ -25,8 +25,8 @@ export default class Navbar extends Component {
   render() {
     return (
       <section id="navigation">
-        <a className="logo">
-        </a>
+        <a className="logo"></a>
+        <button><Link to="/orderlist">Orders</Link></button>
         <nav className={this.state.menuClicked ? 'show' : '' }>
           <div> {this.props.user ? <WhoAmI user={this.props.user}/> : <Login />} </div>
           {!this.props.user && <Link to={'/newuser'}> Sign Up </Link> }
