@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 
 import SingleBookComponent from './singleBookComponent';
 
-describe.only('Single Book Component', () => {
+describe('Single Book Component', () => {
   let book = {title: 'Harry Potter', price: 15}
   let newSingleBook;
   beforeEach('Create component', () => {
