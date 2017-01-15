@@ -37,7 +37,9 @@ export function fetchAllBooks() {
 export function fetchSingleBook(id) {
   return function (dispatch) {
     axios.get(`/api/books/${id}`)
-    .then(res => res.data)
+    .then(res => {
+      return res.data
+      })
     .then(foundBook => {
       dispatch(getSingleBook(foundBook))
     })

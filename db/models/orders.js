@@ -13,17 +13,17 @@ const Orders = db.define('orders', {
   hooks: {
 
     // set total to order
-    beforeCreate: function (orders, options, fn) {
-      const total = orders.selected.reduce((initial, book) => {
-        return initial + book.price * book.quantity
-      }, 0)
+    // beforeCreate: function (orders, options, fn) {
+    //   const total = orders.selected.reduce((initial, book) => {
+    //     return initial + book.price * book.quantity
+    //   }, 0)
 
-      // set total;
-      orders.total = total;
+    //   // set total;
+    //   orders.total = total;
 
-      // escapes infinite loop
-      fn(null, options);
-    }
+    //   // escapes infinite loop
+    //   fn(null, options);
+    // }
   }
 })
 

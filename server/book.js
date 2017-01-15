@@ -20,7 +20,8 @@ router.get('/:bookId', (req, res, next) => {
       model: Review,
       where: {
         book_id: req.params.bookId
-      }
+      },
+      required: false
     }]
   })
   .then(foundBook => {
@@ -30,6 +31,7 @@ router.get('/:bookId', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
+  if (!req.body.imageUrl) delete req.body.imageUrl
   Book.create(req.body)
   .then(createdBook => res.status(201).send(createdBook))
   .catch(next)

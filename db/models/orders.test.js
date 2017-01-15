@@ -23,7 +23,7 @@ describe('book', () => {
 
   describe('hooks', () => {
 
-    describe('beforeCreate', () => {
+    xdescribe('beforeCreate', () => {
       it('sets total price to correct value', () => {
         return Orders.findById(1)
           .then(foundOrder => {

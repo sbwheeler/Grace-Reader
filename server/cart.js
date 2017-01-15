@@ -32,7 +32,6 @@ router.get('/:orderId', (req, res, next) => {
 router.post('/add', (req, res, next) => {
   let bookId = req.body.bookId;
   let orderId = req.body.orderId;
-  console.log(bookId, orderId, req.body)
   SelectedBooks.findOrCreate({
     where: {
       order_id: orderId,
@@ -45,7 +44,6 @@ router.post('/add', (req, res, next) => {
   })
   .spread((selectedBook, created) => {
     res.send(200)
-    console.log('This is SELECTED BOOK:', selectedBook, 'This is CREATED SELECTED BOOK:', created);
   })
 
   // Book.findById(bookId)

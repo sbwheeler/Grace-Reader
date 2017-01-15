@@ -20,6 +20,7 @@ import SingleReviewContainer from './review/singleReviewContainer';
 import SingleBookContainer from './book/singleBookContainer';
 
 import newUser from './auth/components/newUserComponent'
+import newBook from './book/newBookForm'
 
 import { login } from './auth/reducers/auth';
 
@@ -40,6 +41,7 @@ render (
     <Router history={browserHistory}>
       <Route path="/" onEnter={onAppEnter} component={App}>
         <Route path="newuser" component={newUser} />
+        <Route path="newbook" component={newBook} />
         <Route path="books" component={BookListContainer} />
         <Route path="books/:bookId" onEnter={onBookEnter} component={SingleBookContainer} />
         <Route path="orderlist" component={OrderListContainer} />

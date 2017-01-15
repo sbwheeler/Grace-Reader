@@ -12,6 +12,7 @@ const SingleBookComponent = ({ currentBook }) => {
       <div>
         <h3>{currentBook.title}</h3>
         <div>{currentBook.author}</div>
+        <p>{currentBook.description}</p>
         <div>
         <Link to={`/user/cart`}>Add to cart</Link>
         <StarRatingComponent
