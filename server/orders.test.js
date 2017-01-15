@@ -49,7 +49,7 @@ describe('/api/orders', () => {
         .expect(201)
     )
 
-    it('PUT undates the element ', () =>
+    it('PUT updates the element ', () =>
       request(app)
         .put('/api/orders/1')
         .send({selected: [
@@ -59,7 +59,7 @@ describe('/api/orders', () => {
         .then(updatedOrder => {
           return Order.findById(1)
           .then( order => {
-            return expect(order.selected[1].price).to.equal(5);
+            return expect(order.selected[1].price).to.equal(2);
           })
         })
     )

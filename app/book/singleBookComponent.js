@@ -8,7 +8,6 @@ import NewReviewForm from '../review/newReviewForm'
 class SingleBookComponent extends Component {
   constructor(props) {
     super(props)
-
     this.state = { addedToCart: false }
   }
 

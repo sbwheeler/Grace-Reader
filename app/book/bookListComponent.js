@@ -11,12 +11,13 @@ class BookListComponent extends Component {
   render() {
     const books = this.props.allBooks;
     return (
-      <div className="row">
+      <div>
         <h1>BOOK LIST</h1>
-          <ul>
+        <Link to='/newbook'> Add New Book </Link>
+        <div className="row">
           {
             books && books.map(book => (
-              <div className="col-xs-4" key={ book.id }>
+              <div className="col-xs-2" key={ book.id }>
                 <Link className="thumbnail" to={`/books/${book.id}`}>
                   <img src={ book.imageUrl } />
                   <div className="caption">
@@ -28,7 +29,7 @@ class BookListComponent extends Component {
               </div>
             ))
           }
-        </ul>
+          </div>
     </div>
   )
   }
