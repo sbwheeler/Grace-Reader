@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 
 import SingleBookComponent from './singleBookComponent';
 
-describe('Single Book Component', () => {
+describe.only('Single Book Component', () => {
   let book = {title: 'Harry Potter', price: 15}
   let newSingleBook;
   beforeEach('Create component', () => {
@@ -18,5 +18,14 @@ describe('Single Book Component', () => {
   it('should have title and price on its prop', () => {
     expect(newSingleBook.instance().props.currentBook.title).to.equal('Harry Potter')
     expect(newSingleBook.instance().props.currentBook.price).to.equal(15)
+  })
+
+  it('should have initial state set to false', () => {
+    expect(newSingleBook.state()).to.deep.equal({ addedToCart: false })
+  })
+
+  it('updates local state onclick add to cart', () => {
+    newSingleBook.find('button').simulate('click')
+    expect(newSingleBook.state().addedToCart).to.be.true
   })
 })
