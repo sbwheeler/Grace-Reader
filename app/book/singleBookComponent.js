@@ -19,8 +19,10 @@ class SingleBookComponent extends Component {
         {this.state.addedToCart && <h1>ADDED TO CART!!</h1>}
         <div>
           <h3>{currentBook.title}</h3>
-          <div>{currentBook.author}</div>
-          <div>
+          <div>by {currentBook.author}</div>
+          <div>Description : {currentBook.description}</div>
+          <div>Price: $ {currentBook.price}</div>
+        <div>
           <button onClick={() => this.setState({addedToCart: true})}>Add to cart</button>
           <StarRatingComponent
             name="rate1"
