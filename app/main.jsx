@@ -23,14 +23,15 @@ import SingleOrderContainer from './order/singleOrderContainer';
 import ReviewListContainer from './review/reviewListContainer';
 import SingleReviewContainer from './review/singleReviewContainer';
 import SingleBookContainer from './book/singleBookContainer';
-
+import ShoppingCartContainer from './order/ShoppingCartContainer';
+import GenresContainer from './book/genresContainer'
 import NewUserContainer from './auth/components/newUserContainer'
 import newBookFormContainer from './book/newBookFormContainer'
 
 // ======================== On Enter Store Dispatch Functions ======================
 
 function onAppEnter() {
-  store.dispatch(fetchAllBooks());
+  store.dispatch(fetchAllBooks())
 }
 
 function onBookEnter(nextRouterState) {
@@ -53,6 +54,12 @@ function onSingleOrderEnter(nextRouterState) {
   else store.dispatch(fetchSingleOrder(orderId))
 }
 
+function onCartEnter() {
+  if (store.getState().auth.id) {
+    store.dispatch(fetchShoppingCart(store.getState().auth.id))
+  }
+}
+
 function _redirectIfLoggedOut (nextRouterState, replace) {
   if(!store.getState().users.currentUser) {
     replace('/')
@@ -67,13 +74,15 @@ render (
       <Route path="/" onEnter={onAppEnter} component={App}>
         <Route path="newuser" component={NewUserContainer} />
         <Route path="newbook" component={newBookFormContainer} />
+        <Route path="cart" component={ShoppingCartContainer} onEnter={onCartEnter} />
+        <Route path="genres" component={GenresContainer} />
         <Route path="books" component={BookListContainer} />
         <Route path="books/:bookId" onEnter={onBookEnter} component={SingleBookContainer} />
         <Route path="orderlist" onEnter={onOrderListEnter} component={OrderListContainer} />
         <Route path="orderlist/:orderId" onEnter={onSingleOrderEnter} component={SingleOrderContainer} />
         <Route path="reviews" component={ReviewListContainer} />
         <Route path="reviews/:reviewId" component={SingleReviewContainer} onEnter={onSingleReviewEnter} />
-        <IndexRoute component={BookListContainer} />
+        <IndexRoute component={GenresContainer} />
       </Route>
     </Router>
   </Provider>,

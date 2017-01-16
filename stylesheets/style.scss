@@ -6,4 +6,15 @@
 @import 'footer';
 @import 'particles.scss';
 
+.thumbnail:hover{
+  background-color: #FDB608;
+}
 
+#booklisttitle {
+  margin-left: 10%;
+  font-weight: 130%;
+}
+
+#rightsidelogin {
+  margin-left: 85%;
+}

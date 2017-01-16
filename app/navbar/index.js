@@ -26,11 +26,12 @@ export default class Navbar extends Component {
     return (
       <section id="navigation">
         <a className="logo"></a>
-        <button><Link to="/orderlist">Orders</Link></button>
+        <div id='rightsidelogin'> {this.props.user ? <WhoAmI user={this.props.user}/> : <Login />} </div>
+        {!this.props.user && <Link to={'/newuser'}> Sign Up </Link> }
         <nav className={this.state.menuClicked ? 'show' : '' }>
-          <div> {this.props.user ? <WhoAmI user={this.props.user}/> : <Login />} </div>
-          {!this.props.user && <Link to={'/newuser'}> Sign Up </Link> }
-        <h1>NAV BAR</h1>
+          <button><Link to="/orderlist">Orders</Link></button>
+          <Link to="/cart"> Shopping Cart </Link>
+           <Link to="/newbook"> Add New Book </Link>
           {
             // links && links.map( (link, index) => {
             //   return <Link key={index} to={`/${link.to}`}><i className={`fa fa-${link.faClass}`}></i></Link>

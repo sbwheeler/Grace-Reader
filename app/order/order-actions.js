@@ -10,6 +10,7 @@ export const FETCH_SINGLE_ORDER = 'FETCH_SINGLE_ORDER';
 export const FETCH_ALL_ORDERS_ADMIN = 'FETCH_ALL_ORDERS_ADMIN';
 export const FETCH_SINGLE_ORDER_ADMIN = 'FETCH_ALL_ORDER_ADMIN';
 
+export const FETCH_SHOPPING_CART = 'FETCH_SHOPPING_CART';
 
 /****************************ACTION CREATORS****************************/
 
@@ -29,8 +30,14 @@ export function getSingleOrder(order) {
   }
 }
 
-// ADMIN ===============================
+export function getShoppingCart(cart) {
+  return {
+    type: FETCH_SHOPPING_CART,
+    cart
+  }
+}
 
+// ADMIN ===============================
 export function getSingleOrderAdmin(order) {
   return {
     type: FETCH_SINGLE_ORDER_ADMIN,
@@ -44,6 +51,7 @@ export function getAllOrdersAdmin(orders) {
     orders
   }
 }
+
 
 /*************************THUNKS*********************************/
 
@@ -77,6 +85,17 @@ export function fetchSingleOrder(id) {
     }
 }
 
+export function fetchShoppingCart(id) {
+  return function (dispatch) {
+    axios.get(`/api/cart/${id}`)
+    .then(res => res.data)
+    .then(foundCart => {
+      dispatch(getShoppingCart(foundCart))
+    })
+    .catch(console.error)
+  }
+}
+
 // ADMINS ============================================
 
 // Get All orders for Admin
@@ -103,4 +122,4 @@ export function fetchSingleOrderForAdmin(orderId) {
       })
       .catch(console.error)
     }
-}
+  
