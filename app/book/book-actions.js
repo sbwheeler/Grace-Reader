@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { browserHistory } from 'react-router'
 
 /*********************************CONSTS******************************/
 
@@ -24,25 +25,38 @@ export function getSingleBook(book) {
 /*************************THUNKS*********************************/
 
 export function fetchAllBooks() {
-  return function (dispatch) {
+  return function(dispatch) {
     axios.get('/api/books')
-    .then(res => res.data)
-    .then(foundBooks => {
-      dispatch(getAllBooks(foundBooks))
-    })
-    .catch(console.error)
+      .then(res => res.data)
+      .then(foundBooks => {
+        dispatch(getAllBooks(foundBooks))
+      })
+      .catch(console.error)
   }
 }
 
 export function fetchSingleBook(id) {
-  return function (dispatch) {
+  return function(dispatch) {
     axios.get(`/api/books/${id}`)
-    .then(res => {
-      return res.data
+      .then(res => {
+        return res.data
       })
-    .then(foundBook => {
-      dispatch(getSingleBook(foundBook))
-    })
-    .catch(console.error)
+      .then(foundBook => {
+        dispatch(getSingleBook(foundBook))
+      })
+      .catch(console.error)
   }
+}
+
+export function addNewBook (book) {
+  console.log('thunk book: ', book)
+    return function(dispatch, getState) {
+      axios.post('/api/books', book)
+        .then(res => res.data)
+        .then(newBook => {
+          dispatch(fetchSingleBook(newBook.id))
+          browserHistory.push(`/books/${newBook.id}`)
+        })
+        .catch(console.error)
+    }
 }

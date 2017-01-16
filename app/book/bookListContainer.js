@@ -8,9 +8,6 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(state) {
-  return {};
-}
-const BookListContainer = connect(mapStateToProps, mapDispatchToProps)(BookListComponent);
+const BookListContainer = connect(mapStateToProps)(BookListComponent);
 
 export default BookListContainer;

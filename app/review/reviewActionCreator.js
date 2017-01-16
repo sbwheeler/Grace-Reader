@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { browserHistory } from 'react-router'
+import { fetchSingleBook } from '../book/book-actions'
 
 export const RECEIVE_REVIEWS = 'RECEIVE_REVIEWS';
 export const RECEIVE_REVIEW = 'RECEIVE_REVIEW';
@@ -30,4 +32,12 @@ export const getAllReviews = () => dispatch => {
   axios.get('/api/reviews/')
     .then(res => res.data)
     .then(data => dispatch(receiveReviews(data)))
+}
+
+export const addNewReview = (review) => (dispatch, getState) => {
+  return axios.post('/api/reviews', review)
+  .then(res => res.data)
+  .then(newReview => {
+    dispatch(fetchSingleBook(newReview.book_id))
+  })
 }

@@ -1,22 +1,15 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 
-class BookListComponent extends Component {
-  constructor(props){
-    super(props)
-  }
-
-  render() {
-    const books = this.props.allBooks;
+const BookListComponent = ({ allBooks }) => {
     return (
       <div>
         <h1>BOOK LIST</h1>
         <Link to='/newbook'> Add New Book </Link>
         <div className="row">
           {
-            books && books.map(book => (
+            allBooks && allBooks.map(book => (
               <div className="col-xs-2" key={ book.id }>
                 <Link className="thumbnail" to={`/books/${book.id}`}>
                   <img src={ book.imageUrl } height="300" width="200"/>
@@ -32,6 +25,7 @@ class BookListComponent extends Component {
           </div>
     </div>
   )
-  }
+
 }
+
 export default BookListComponent;

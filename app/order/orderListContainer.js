@@ -8,9 +8,6 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(state) {
-  return {};
-}
-const OrderListContainer = connect(mapStateToProps, mapDispatchToProps)(OrderList);
+const OrderListContainer = connect(mapStateToProps)(OrderList);
 
 export default OrderListContainer;

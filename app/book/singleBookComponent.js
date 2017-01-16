@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import SingleBookReview from './singleBookReview'
 import StarRatingComponent from 'react-star-rating-component'
-import NewReviewForm from '../review/newReviewForm'
+import NewReviewContainer from '../review/newReviewFormContainer'
 
 class SingleBookComponent extends Component {
   constructor(props) {
@@ -43,7 +43,7 @@ class SingleBookComponent extends Component {
             </div>
           ))
         }
-        <NewReviewForm book={currentBook} />
+        <NewReviewContainer book={currentBook} />
       </div>
     )
   }
