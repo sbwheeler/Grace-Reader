@@ -31,7 +31,7 @@ class SingleBookComponent extends Component {
             renderStarIconHalf={() => <span className="fa fa-star-half-full" />}
           />
           </div>
-          <img src={currentBook.imageUrl} className="img-thumbnail" />
+          <img src={currentBook.imageUrl} className="img-thumbnail" height="300" width="200"/>
         </div>
         <h3>REVIEWS</h3>
         {
