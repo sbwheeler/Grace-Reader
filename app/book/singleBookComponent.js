@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import SingleBookReview from './singleBookReview'
-import StarRatingComponent from 'react-star-rating-component'
-import NewReviewContainer from '../review/newReviewFormContainer'
+import SingleBookReview from './singleBookReview';
+import StarRatingComponent from 'react-star-rating-component';
+import NewReviewContainer from '../review/newReviewFormContainer';
+import { addToCart } from '../order/order-actions';
+import store from '../store'
 
 class SingleBookComponent extends Component {
   constructor(props) {
     super(props)
     this.state = { addedToCart: false }
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick() {
+    store.dispatch(addToCart(this.props.currentBook.id))
+    this.setState({addedToCart: true})
   }
 
   render() {
@@ -22,7 +30,7 @@ class SingleBookComponent extends Component {
           <div>Description : {currentBook.description}</div>
           <div>Price: $ {currentBook.price}</div>
         <div>
-          <button onClick={() => this.setState({addedToCart: true})}>Add to cart</button>
+          <button onClick={this.handleClick}>Add to cart</button>
           <StarRatingComponent
             name="rate1"
             editing={false}

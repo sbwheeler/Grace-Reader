@@ -57,7 +57,6 @@ export function fetchSingleBook(id) {
 }
 
 export function addNewBook (book) {
-  console.log('thunk book: ', book)
     return function(dispatch, getState) {
       axios.post('/api/books', book)
         .then(res => res.data)
@@ -68,3 +67,4 @@ export function addNewBook (book) {
         .catch(console.error)
     }
 }
+

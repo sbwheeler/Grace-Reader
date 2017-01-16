@@ -85,6 +85,7 @@ export function fetchSingleOrder(id) {
     }
 }
 
+// Get shopping cart
 export function fetchShoppingCart(id) {
   return function (dispatch) {
     axios.get(`/api/cart/${id}`)
@@ -93,6 +94,16 @@ export function fetchShoppingCart(id) {
       dispatch(getShoppingCart(foundCart))
     })
     .catch(console.error)
+  }
+}
+
+// Add an item / update shopping cart
+export function addToCart(bookId) {
+  return function (dispatch, getState) {
+    const userId = getState().auth.id
+    axios.put(`/api/cart/${userId}`, { bookId })
+      .then(res => res.data)
+      .catch(console.error)
   }
 }
 
