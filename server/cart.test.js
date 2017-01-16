@@ -48,10 +48,10 @@ describe('Cart Routes', () => {
 
   describe('routing checks', () => {
 
-    it('POST api/cart/add finds book if its already there and increments the quantity', () => {
+    it('POST api/cart/:orderId finds book if its already there and increments the quantity', () => {
        let book = {orderId: 1, bookId: 2};
        return request(app)
-        .post(`/api/cart/add`)
+        .post(`/api/cart/1`)
         .send(book)
         .expect(201)
         .then(res => {
@@ -63,7 +63,7 @@ describe('Cart Routes', () => {
     it('POST api/cart/add adds book to the cart if it\'s not there yet', () => {
        let book = {orderId: 1, bookId: 3};
        return request(app)
-        .post(`/api/cart/add`)
+        .post(`/api/cart/1`)
         .send(book)
         .expect(201)
         .then(res => {
@@ -84,93 +84,92 @@ describe('Cart Routes', () => {
       return request(app)
         .put('/api/cart/checkout')
         .send({"selected":[ {
-          "book": {
-          "ratingAverage": {
-            "isFulfilled": false,
-            "isRejected": false
-          },
-          "id": 6,
-          "title": "Dune II",
-          "author": "Frank Herbert",
-          "genre": [
-            "sci fi",
-            "futuristic"
-          ],
-          "price": 10.95,
-          "description": "not as boring sequel to dune II",
-          "stockCount": 0,
-          "imageUrl": "https://freeiconshop.com/files/edd/book-open-flat.png",
-          "created_at": "2017-01-13T20:43:29.071Z",
-          "updated_at": "2017-01-13T20:43:29.071Z",
-          "selectedBooks": {
-            "quantity": 2,
-            "created_at": "2017-01-13T20:43:29.154Z",
-            "updated_at": "2017-01-13T20:43:29.154Z",
-            "order_id": 4,
-            "book_id": 6
-          }
-        },
-        "quantity": 40
-      },
-      {
-          "book":{
-            "ratingAverage": {
-              "isFulfilled": false,
-              "isRejected": false
+              "book": {
+              "ratingAverage": {
+                "isFulfilled": false,
+                "isRejected": false
+              },
+              "id": 6,
+              "title": "Dune II",
+              "author": "Frank Herbert",
+              "genre": [
+                "sci fi",
+                "futuristic"
+              ],
+              "price": 10.95,
+              "description": "not as boring sequel to dune II",
+              "stockCount": 0,
+              "imageUrl": "https://freeiconshop.com/files/edd/book-open-flat.png",
+              "created_at": "2017-01-13T20:43:29.071Z",
+              "updated_at": "2017-01-13T20:43:29.071Z",
+              "selectedBooks": {
+                "quantity": 2,
+                "created_at": "2017-01-13T20:43:29.154Z",
+                "updated_at": "2017-01-13T20:43:29.154Z",
+                "order_id": 4,
+                "book_id": 6
+              }
             },
-            "id": 7,
-            "title": "The Bible",
-            "author": "Unknown",
-            "genre": [
-              "religious",
-              "holy texts"
-            ],
-            "price": 30.05,
-            "description": "its the bible",
-            "stockCount": 0,
-            "imageUrl": "https://freeiconshop.com/files/edd/book-open-flat.png",
-            "created_at": "2017-01-13T20:43:29.071Z",
-            "updated_at": "2017-01-13T20:43:29.071Z",
-            "selectedBooks": {
-              "quantity": 1,
-              "created_at": "2017-01-13T20:43:29.154Z",
-              "updated_at": "2017-01-13T20:43:29.154Z",
-              "order_id": 4,
-              "book_id": 7
-            }
+            "quantity": 40
           },
-          "quantity": 30
-        },
-        {"book":{
-          "ratingAverage": {
-            "isFulfilled": false,
-            "isRejected": false
-          },
-          "id": 5,
-          "title": "Lord of the Rings",
-          "author": "JRR Tolken",
-          "genre": [
-            "fantasy",
-            "epic"
-          ],
-          "price": 11.95,
-          "description": "book about wizards n stuff",
-          "stockCount": 0,
-          "imageUrl": "https://freeiconshop.com/files/edd/book-open-flat.png",
-          "created_at": "2017-01-13T20:43:29.070Z",
-          "updated_at": "2017-01-13T20:43:29.070Z",
-          "selectedBooks": {
-            "quantity": 1,
-            "created_at": "2017-01-13T20:43:29.154Z",
-            "updated_at": "2017-01-13T20:43:29.154Z",
-            "order_id": 4,
-            "book_id": 5
+          {
+              "book":{
+                "ratingAverage": {
+                  "isFulfilled": false,
+                  "isRejected": false
+                },
+                "id": 7,
+                "title": "The Bible",
+                "author": "Unknown",
+                "genre": [
+                  "religious",
+                  "holy texts"
+                ],
+                "price": 30.05,
+                "description": "its the bible",
+                "stockCount": 0,
+                "imageUrl": "https://freeiconshop.com/files/edd/book-open-flat.png",
+                "created_at": "2017-01-13T20:43:29.071Z",
+                "updated_at": "2017-01-13T20:43:29.071Z",
+                "selectedBooks": {
+                  "quantity": 1,
+                  "created_at": "2017-01-13T20:43:29.154Z",
+                  "updated_at": "2017-01-13T20:43:29.154Z",
+                  "order_id": 4,
+                  "book_id": 7
+                }
+              },
+              "quantity": 30
+            },
+            {"book":{
+              "ratingAverage": {
+                "isFulfilled": false,
+                "isRejected": false
+              },
+              "id": 5,
+              "title": "Lord of the Rings",
+              "author": "JRR Tolken",
+              "genre": [
+                "fantasy",
+                "epic"
+              ],
+              "price": 11.95,
+              "description": "book about wizards n stuff",
+              "stockCount": 0,
+              "imageUrl": "https://freeiconshop.com/files/edd/book-open-flat.png",
+              "created_at": "2017-01-13T20:43:29.070Z",
+              "updated_at": "2017-01-13T20:43:29.070Z",
+              "selectedBooks": {
+                "quantity": 1,
+                "created_at": "2017-01-13T20:43:29.154Z",
+                "updated_at": "2017-01-13T20:43:29.154Z",
+                "order_id": 4,
+                "book_id": 5
+              }
+            },
+            "quantity": 50
           }
-        },
-        "quantity": 50
-      }
-    ]
-    })
+        ]})
         .expect(200)
         .then(res => {
           expect(res.body.length).to.equal(3)

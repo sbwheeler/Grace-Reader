@@ -33,7 +33,7 @@ router.get('/:orderId', (req, res, next) => {
 
 
 //++++++++++++++++++ROUTE FOR ADDING BOOK TO THE CART++++++++
-router.post('/add', (req, res, next) => {
+router.post('/:orderId', (req, res, next) => {
   let bookId = req.body.bookId;
   let orderId = req.body.orderId;
   SelectedBooks.findOrCreate({
@@ -98,5 +98,23 @@ router.put('/checkout', (req, res, next) => {
   })
   .catch(console.log)
 });
+
+//++++++++++++++++++ROUTE FOR DELETTING BOOK FROM CART++++++++
+router.delete('/:orderId/:bookId', (req, res, next) => {
+  SelectedBooks.findOne({
+    where: {
+      order_id: req.params.orderId,
+      book_id: req.params.bookId
+    }
+  })
+  .then( foundSelection => {
+    return foundSelection.destroy()
+  })
+  .then( deleted => {
+    res.send(deleted + '')
+  })
+  .catch(next)
+});
+
 
 module.exports = router;
