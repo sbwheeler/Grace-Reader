@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export const FETCH_ALL_ORDERS = 'FETCH_ALL_ORDERS';
 export const FETCH_SINGLE_ORDER = 'FETCH_SINGLE_ORDER';
-
+export const FETCH_SHOPPING_CART = 'FETCH_SHOPPING_CART';
 
 /****************************ACTION CREATORS****************************/
 export function getAllOrders(orders) {
@@ -18,6 +18,13 @@ export function getSingleOrder(order) {
   return {
     type: FETCH_SINGLE_ORDER,
     order
+  }
+}
+
+export function getShoppingCart(cart) {
+  return {
+    type: FETCH_SHOPPING_CART,
+    cart
   }
 }
 
@@ -40,6 +47,17 @@ export function fetchSingleOrders(id) {
     .then(res => res.data)
     .then(foundOrder => {
       dispatch(getSingleOrder(foundOrder))
+    })
+    .catch(console.error)
+  }
+}
+
+export function fetchShoppingCart(id) {
+  return function (dispatch) {
+    axios.get(`/api/cart/${id}`)
+    .then(res => res.data)
+    .then(foundCart => {
+      dispatch(getShoppingCart(foundCart))
     })
     .catch(console.error)
   }
