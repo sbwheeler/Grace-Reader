@@ -68,6 +68,7 @@ render (
         <Route path="orderlist/:orderId" onEnter={onSingleOrderEnter} component={SingleOrderContainer} />
         <Route path="reviews" component={ReviewListContainer} />
         <Route path="reviews/:reviewId" component={SingleReviewContainer} onEnter={onSingleReviewEnter}/>
+        <Route path="checkout" component={} />
         <IndexRoute component={BookListContainer} />
       </Route>
     </Router>
