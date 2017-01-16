@@ -2,7 +2,7 @@
 
 const db = require('APP/db')
 const Order = db.model('orders')
-
+const Promise = require('bluebird')
 const router = require('express').Router()
 
 // ===================== Admin ==========================
@@ -52,30 +52,50 @@ router.delete('/:orderId', (req, res, next) =>
 // ========================= User ============================
 
 // User get past orders
-router.get('/:orderId/:userId', (req, res, next) => {
-  let orderId = req.params.orderId;
-  Order.findById(orderId)
-  .then( foundOrder => {
-    if (foundOrder) {
-      return foundOrder
+router.get('/:userId/', (req, res, next) => {
+  let userId = req.params.userId;
+
+  Order.findAll({
+    where: {
+      user_id: userId,
+      isCart: false
+    }
+  })
+  .then( foundOrders => {
+    if (foundOrders) {
+      return foundOrders
     } else {
       res.send(404)
     }
   })
-  .then( foundOrder => {
-    return foundOrder.getBooks()
-    .then( cartBooks => {
-      return cartBooks
-    })
-    .catch(next)
+  .then( foundOrders => {
+    return Promise.map(foundOrders, foundOrder => foundOrder.getBooks())
   })
-  .then( cartBooks => {
-    res.send(cartBooks)
+  .then( arrayOfOrdersOfBooks => {
+    res.send(arrayOfOrdersOfBooks)
   })
   .catch(next)
+
 })
 
 // User get one order
-router.get('/:orderId/:userId', (req, res, next) => {})
+router.get('/:userId/:orderId', (req, res, next) => {
+  let orderId = req.params.orderId;
+  let userId = req.params.userId;
+
+  Order.findById(orderId)
+  .then( foundOrder => {
+    if (foundOrder) {
+      return foundOrder.getBooks()
+    } else {
+      res.send(404)
+    }
+  })
+  .then( foundBooks => {
+    res.send(foundBooks)
+  })
+  .catch(next)
+
+})
 
 module.exports = router

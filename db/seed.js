@@ -13,13 +13,14 @@ const seedUsers = () => db.Promise.map([
 ], user => db.model('users').create(user))
 
 const seedOrders = () => db.Promise.map([
-  {selected: [{id: 5, price: 5.00, quantity: 1}, {id: 3, price: 30.05, quantity: 100}]},
-  {selected: [{id: 3, price: 19.95, quantity: 2}, {id: 5, price: 30.05, quantity: 100}]},
-  {selected: [{id: 7, price: 19.95, quantity: 2}, {id: 8, price: 30.05, quantity: 10}]},
-  {selected: [{id: 7, price: 19.95, quantity: 2}, {id: 1, price: 30.05, quantity: 100}]},
-  {selected: [{id: 2, price: 11.95, quantity: 2}, {id: 2, price: 11.95, quantity: 100}]},
-  {selected: [{id: 8, price: 11.95, quantity: 2}, {id: 6, price: 11.95, quantity: 100}]},
-  {selected: [{id: 3, price: 11.95, quantity: 2}, {id: 6, price: 11.95, quantity: 100}]}
+ {total: 12.00, user_id: 1},
+ {total: 12.50, user_id: 1, isCart: false},
+ {total: 13.00, user_id: 2},
+ {total: 13.50, user_id: 2, isCart: false},
+ {total: 14.00, user_id: 3},
+ {total: 14.50, user_id: 3, isCart: false},
+ {total: 15.00, user_id: 4},
+ {total: 15.50, user_id: 4, isCart: false}
 ], order => db.model('orders').create(order))
 
 const seedBooks = () => db.Promise.map([

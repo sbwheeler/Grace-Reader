@@ -27,7 +27,7 @@ export function fetchAllOrders() {
   return function (dispatch, getState) {
     const userId = getState().auth.id
 
-    axios.get(`/api/orders/${orderId}/${userId}`)
+    axios.get(`/api/orders/${userId}`)
     .then(res => res.data)
     .then(foundOrders => {
       dispatch(getAllOrders(foundOrders))

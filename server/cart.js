@@ -8,28 +8,31 @@ const Book = db.model('books')
 
 
 //+++++++++++ROUTE FOR LOADING SELECTED BOOKS TO THE CART++++++++
-router.get('/:orderId', (req, res, next) => {
-  let orderId = req.params.orderId;
-  Order.findById(orderId)
-  .then( foundOrder => {
-    if (foundOrder) {
-      return foundOrder
+
+// api/cart/:userId
+
+router.get('/:userId', (req, res, next) => {
+  let userId = req.params.userId;
+
+  Order.findOne({
+    where: {
+      user_id: userId,
+      isCart: true
+    }
+  })
+  .then( foundOrders => {
+    if (foundOrders) {
+      return foundOrders.getBooks()
     } else {
       res.send(404)
     }
   })
-  .then( foundOrder => {
-    return foundOrder.getBooks()
-    .then( cartBooks => {
-      return cartBooks
-    })
-    .catch(next)
-  })
-  .then( cartBooks => {
-    res.send(cartBooks)
+  .then( foundBook => {
+    res.send(foundBook)
   })
   .catch(next)
-});
+
+})
 
 
 //++++++++++++++++++ROUTE FOR ADDING BOOK TO THE CART++++++++
@@ -46,7 +49,7 @@ router.post('/:orderId', (req, res, next) => {
       book_id: bookId
     }
   })
-  .spread((selectedBook, created, anything) => {
+  .spread((selectedBook, created) => {
     if (!created) {
       if (selectedBook) {
         return selectedBook.update({quantity: selectedBook.incrementQuantity()})
