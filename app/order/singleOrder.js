@@ -8,13 +8,19 @@ class SingleOrder extends Component {
   }
 
   render() {
-    const order = this.props.currentOrder;
+    const order = this.props.currentOrder.selected
 
     return (
       <div>
-        <h1>{order.total}</h1>
-        <div>
-        </div>
+        {order && order.map((item,idx) => {
+          return (
+            <div key={item.id}>
+              <h3>Price: {item.price}</h3>
+              <h3>Price: {item.quantity}</h3>
+            </div>
+          )})
+        }
+        {order && <h3>Total : {this.props.currentOrder.total}</h3> }
       </div>
     )
   }

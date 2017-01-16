@@ -16,7 +16,7 @@ class OrderListComponent extends Component {
         <div>
           {
             orders && orders.map(order => (
-              <Link to={`/orders/${order.id}`} key={ order.id }>
+              <Link to={`/orderList/${order.id}`} key={ order.id }>
                 {
                   order.selected.map(purchases => {
                     return (
