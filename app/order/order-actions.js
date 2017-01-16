@@ -24,8 +24,10 @@ export function getSingleOrder(order) {
 /*************************THUNKS*********************************/
 
 export function fetchAllOrders() {
-  return function (dispatch) {
-    axios.get('/api/orders')
+  return function (dispatch, getState) {
+    const userId = getState().auth.id
+
+    axios.get(`/api/orders/${orderId}/${userId}`)
     .then(res => res.data)
     .then(foundOrders => {
       dispatch(getAllOrders(foundOrders))
