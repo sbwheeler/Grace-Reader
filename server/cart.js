@@ -46,7 +46,7 @@ router.post('/add', (req, res, next) => {
       book_id: bookId
     }
   })
-  .spread((selectedBook, created) => {
+  .spread((selectedBook, created, anything) => {
     if (!created) {
       if (selectedBook) {
         return selectedBook.update({quantity: selectedBook.incrementQuantity()})
@@ -54,8 +54,7 @@ router.post('/add', (req, res, next) => {
         throw Error(404)
       }
     } else {
-      res.status(200).send(created)
-      return created;
+      res.status(201).send(created)
     }
   })
   .then( result => {
@@ -93,9 +92,8 @@ router.put('/checkout', (req, res, next) => {
     })
     .catch(next)
   })
-  console.log(cartUpdate);
   Promise.all(cartUpdate)
-  .then( (success, rejected)   => {
+  .then((success, rejected)   => {
     res.send(success)
   })
   .catch(console.log)
