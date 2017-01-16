@@ -7,7 +7,7 @@ const app = require('./start')
 const {expect} = require('chai')
 
 
-describe.only('Cart Routes', () => {
+describe('Cart Routes', () => {
   before('wait for the db', () => db.didSync);
 
   beforeEach('Make a Cart', () => {
