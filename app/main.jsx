@@ -13,7 +13,7 @@ import App from './app'
 // ========================= Action Creators =============================================
 import {fetchAllBooks, fetchSingleBook} from './book/book-actions';
 import { getReviewById } from './review/reviewActionCreator';
-import { fetchAllOrders, fetchSingleOrders, fetchShoppingCart } from './order/order-actions';
+import { fetchAllOrders, fetchSingleOrder, fetchAllOrdersForAdmin, fetchSingleOrderAdmin } from './order/order-actions';
 
 // ========================= Containers and Components ==================================
 
@@ -43,11 +43,15 @@ function onSingleReviewEnter(nextRouterState) {
 }
 
 function onOrderListEnter(nextRouterState) {
-  store.dispatch(fetchAllOrders())
+  if (store.getState().auth.adminStatus) store.dispatch(fetchAllOrdersForAdmin())
+  else store.dispatch(fetchAllOrders())
 }
 
 function onSingleOrderEnter(nextRouterState) {
-  store.dispatch(fetchSingleOrders(nextRouterState.params.orderId))
+  const orderId = nextRouterState.params.orderId
+
+  if (store.getState().auth.adminStatus) store.dispatch(fetchSingleOrderAdmin(orderId))
+  else store.dispatch(fetchSingleOrder(orderId))
 }
 
 function onCartEnter() {
@@ -61,6 +65,7 @@ function _redirectIfLoggedOut (nextRouterState, replace) {
     replace('/')
   }
 }
+
 // ======================== Routes ================================================
 
 render (
@@ -76,7 +81,7 @@ render (
         <Route path="orderlist" onEnter={onOrderListEnter} component={OrderListContainer} />
         <Route path="orderlist/:orderId" onEnter={onSingleOrderEnter} component={SingleOrderContainer} />
         <Route path="reviews" component={ReviewListContainer} />
-        <Route path="reviews/:reviewId" component={SingleReviewContainer} onEnter={onSingleReviewEnter}/>
+        <Route path="reviews/:reviewId" component={SingleReviewContainer} onEnter={onSingleReviewEnter} />
         <IndexRoute component={GenresContainer} />
       </Route>
     </Router>

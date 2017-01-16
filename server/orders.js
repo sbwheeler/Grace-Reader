@@ -2,31 +2,36 @@
 
 const db = require('APP/db')
 const Order = db.model('orders')
-
+const Promise = require('bluebird')
 const router = require('express').Router()
 
-router.get('/', (req, res, next) =>
+// ===================== Admin ==========================
+
+// Admin get all orders
+router.get('/admin', (req, res, next) =>
     Order.findAll()
     .then(orders => res.json(orders))
     .catch(next))
 
-router.get('/:id', (req, res, next) =>
-    Order.findById(req.params.id)
+// Admin get specific order
+router.get('/admin/:orderId', (req, res, next) =>
+    Order.findById(req.params.orderId)
     .then(order => res.json(order))
     .catch(next))
 
-router.post('/', (req, res, next) =>
+// Admin add order
+router.post('/admin/', (req, res, next) =>
     Order.create(req.body)
     .then(order => res.status(201).json(order))
     .catch(next))
 
-
-router.put('/:id', (req, res, next) =>
+// Admin update cart
+router.put('/admin/:orderId', (req, res, next) =>
     Order.update({
       books: req.body.books
     }, {
       where: {
-        id: req.params.id
+        id: req.params.orderId
       }
     })
     .then((count, updated)  => {
@@ -34,13 +39,63 @@ router.put('/:id', (req, res, next) =>
     })
     .catch(next))
 
-router.delete('/:id', (req, res, next) =>
+// Admin delete order
+router.delete('/admin/:orderId', (req, res, next) =>
     Order.destroy({
       where: {
-        id: req.params.id
+        id: req.params.orderId
       }
     })
     .then( some => res.sendStatus(202))
     .catch(next));
+
+// ========================= User ============================
+
+// User get past orders
+router.get('/:userId/', (req, res, next) => {
+  let userId = req.params.userId;
+
+  Order.findAll({
+    where: {
+      user_id: userId,
+      isCart: false
+    }
+  })
+  .then( foundOrders => {
+    if (foundOrders) {
+      return foundOrders
+    } else {
+      res.send(404)
+    }
+  })
+  .then( foundOrders => {
+    return Promise.map(foundOrders, foundOrder => foundOrder.getBooks())
+  })
+  .then( arrayOfOrdersOfBooks => {
+    res.send(arrayOfOrdersOfBooks)
+  })
+  .catch(next)
+
+})
+
+// User get one order
+router.get('/:userId/:orderId', (req, res, next) => {
+  let orderId = req.params.orderId;
+  let userId = req.params.userId;
+
+  Order.findById(orderId)
+  .then( foundOrder => {
+    if (foundOrder) {
+      return foundOrder.getBooks()
+    } else {
+      res.send(404)
+    }
+  })
+  .then( foundBooks => {
+    res.send(foundBooks)
+  })
+  .catch(next)
+
+})
 
 module.exports = router
