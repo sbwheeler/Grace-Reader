@@ -74,7 +74,7 @@ describe('/api/users', () => {
 
     const agent = request.agent(app)
 
-    //logging in the agent
+    // logging in the agent
     before('log in', () => agent
       .post('/api/auth/local/login')
       .send(samA)
@@ -86,6 +86,7 @@ describe('/api/users', () => {
         .then(res => {
           expect(res.body.firstName).to.equal('sam');
         })
+        .catch(console.log)
     })
 
     it('PUT updates a user', () => {
