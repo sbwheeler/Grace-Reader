@@ -1,8 +1,9 @@
-import { FETCH_SINGLE_ORDER, FETCH_ALL_ORDERS } from './order-actions';
+import { FETCH_SINGLE_ORDER, FETCH_ALL_ORDERS, FETCH_SHOPPING_CART } from './order-actions';
 
 const initialState = {
   allOrders: [],
-  currentOrder: {}
+  currentOrder: {},
+  shoppingCart: []
 }
 
 const orderReducer = function(state = initialState, action) {
@@ -11,6 +12,8 @@ const orderReducer = function(state = initialState, action) {
       return Object.assign({}, state, { allOrders: action.orders });
     case FETCH_SINGLE_ORDER:
       return Object.assign({}, state, { currentOrder: action.order });
+    case FETCH_SHOPPING_CART:
+      return Object.assign({}, state, { shoppingCart: action.cart });
     default: return state;
   }
 }
