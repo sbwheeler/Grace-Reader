@@ -36,32 +36,38 @@ router.get('/:userId', (req, res, next) => {
 
 
 //++++++++++++++++++ROUTE FOR ADDING BOOK TO THE CART++++++++
-router.post('/:orderId', (req, res, next) => {
+router.put('/:userId/', (req, res, next) => {
   let bookId = req.body.bookId;
-  let orderId = req.body.orderId;
-  SelectedBooks.findOrCreate({
+
+  Order.findOne({
     where: {
-      order_id: orderId,
-      book_id: bookId
-    },
-    defaults: {
-      order_id: orderId,
-      book_id: bookId
+      user_id: req.params.userId,
+      isCart: true
     }
   })
-  .spread((selectedBook, created) => {
-    if (!created) {
-      if (selectedBook) {
-        return selectedBook.update({quantity: selectedBook.incrementQuantity()})
-      } else {
-        throw Error(404)
-      }
+  .then( cart => {
+    return cart.addBook(bookId)
+    .then( book => {
+      return [book, cart.id]
+    })
+  })
+  .then( book => {
+    if (book[0].length === 0) {
+      return SelectedBooks.findOne({
+        where: {
+          order_id: book[1],
+          book_id: bookId
+        }
+      })
+      .then( selectedBook => {
+        selectedBook.update({quantity: selectedBook.incrementQuantity()})
+      })
     } else {
-      res.status(201).send(created)
+      res.send(book[0])
     }
   })
-  .then( result => {
-    res.status(201).send(result)
+  .then( (count , updatedBook)  => {
+    res.status(201).send(updatedBook)
   })
   .catch(next)
 })
