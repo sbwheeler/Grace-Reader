@@ -8,25 +8,25 @@ const router = require('express').Router()
 // ===================== Admin ==========================
 
 // Admin get all orders
-router.get('/', (req, res, next) =>
+router.get('/admin', (req, res, next) =>
     Order.findAll()
     .then(orders => res.json(orders))
     .catch(next))
 
 // Admin get specific order
-router.get('/:orderId', (req, res, next) =>
+router.get('/admin/:orderId', (req, res, next) =>
     Order.findById(req.params.orderId)
     .then(order => res.json(order))
     .catch(next))
 
 // Admin add order
-router.post('/', (req, res, next) =>
+router.post('/admin/', (req, res, next) =>
     Order.create(req.body)
     .then(order => res.status(201).json(order))
     .catch(next))
 
 // Admin update cart
-router.put('/:orderId', (req, res, next) =>
+router.put('/admin/:orderId', (req, res, next) =>
     Order.update({
       books: req.body.books
     }, {
@@ -40,7 +40,7 @@ router.put('/:orderId', (req, res, next) =>
     .catch(next))
 
 // Admin delete order
-router.delete('/:orderId', (req, res, next) =>
+router.delete('/admin/:orderId', (req, res, next) =>
     Order.destroy({
       where: {
         id: req.params.orderId
