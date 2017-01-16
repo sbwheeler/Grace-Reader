@@ -8,8 +8,4 @@ const mapStateToProps = (state, getState) => {
   }
 }
 
-const mapDispatchToProps = (dispatch, getState) => {
-  return {}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ReviewListComponent)
+export default connect(mapStateToProps)(ReviewListComponent)

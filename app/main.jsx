@@ -25,7 +25,7 @@ import SingleReviewContainer from './review/singleReviewContainer';
 import SingleBookContainer from './book/singleBookContainer';
 
 import newUser from './auth/components/newUserComponent'
-import newBook from './book/newBookForm'
+import newBookFormContainer from './book/newBookFormContainer'
 
 // ======================== On Enter Store Dispatch Functions ======================
 
@@ -61,7 +61,7 @@ render (
     <Router history={browserHistory}>
       <Route path="/" onEnter={onAppEnter} component={App}>
         <Route path="newuser" component={newUser} />
-        <Route path="newbook" component={newBook} />
+        <Route path="newbook" component={newBookFormContainer} />
         <Route path="books" component={BookListContainer} />
         <Route path="books/:bookId" onEnter={onBookEnter} component={SingleBookContainer} />
         <Route path="orderlist" onEnter={onOrderListEnter} component={OrderListContainer} />
