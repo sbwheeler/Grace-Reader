@@ -66,8 +66,8 @@ router.put('/:userId/', (req, res, next) => {
       res.send(book[0])
     }
   })
-  .then( (count , updatedBook)  => {
-    res.status(201).send(updatedBook)
+  .then( () => {
+    res.sendStatus(201)
   })
   .catch(next)
 })
