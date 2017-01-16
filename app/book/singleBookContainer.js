@@ -8,6 +8,7 @@ function mapStateToProps(state) {
   };
 }
 
+// EI: don't need to pass this in if you don't have any methods to map
 function mapDispatchToProps(state) {
   return {};
 }

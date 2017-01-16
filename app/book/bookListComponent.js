@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'; //EI: you're not using this here
 import { Link } from 'react-router';
 
+// EI: React file naming conventions: components are capitalized
 
+// EI: this could just be a dumb component
 class BookListComponent extends Component {
   constructor(props){
     super(props)

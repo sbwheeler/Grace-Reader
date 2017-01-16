@@ -8,6 +8,7 @@ const mapStateToProps = (state, getState) => {
   }
 }
 
+// EI: either add methods or just don't pass this in
 const mapDispatchToProps = (dispatch, getState) => {
   return {}
 }

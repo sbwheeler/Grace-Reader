@@ -15,7 +15,11 @@ export default class NewReviewForm extends Component {
 
   handleSubmit(event) {
     //removed event.preventdefault to have page refresh with the new review once you submit it
-    axios.post('/api/reviews', { rating: this.state.rating, content: this.state.content, book_id: this.props.book.id })
+    // EI: make this an action creator, hook the form into the store, update the reviews in the store, etc...
+    axios.post('/api/reviews', {
+      rating: this.state.rating,
+      content: this.state.content,
+      book_id: this.props.book.id })
 
   }
 
@@ -27,7 +31,14 @@ export default class NewReviewForm extends Component {
               <div className="form-group">
                 <label className="col-xs-2 control-label">Rating</label>
                 <div className="col-xs-10">
-                 <input type="number" name="quantity" min="1" max="5" onChange={e => this.setState({ rating: e.target.value })}/>>
+                {/* EI: this would be nice as a handleChange method */}
+                 <input
+                  type="number"
+                  name="quantity"
+                  min="1"
+                  max="5"
+                  onChange={e => this.setState({ rating: e.target.value })}/>>
+                }
                 </div>
               </div>
 

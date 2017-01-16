@@ -20,6 +20,7 @@ export default class NewBookForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
+    // EI: make async action creator?
     axios.post('/api/books', { title: this.state.title, author: this.state.author, genre: this.state.genre, price: this.state.price, description: this.state.description, stockCount: this.state.stockCount, imageUrl: this.state.imageUrl })
     .then(createdBook => {
       browserHistory.push(`/books/${createdBook.data.id}`)

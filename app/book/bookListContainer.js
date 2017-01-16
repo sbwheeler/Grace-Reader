@@ -8,6 +8,8 @@ function mapStateToProps(state) {
   };
 }
 
+// EI: don't need to pass in a mapDispatchToProps function if you don't need to map any methods; optional argument
+
 function mapDispatchToProps(state) {
   return {};
 }
