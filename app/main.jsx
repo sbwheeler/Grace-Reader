@@ -13,7 +13,7 @@ import App from './app'
 // ========================= Action Creators =============================================
 import {fetchAllBooks, fetchSingleBook} from './book/book-actions';
 import { getReviewById } from './review/reviewActionCreator';
-import { fetchAllOrders, fetchSingleOrder, fetchAllOrdersForAdmin, fetchSingleOrderAdmin } from './order/order-actions';
+import { fetchAllOrders, fetchSingleOrder, fetchAllOrdersForAdmin, fetchSingleOrderAdmin, fetchShoppingCart } from './order/order-actions';
 
 // ========================= Containers and Components ==================================
 

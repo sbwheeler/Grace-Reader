@@ -122,4 +122,4 @@ export function fetchSingleOrderForAdmin(orderId) {
       })
       .catch(console.error)
     }
-  
+}
