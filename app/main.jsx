@@ -31,11 +31,7 @@ import newBookFormContainer from './book/newBookFormContainer'
 // ======================== On Enter Store Dispatch Functions ======================
 
 function onAppEnter() {
-  store.dispatch(fetchAllBooks());
-
-  if (store.getState().auth.id) {
-    store.dispatch(fetchShoppingCart(store.getState().auth.id))
-  }
+  store.dispatch(fetchAllBooks())
 }
 
 function onBookEnter(nextRouterState) {
@@ -54,6 +50,13 @@ function onSingleOrderEnter(nextRouterState) {
   store.dispatch(fetchSingleOrders(nextRouterState.params.orderId))
 }
 
+function onCartEnter() {
+  if (store.getState().auth.id) {
+    console.log('HELLO WORLD')
+    store.dispatch(fetchShoppingCart(store.getState().auth.id))
+  }
+}
+
 function _redirectIfLoggedOut (nextRouterState, replace) {
   if(!store.getState().users.currentUser) {
     replace('/')
@@ -67,7 +70,7 @@ render (
       <Route path="/" onEnter={onAppEnter} component={App}>
         <Route path="newuser" component={NewUserContainer} />
         <Route path="newbook" component={newBookFormContainer} />
-        <Route path="cart" component={ShoppingCartContainer} />
+        <Route path="cart" component={ShoppingCartContainer} onEnter={onCartEnter} />
         <Route path="books" component={BookListContainer} />
         <Route path="books/:bookId" onEnter={onBookEnter} component={SingleBookContainer} />
         <Route path="orderlist" onEnter={onOrderListEnter} component={OrderListContainer} />

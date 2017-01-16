@@ -7,6 +7,8 @@ const BookListComponent = ({ allBooks }) => {
       <div>
         <h1>BOOK LIST</h1>
         <Link to='/newbook'> Add New Book </Link>
+        /////
+        <Link to='/cart'> Shopping Cart </Link>
         <div className="row">
           {
             allBooks && allBooks.map(book => (
