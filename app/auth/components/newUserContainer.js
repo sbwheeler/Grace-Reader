@@ -7,8 +7,8 @@ import store from '../../store'
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addNewUser (user) {
-      dispatch(addNewUser(user))
+    signUp (user) {
+      dispatch(signUp(user))
     }
   }
 }
@@ -39,7 +39,7 @@ class NewUserWrapper extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    store.dispatch(signUp(this.state));
+    this.props.signUp(this.state);
 
     this.setState({
       firstName: '',
