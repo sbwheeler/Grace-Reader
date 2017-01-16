@@ -6,6 +6,8 @@ const SelectedBooks = db.model('selectedBooks')
 const Order = db.model('orders')
 const Book = db.model('books')
 
+
+//+++++++++++ROUTE FOR LOADING SELECTED BOOKS TO THE CART++++++++
 router.get('/:orderId', (req, res, next) => {
   let orderId = req.params.orderId;
   Order.findById(orderId)
@@ -29,6 +31,8 @@ router.get('/:orderId', (req, res, next) => {
   .catch(next)
 });
 
+
+//++++++++++++++++++ROUTE FOR ADDING BOOK TO THE CART++++++++
 router.post('/add', (req, res, next) => {
   let bookId = req.body.bookId;
   let orderId = req.body.orderId;
@@ -42,7 +46,7 @@ router.post('/add', (req, res, next) => {
       book_id: bookId
     }
   })
-  .spread((selectedBook, created) => {
+  .spread((selectedBook, created, anything) => {
     if (!created) {
       if (selectedBook) {
         return selectedBook.update({quantity: selectedBook.incrementQuantity()})
@@ -50,8 +54,7 @@ router.post('/add', (req, res, next) => {
         throw Error(404)
       }
     } else {
-      res.status(200).send(created)
-      return created;
+      res.status(201).send(created)
     }
   })
   .then( result => {
@@ -60,5 +63,40 @@ router.post('/add', (req, res, next) => {
   .catch(next)
 })
 
+//++++++++++++++++++ROUTE FOR UPDATING CART ON CHECKOUT++++++++
+router.put('/checkout', (req, res, next) => {
+  let cartUpdate = req.body.selected.map( cartItem => {
+    let element = {
+      order_id: cartItem.book.selectedBooks.order_id,
+      book_id: cartItem.book.id,
+      quantity: cartItem.quantity
+    }
+    return SelectedBooks.findOrCreate({
+      where: {
+      order_id: element.order_id,
+      book_id: element.book_id
+    },
+    defaults: {
+      order_id: element.order_id,
+      book_id: element.book_id
+    }
+    })
+    .spread((selectedBook, created) => {
+      if (!created) {
+        if (selectedBook) {
+          return selectedBook.update({quantity: element.quantity})
+        }
+      } else {
+        return created
+      }
+    })
+    .catch(next)
+  })
+  Promise.all(cartUpdate)
+  .then((success, rejected)   => {
+    res.send(success)
+  })
+  .catch(console.log)
+});
 
 module.exports = router;
