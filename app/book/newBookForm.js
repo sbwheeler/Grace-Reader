@@ -1,7 +1,4 @@
-import React, { Component } from 'react';
-import { browserHistory } from 'react-router';
-import axios from 'axios';
-import store from '../store'
+import React from 'react';
 
 export default function({ handleChange, handleSubmit, title, author, price, description, stockCount, imageUrl, genre}) {
 
