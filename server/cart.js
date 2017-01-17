@@ -82,12 +82,14 @@ router.put('/checkout/:userId', (req, res, next) => {
     }
   })
   .then(foundOrder => {
-    foundOrder.update({ isCart: false })
+    return foundOrder.update({ isCart: false })
   })
   .then(order => { //create new blank shopping cart for the user
     return Order.create({user_id: req.params.userId, isCart: true})
   })
-  .then(res.send)
+  .then(order => {
+    res.sendStatus(201)
+  })
   .catch(console.error)
 })
 
