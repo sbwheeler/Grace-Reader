@@ -31,6 +31,7 @@ export default class Navbar extends Component {
         <nav className={this.state.menuClicked ? 'show' : '' }>
             <Link to="/books"><i className="fa fa-book fa-lg"></i></Link>
             <Link to="/cart"><i className="fa fa-cart-arrow-down fa-lg"></i></Link>
+            <Link to="/orderlist"><i className="fa fa-usd fa-lg"></i></Link>
         </nav>
         <ul>
           <div id='login-wrap'> {this.props.user ? <WhoAmI user={this.props.user}/> : <Login id="login" />} </div>
