@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 
 
-const BookListComponent = ({ allBooks, genre }) => {
+const BookListComponent = ({ allBooks, genre, author }) => {
   //filtering books by the genre currently on the state, if there is no genre, display all books
   let books;
   if (genre === '') books = allBooks;
@@ -11,7 +11,7 @@ const BookListComponent = ({ allBooks, genre }) => {
       return book.genre.includes(genre)
     })
   }
-
+  console.log('~~~~~~~~~~~~~AUTHOR', author)
   return (
     <div>
       <h1 id="booklisttitle">Our Books</h1>

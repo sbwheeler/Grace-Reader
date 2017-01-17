@@ -11,7 +11,7 @@ import Routes from './routes';
 import App from './app'
 
 // ========================= Action Creators =============================================
-import {fetchAllBooks, fetchSingleBook} from './book/book-actions';
+import {fetchAllBooks, fetchSingleBook, getAuthors} from './book/book-actions';
 import { getReviewById } from './review/reviewActionCreator';
 import { fetchAllOrders, fetchSingleOrder, fetchAllOrdersForAdmin, fetchSingleOrderAdmin, fetchShoppingCart } from './order/order-actions';
 
@@ -83,8 +83,8 @@ render (
         <Route path="orderlist/:orderId" onEnter={onSingleOrderEnter} component={SingleOrderContainer} />
         <Route path="reviews" component={ReviewListContainer} />
         <Route path="reviews/:reviewId" component={SingleReviewContainer} onEnter={onSingleReviewEnter} />
-        <IndexRoute component={GenresContainer} />
         <Route path="authors" component={AuthorsContainer} />
+        <IndexRoute component={GenresContainer} />
       </Route>
     </Router>
   </Provider>,

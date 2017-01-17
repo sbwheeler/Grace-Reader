@@ -4,7 +4,7 @@ const initialState = {
   allBooks: [],
   currentBook: {},
   currentGenre: '',
-  currentAuthor: ''
+  currentAuthor: {}
 }
 
 const bookReducer = function(state = initialState, action) {

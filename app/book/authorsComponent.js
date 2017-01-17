@@ -19,34 +19,29 @@ export default class AuthorsComponent extends Component {
   render() {
     //potentially use for dropdown genre menu in nav bar?
     //this is pulling the unique genres from the list of all of our books
-    const arrayOfAuthors = this.props.allBooks.map(book => book.author);
-    console.log('~~~~~~~~~~~~~~~~~~ARRAYAUTHORS', arrayOfAuthors)
-    const filteredAuthors = arrayOfAuthors.filter(author => if)
-    // arrayOfAuthors.forEach(authorArray => {
-    //   authorArray.forEach(author => {
-    //     if (authors.indexOf(author) === -1) authors.push(author)
-    //   })
-    // })
+    const arrayOfAuthors = this.props.allBooks.map(book => book.author)
+    // console.log('~~~~~~~~~~~~~~~~~~ARRAYAUTHORS', arrayOfAuthors)
+    let filteredAuthors = arrayOfAuthors.filter((author, i) => arrayOfAuthors.indexOf(author) === i
+    )
     return (
       <div>
         <h1 id="authornamelist"> Authors </h1>
-        <Link to="/cart"> Shopping Cart </Link>
-        <div className="row">
+        <ul className="list-group">
           {
-            this.props.allBooks && arrayOfAuthors.map(author => (
-              <div className="col-xs-2" onClick={() => this.getAuthor(author)} key={author}>
+            this.props.allBooks && filteredAuthors.map(author => (
+              <li className="list-group-item" onClick={() => this.getAuthor(author)} key={author}>
                 <Link className="thumbnail"  to={`/books`}>
                 <img src={ this.imageLinks[Math.floor(Math.random() * (this.imageLinks.length))] } width="150" />
                   <div className="caption">
                     <h5>
-                      <strong>AUTHORS: { author }</strong>
+                      <strong>{ author }</strong>
                     </h5>
                   </div>
                 </Link>
-              </div>
+              </li>
             ))
           }
-          </div>
+          </ul>
     </div>
     )
   }
