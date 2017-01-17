@@ -21,7 +21,7 @@ class OrderListComponent extends Component {
                       <li key={book.id}> {book.title} </li>
                     )) }
                 </ul>
-                <h4 id="price">${order.map(book => book.price * book.selectedBooks.quantity).reduce((a, b) => a + b)} </h4>
+                <h4 id="price">${order.map(book => book.price * book.selectedBooks.quantity).reduce((a, b) => a + b).toFixed(2)} </h4>
                 <hr></hr>
               </Link>
             ))

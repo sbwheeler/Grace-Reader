@@ -14,6 +14,7 @@ import App from './app'
 import {fetchAllBooks, fetchSingleBook} from './book/book-actions';
 import { getReviewById } from './review/reviewActionCreator';
 import { fetchAllOrders, fetchSingleOrder, fetchAllOrdersForAdmin, fetchSingleOrderAdmin, fetchShoppingCart } from './order/order-actions';
+import {whoami} from './auth/reducers/auth'
 
 // ========================= Containers and Components ==================================
 
@@ -31,6 +32,7 @@ import newBookFormContainer from './book/newBookFormContainer'
 // ======================== On Enter Store Dispatch Functions ======================
 
 function onAppEnter() {
+  // store.dispatch(whoami())
   store.dispatch(fetchAllBooks())
 }
 
