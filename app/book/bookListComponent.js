@@ -14,7 +14,10 @@ const BookListComponent = ({ allBooks, genre }) => {
 
   return (
     <div>
-      <h2 id="booklisttitle">Our Books</h2>
+      {
+        genre ? <h2 id="booklisttitle">Our {genre} Books</h2> : <h2 id="booklisttitle">Our Books</h2>
+      }
+
       <div className="row">
         {
           books && books.map(book => (
