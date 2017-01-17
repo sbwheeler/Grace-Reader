@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import 'bootstrap-sass';
 
 import { particlesConfig } from './dummy-data/particles.data';
-const particlesJS = require('particles.js')
+import 'particles.js';
 
 export class App extends React.Component {
   constructor(props) {

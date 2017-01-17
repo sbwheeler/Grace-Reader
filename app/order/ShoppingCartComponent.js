@@ -21,7 +21,7 @@ export default class ShoppingCartComponent extends Component {
           <h1>Your Shopping Cart</h1>
             {
               this.props.shoppingCart && this.props.shoppingCart.map(book => (
-                <div className="col-xs-2" key={ book.id }>
+                <div className="col-xs-6 col-sm-4 col-md-3 col-lg-2 list-item" key={ book.id }>
                   <Link className="thumbnail" to={`/books/${book.id}`}>
                     <img src={ book.imageUrl } height="300" width="200"/>
                     <div className="caption">
