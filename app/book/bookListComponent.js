@@ -14,7 +14,7 @@ const BookListComponent = ({ allBooks, genre }) => {
 
   return (
     <div>
-      <h1 id="booklisttitle">Our Books</h1>
+      <h2 id="booklisttitle">Our Books</h2>
       <div className="row">
         {
           books && books.map(book => (
