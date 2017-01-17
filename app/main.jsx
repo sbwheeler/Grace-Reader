@@ -13,7 +13,7 @@ import App from './app'
 // ========================= Action Creators =============================================
 import {fetchAllBooks, fetchSingleBook} from './book/book-actions';
 import { getReviewById } from './review/reviewActionCreator';
-import { fetchAllOrders, fetchSingleOrder, fetchAllOrdersForAdmin, fetchSingleOrderAdmin, fetchShoppingCart } from './order/order-actions';
+import { fetchAllOrders, fetchSingleOrder, fetchAllOrdersForAdmin, fetchSingleOrderForAdmin, fetchShoppingCart } from './order/order-actions';
 
 // ========================= Containers and Components ==================================
 
@@ -43,14 +43,17 @@ function onSingleReviewEnter(nextRouterState) {
 }
 
 function onOrderListEnter(nextRouterState) {
-  if (store.getState().auth.adminStatus) store.dispatch(fetchAllOrdersForAdmin())
+  const user = store.getState().auth
+
+  if (user && user.adminStatus) store.dispatch(fetchAllOrdersForAdmin())
   else store.dispatch(fetchAllOrders())
 }
 
 function onSingleOrderEnter(nextRouterState) {
+  const user = store.getState().auth
   const orderId = nextRouterState.params.orderId
 
-  if (store.getState().auth.adminStatus) store.dispatch(fetchSingleOrderAdmin(orderId))
+  if (user && user.adminStatus) store.dispatch(fetchSingleOrderForAdmin(orderId))
   else store.dispatch(fetchSingleOrder(orderId))
 }
 

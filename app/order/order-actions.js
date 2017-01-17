@@ -9,7 +9,7 @@ export const FETCH_SINGLE_ORDER = 'FETCH_SINGLE_ORDER';
 
 // ADMINS
 export const FETCH_ALL_ORDERS_ADMIN = 'FETCH_ALL_ORDERS_ADMIN';
-export const FETCH_SINGLE_ORDER_ADMIN = 'FETCH_ALL_ORDER_ADMIN';
+export const FETCH_SINGLE_ORDER_ADMIN = 'FETCH_SINGLE_ORDER_ADMIN';
 
 export const FETCH_SHOPPING_CART = 'FETCH_SHOPPING_CART';
 export const ORDER_CART = 'ORDER_CART';
@@ -40,10 +40,10 @@ export function getShoppingCart(cart) {
 }
 
 // ADMIN ===============================
-export function getSingleOrderAdmin(order) {
+export function getSingleOrderAdmin(currentOrder) {
   return {
     type: FETCH_SINGLE_ORDER_ADMIN,
-    order
+    currentOrder
   }
 }
 
@@ -134,7 +134,7 @@ export function addToCart(bookId) {
 
 export function fetchAllOrdersForAdmin() {
   return function (dispatch, getState) {
-    axios.get('/api/orders/')
+    axios.get('/api/orders/admin')
       .then(res => res.data)
       .then(foundOrders => {
         dispatch(getAllOrdersAdmin(foundOrders))
@@ -147,7 +147,7 @@ export function fetchAllOrdersForAdmin() {
 
 export function fetchSingleOrderForAdmin(orderId) {
   return function (dispatch, getState) {
-    axios.get(`/api/orders/${orderId}`)
+    axios.get(`/api/orders/admin/${orderId}`)
       .then(res => res.data)
       .then(foundOrder => {
         dispatch(getSingleOrderAdmin(foundOrder))

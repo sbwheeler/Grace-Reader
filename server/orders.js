@@ -11,13 +11,34 @@ const {adminOnly, selfOnly, mustBeLoggedIn, forbidden } = require('./auth.filter
 // Admin get all orders
 router.get('/admin', adminOnly, (req, res, next) =>
     Order.findAll()
-    .then(orders => res.json(orders))
+    .then( foundOrders => {
+      if (foundOrders) {
+        return foundOrders
+      } else {
+        res.send(404)
+      }
+    })
+    .then( foundOrders => {
+      return Promise.map(foundOrders, foundOrder => foundOrder.getBooks())
+    })
+    .then( arrayOfOrdersOfBooks => {
+      res.send(arrayOfOrdersOfBooks)
+    })
     .catch(next))
 
 // Admin get specific order
 router.get('/admin/:orderId', adminOnly, (req, res, next) =>
     Order.findById(req.params.orderId)
-    .then(order => res.json(order))
+    .then( foundOrder => {
+      if (foundOrder) {
+        return foundOrder.getBooks()
+      } else {
+        res.send(404)
+      }
+    })
+    .then( foundBooks => {
+      res.send(foundBooks)
+    })
     .catch(next))
 
 // Admin add order
