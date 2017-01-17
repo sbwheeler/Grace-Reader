@@ -13,7 +13,7 @@ export default class AuthorsComponent extends Component {
   setSelectedBooks (author) {
     event.preventDefault();
     const filteredBooks = this.props.allBooks.filter(book => {
-      if(book.author === author){
+      if (book.author === author){
         return book
       }
     })
@@ -21,10 +21,9 @@ export default class AuthorsComponent extends Component {
   }
 
   render() {
-    //potentially use for dropdown genre menu in nav bar?
-    //this is pulling the unique genres from the list of all of our books
+
     const arrayOfAuthors = this.props.allBooks.map(book => book.author)
-    // console.log('~~~~~~~~~~~~~~~~~~ARRAYAUTHORS', arrayOfAuthors)
+
     let filteredAuthors = arrayOfAuthors.filter((author, i) => arrayOfAuthors.indexOf(author) === i
     )
 

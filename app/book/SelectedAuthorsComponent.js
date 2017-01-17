@@ -20,11 +20,11 @@ const SelectedAuthors = ({ allBooks, genre, selectedBooks }) => {
           books && books.map(book => (
             <div className="col-xs-6 col-sm-4 col-md-3 col-lg-2 list-item" key={ book.id }>
               <Link className="thumbnail" to={`/books/${book.id}`}>
-                <img src={ book.imageUrl } style={{'height' : '170px'}}/>
+                <img src={ book.imageUrl } style={{"height" : '170px'}} />
                 <div className="caption">
                   <h5>
                     <strong>{ book.title }</strong>
-                    <br/>
+                    <br />
                     <span>By { book.author }</span>
                   </h5>
                 </div>
