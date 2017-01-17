@@ -13,7 +13,10 @@ describe('Book Reducer', () => {
     it('has expected initial state', () => {
         expect(testStore.getState()).to.be.deep.equal({
             allBooks: [],
-            currentBook: {}
+            currentBook: {},
+            currentGenre: '',
+            currentAuthor: {},
+            selectedBooks: []
         });
     });
 

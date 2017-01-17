@@ -13,14 +13,15 @@ describe('Order reducer', () => {
     it('has expected initial state', () => {
         expect(testStore.getState()).to.be.deep.equal({
             allOrders: [],
-            currentOrder: {}
+            currentOrder: [],
+            shoppingCart: []
         });
     });
 
     describe('FETCH_SINGLE_ORDER', () => {
 
         it('sets order to action order', () => {
-            testStore.dispatch({ type: 'FETCH_SINGLE_ORDER', order: {id:1, price:2, quantity: 3} });
+            testStore.dispatch({ type: 'FETCH_SINGLE_ORDER', currentOrder: {id:1, price:2, quantity: 3} });
             const newState = testStore.getState();
             expect(newState.currentOrder).to.be.deep.equal({id:1, price:2, quantity: 3});
         });
