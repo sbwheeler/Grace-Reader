@@ -35,6 +35,7 @@ router.get('/:userId', (req, res, next) => {
 })
 
 
+
 //++++++++++++++++++ROUTE FOR ADDING BOOK TO THE CART++++++++
 router.put('/:userId/', (req, res, next) => {
   let bookId = req.body.bookId;
@@ -66,10 +67,30 @@ router.put('/:userId/', (req, res, next) => {
       res.send(book[0])
     }
   })
-  .then( (count , updatedBook)  => {
-    res.status(201).send(updatedBook)
+  .then( () => {
+    res.sendStatus(201)
   })
   .catch(next)
+})
+
+//++++++++++++++++++ROUTE FOR ORDERING THE CART++++++++
+router.put('/checkout/:userId', (req, res, next) => {
+  Order.findOne({
+    where: {
+      user_id: req.params.userId,
+      isCart: true
+    }
+  })
+  .then(foundOrder => {
+    return foundOrder.update({ isCart: false })
+  })
+  .then(order => { //create new blank shopping cart for the user
+    return Order.create({user_id: req.params.userId, isCart: true})
+  })
+  .then(order => {
+    res.sendStatus(201)
+  })
+  .catch(console.error)
 })
 
 //++++++++++++++++++ROUTE FOR UPDATING CART ON CHECKOUT++++++++

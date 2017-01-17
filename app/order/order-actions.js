@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { browserHistory } from 'react-router'
 
 /*********************************CONSTS******************************/
 
@@ -11,6 +12,7 @@ export const FETCH_ALL_ORDERS_ADMIN = 'FETCH_ALL_ORDERS_ADMIN';
 export const FETCH_SINGLE_ORDER_ADMIN = 'FETCH_ALL_ORDER_ADMIN';
 
 export const FETCH_SHOPPING_CART = 'FETCH_SHOPPING_CART';
+export const ORDER_CART = 'ORDER_CART';
 
 /****************************ACTION CREATORS****************************/
 
@@ -23,10 +25,10 @@ export function getAllOrders(orders) {
   }
 }
 
-export function getSingleOrder(order) {
+export function getSingleOrder(currentOrder) {
   return {
     type: FETCH_SINGLE_ORDER,
-    order
+    currentOrder
   }
 }
 
@@ -52,6 +54,13 @@ export function getAllOrdersAdmin(orders) {
   }
 }
 
+export function orderCart() {
+  return {
+    type: ORDER_CART,
+    cart: []
+  }
+}
+
 
 /*************************THUNKS*********************************/
 
@@ -72,11 +81,11 @@ export function fetchAllOrders() {
 }
 
 // Get One Order for User
-export function fetchSingleOrder(id) {
+export function fetchSingleOrder(orderId) {
   return function (dispatch, getState) {
     const userId = getState().auth.id
 
-    axios.get(`/api/orders/${userId}/${id}`)
+    axios.get(`/api/orders/${userId}/${orderId}`)
       .then(res => res.data)
       .then(foundOrder => {
         dispatch(getSingleOrder(foundOrder))
@@ -85,6 +94,7 @@ export function fetchSingleOrder(id) {
     }
 }
 
+// Get shopping cart
 export function fetchShoppingCart(id) {
   return function (dispatch) {
     axios.get(`/api/cart/${id}`)
@@ -93,6 +103,28 @@ export function fetchShoppingCart(id) {
       dispatch(getShoppingCart(foundCart))
     })
     .catch(console.error)
+  }
+}
+
+export function orderShoppingCart(id) {
+  return function(dispatch) {
+    axios.put(`/api/cart/checkout/${id}`)
+    .then(orderedCart => {
+      console.log('IN THEN')
+      dispatch(orderCart())
+      browserHistory.push('/genres')
+    })
+    .catch(console.error)
+  }
+}
+
+// Add an item / update shopping cart
+export function addToCart(bookId) {
+  return function (dispatch, getState) {
+    const userId = getState().auth.id
+    axios.put(`/api/cart/${userId}`, { bookId })
+      .then(res => res.data)
+      .catch(console.error)
   }
 }
 
