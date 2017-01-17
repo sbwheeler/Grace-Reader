@@ -10,6 +10,7 @@ const seedUsers = () => db.Promise.map([
   {firstName: 'Sam', lastName: 'Wheeler', email: 'damon@example.gov', password: '1234'},
   {firstName: 'John', lastName: 'Yom', email: 'john@example.gov', password: '1234'},
   {firstName: 'Bogdon', lastName: 'Notsure', email: 'bogdon@example.gov', password: '1234'},
+  {firstName: 'admin', lastName: 'admin', email: 'admin@admin.com', password: '1234', adminStatus: true},
 ], user => db.model('users').create(user))
 
 const seedOrders = () => db.Promise.map([

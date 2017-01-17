@@ -6,8 +6,8 @@ const mustBeLoggedIn = (req, res, next) => {
 }
 
 const selfOnly = action => (req, res, next) => {
-  if (req.params.id !== req.user.id) {
-    return res.status(403).send(`You can only ${action} yourself.`)
+  if (+req.params.userId !== req.user.id) {
+    return res.status(403).send(`You can only ${action}`)
   }
   next()
 }
@@ -17,9 +17,9 @@ const forbidden = message => (req, res, next) => {
 }
 
 const adminOnly = (req, res, next) => {
-  if (!req.user) {
+  if (!req.user.adminStatus) {
     return res.status(401).send('You must be logged in')
-  } else if (req.user.isAdmin) {
+  } else if (req.user.adminStatus) {
     next()
   } else {
     return res.status(403).send('Admin access only')
