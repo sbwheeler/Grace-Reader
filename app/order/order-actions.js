@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { browserHistory } from 'react-router'
 
 /*********************************CONSTS******************************/
 
@@ -11,6 +12,7 @@ export const FETCH_ALL_ORDERS_ADMIN = 'FETCH_ALL_ORDERS_ADMIN';
 export const FETCH_SINGLE_ORDER_ADMIN = 'FETCH_ALL_ORDER_ADMIN';
 
 export const FETCH_SHOPPING_CART = 'FETCH_SHOPPING_CART';
+export const ORDER_CART = 'ORDER_CART';
 
 /****************************ACTION CREATORS****************************/
 
@@ -49,6 +51,13 @@ export function getAllOrdersAdmin(orders) {
   return {
     type: FETCH_ALL_ORDERS_ADMIN,
     orders
+  }
+}
+
+export function orderCart() {
+  return {
+    type: ORDER_CART,
+    cart: []
   }
 }
 
@@ -92,6 +101,18 @@ export function fetchShoppingCart(id) {
     .then(res => res.data)
     .then(foundCart => {
       dispatch(getShoppingCart(foundCart))
+    })
+    .catch(console.error)
+  }
+}
+
+export function orderShoppingCart(id) {
+  return function(dispatch) {
+    axios.put(`/api/cart/checkout/${id}`)
+    .then(orderedCart => {
+      console.log('IN THEN')
+      dispatch(orderCart())
+      browserHistory.push('/genres')
     })
     .catch(console.error)
   }
