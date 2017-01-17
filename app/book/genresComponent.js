@@ -38,7 +38,7 @@ export default class GenresComponent extends Component {
 
     return (
       <div>
-        <h1 id="booklisttitle"> by Category</h1>
+        <h2 id="booklisttitle">Genres</h2>
         <div className="row">
           {
             this.props.allBooks && genres.map(genre => (
