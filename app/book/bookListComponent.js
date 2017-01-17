@@ -15,14 +15,15 @@ const BookListComponent = ({ allBooks, genre }) => {
   return (
     <div>
       <h1 id="booklisttitle">Our Books</h1>
-      <Link to="/cart"> Shopping Cart </Link>
       <div className="row">
         {
           books && books.map(book => (
             <div className="col-xs-2" key={ book.id }>
               <Link className="thumbnail" to={`/books/${book.id}`}>
-                <img src={ book.imageUrl } width="150"/>
-                <div className="caption">
+
+                <img src={ book.imageUrl } />
+                <div className="caption" >
+
                   <h5>
                     <strong>{ book.title }</strong>
                     <br/>
