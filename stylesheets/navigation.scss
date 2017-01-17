@@ -55,29 +55,28 @@ $dark-theme: #181818;
     z-index: 3;
     min-height: 0;
     @media (max-width: 960px) {
-          width: 100%;
-          height: 60px;
-          position: fixed;
-          top: 0;
-          left: 0;
-          z-index: 3;
-          min-height: 0;
+      width: 100%;
+      height: 60px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 3;
+      min-height: 0;
     }
 
 
 
     nav {
-
-            width: 42%;
-            position: absolute;
-            left: 50%;
-            margin-left: -19%;
-            float: left;
-            overflow: hidden;
-            text-align: center;
-            height: 60px;
-            top: 0;
-            margin-top: 0;
+      width: 42%;
+      position: absolute;
+      left: 50%;
+      margin-left: -19%;
+      float: left;
+      overflow: hidden;
+      text-align: center;
+      height: 60px;
+      top: 0;
+      margin-top: 0;
 
       @media (max-width: 530px)
       {
@@ -104,14 +103,10 @@ $dark-theme: #181818;
         line-height: 45px;
         height: 45px;
         position: relative;
-
-        @media (max-width: 960px)
-        {
-              float: left;
-              margin-left: 12%;
-              line-height: 60px;
-              height: 60px;
-        }
+        float: left;
+        margin-left: 12%;
+        line-height: 60px;
+        height: 60px;
 
         @media (max-width: 750px)
         {
@@ -139,7 +134,7 @@ $dark-theme: #181818;
 
       a:after {
         content: '';
-        font-size: 9px;
+        font-size: 24px;
         position: absolute;
         bottom: 0px;
         display: block;
@@ -151,11 +146,11 @@ $dark-theme: #181818;
       }
 
       a:first-child:after {
-          content: 'HOME';
+          content: 'Books';
       }
 
       a:first-child + a:after {
-          content: 'ABOUT';
+          content: 'Cart';
       }
 
       a:first-child + a + a:after {
@@ -197,27 +192,18 @@ $dark-theme: #181818;
           color: $default-color;
         }
         position: absolute;
-        bottom: 20px;
-        width: 100%;
         display: block;
         padding: 0;
         list-style: none;
         text-align: center;
+        position: static;
+        bottom: 20px;
+        width: auto;
+        height: 60px;
+        line-height: 60px;
+        display: block;
         margin: 0;
-        @media (max-width: 960px)
-        {
-            position: static;
-            bottom: 20px;
-            width: auto;
-            height: 60px;
-            line-height: 60px;
-            display: block;
-            padding: 0;
-            list-style: none;
-            text-align: center;
-            margin: 0;
-            float: right;
-        }
+        float: right;
         @media (max-width: 530px)
         {
             display: none;

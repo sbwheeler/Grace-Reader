@@ -1,20 +1,8 @@
 @import 'normalize.css';
+@import "./font-awesome/scss/font-awesome";
 @import 'general';
-@import "font-awesome/scss/font-awesome";
+@import './_bootstrap';
 @import 'navigation';
 @import 'main-display';
 @import 'footer';
 @import 'particles.scss';
-
-.thumbnail:hover{
-  background-color: #FDB608;
-}
-
-#booklisttitle {
-  margin-left: 10%;
-  font-weight: 130%;
-}
-
-#rightsidelogin {
-  margin-left: 85%;
-}
