@@ -4,29 +4,30 @@ const db = require('APP/db')
 const Order = db.model('orders')
 const Promise = require('bluebird')
 const router = require('express').Router()
+const {adminOnly, selfOnly, mustBeLoggedIn, forbidden } = require('./auth.filters')
 
 // ===================== Admin ==========================
 
 // Admin get all orders
-router.get('/admin', (req, res, next) =>
+router.get('/admin', adminOnly, (req, res, next) =>
     Order.findAll()
     .then(orders => res.json(orders))
     .catch(next))
 
 // Admin get specific order
-router.get('/admin/:orderId', (req, res, next) =>
+router.get('/admin/:orderId', adminOnly, (req, res, next) =>
     Order.findById(req.params.orderId)
     .then(order => res.json(order))
     .catch(next))
 
 // Admin add order
-router.post('/admin/', (req, res, next) =>
+router.post('/admin/', adminOnly, (req, res, next) =>
     Order.create(req.body)
     .then(order => res.status(201).json(order))
     .catch(next))
 
 // Admin update cart
-router.put('/admin/:orderId', (req, res, next) =>
+router.put('/admin/:orderId', adminOnly, (req, res, next) =>
     Order.update({
       books: req.body.books
     }, {
@@ -40,7 +41,7 @@ router.put('/admin/:orderId', (req, res, next) =>
     .catch(next))
 
 // Admin delete order
-router.delete('/admin/:orderId', (req, res, next) =>
+router.delete('/admin/:orderId', adminOnly, (req, res, next) =>
     Order.destroy({
       where: {
         id: req.params.orderId
@@ -52,7 +53,7 @@ router.delete('/admin/:orderId', (req, res, next) =>
 // ========================= User ============================
 
 // User get past orders
-router.get('/:userId/', (req, res, next) => {
+router.get('/:userId/', [mustBeLoggedIn, selfOnly('get your own past orders')], (req, res, next) => {
   let userId = req.params.userId;
 
   Order.findAll({
@@ -79,7 +80,7 @@ router.get('/:userId/', (req, res, next) => {
 })
 
 // User get one order
-router.get('/:userId/:orderId', (req, res, next) => {
+router.get('/:userId/:orderId', [mustBeLoggedIn, selfOnly('get your own past order')], (req, res, next) => {
   let orderId = req.params.orderId;
   let userId = req.params.userId;
 
