@@ -39,7 +39,6 @@ export default class GenresComponent extends Component {
     return (
       <div>
         <h1 id="booklisttitle"> by Category</h1>
-        <Link to="/cart"> Shopping Cart </Link>
         <div className="row">
           {
             this.props.allBooks && genres.map(genre => (

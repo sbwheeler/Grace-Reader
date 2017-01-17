@@ -8,5 +8,13 @@
 }
 
 .list-item {
-
+  max-width: 200px;
+    a {
+      img {
+        height: 200px
+      }
+      div {
+        height: 60px
+      }
+    }
 }
