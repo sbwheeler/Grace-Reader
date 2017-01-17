@@ -10,6 +10,7 @@
 .list-item {
   max-width: 200px;
     a {
+      text-decoration: none;
       img {
         height: 200px
       }
@@ -17,4 +18,8 @@
         height: 60px
       }
     }
+    a:hover {
+      background-color: $primary-color;
+    }
 }
+
