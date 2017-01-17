@@ -7,7 +7,16 @@ import { setGenre } from './book-actions'
 export default class GenresComponent extends Component {
   constructor(props) {
     super(props);
-    this.imageLinks = ['http://img06.deviantart.net/f292/i/2010/137/d/e/open_book_stock_by_rustymermaid_stock.jpg', 'http://www.youthactionproject.org/wp-content/uploads/2014/06/11.-Boeken.jpg', 'https://i.ytimg.com/vi/bC0hewvmAQQ/maxresdefault.jpg', 'http://previews.123rf.com/images/baloncici/baloncici0708/baloncici070800009/1367546-Whole-big-wall-covered-with-lot-of-books-Stock-Photo-books-library-book.jpg', 'https://upload.wikimedia.org/wikipedia/commons/2/2b/Bookshelf.jpg', 'http://kirbymuseum.org/blogs/dynamics/wp-content/uploads/sites/10/2013/03/bookshelf-1.jpg', 'https://s-media-cache-ak0.pinimg.com/736x/fc/7d/57/fc7d5721e85f9e16cba7d075ed5a890b.jpg']
+    this.imageLinks = {
+      Fantasy: 'http://hopeofglory.typepad.com/.a/6a00d83451d62469e2016302e0ee2f970d-pi',
+      Epic: 'https://i.ytimg.com/vi/3TAUnYZpMbA/0.jpg',
+      'Science Fiction' : 'https://s-media-cache-ak0.pinimg.com/originals/d2/c1/79/d2c17900b9df2140d3d3c4d9e1a2c5d2.jpg',
+      'Computer Science' : 'http://casanovainfo.com/wp-content/uploads/2016/07/hardware.jpg',
+      'Postmodern' : 'http://kingofwallpapers.com/postmodern/postmodern-002.jpg',
+      Adventure: 'http://www.clker.com/cliparts/S/d/G/r/8/W/category-genre-adventure-md.png',
+      Western: 'http://2.bp.blogspot.com/-efdQ7LMDUKs/UgarLFHogUI/AAAAAAAABGE/MmV_mdYk_MI/s1600/western%C2%A0pictures9.jpg',
+      default: 'http://www.thenatterbox.com/wp-content/uploads/2015/10/Book-stock-photo.jpg'
+    }
     this.setGenre = this.setGenre.bind(this);
   }
 
@@ -36,7 +45,7 @@ export default class GenresComponent extends Component {
             this.props.allBooks && genres.map(genre => (
               <div className="col-xs-6 col-sm-4 col-md-3 col-lg-2 list-item" onClick={() => this.setGenre(genre)} key={genre}>
                 <Link className="thumbnail"  to={`/books`}>
-                <img src={ this.imageLinks[Math.floor(Math.random() * (this.imageLinks.length))] } width="150"/>
+                <img src={ this.imageLinks[genre] ? this.imageLinks[genre] : this.imageLinks['default']} width="150"/>
                   <div className="caption">
                     <h5>
                       <strong>{ genre }</strong>

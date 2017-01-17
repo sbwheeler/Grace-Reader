@@ -110,7 +110,6 @@ export function orderShoppingCart(id) {
   return function(dispatch) {
     axios.put(`/api/cart/checkout/${id}`)
     .then(orderedCart => {
-      console.log('IN THEN')
       dispatch(orderCart())
       browserHistory.push('/genres')
     })
