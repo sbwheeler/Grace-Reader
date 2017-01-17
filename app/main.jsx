@@ -11,7 +11,7 @@ import Routes from './routes';
 import App from './app'
 
 // ========================= Action Creators =============================================
-import {fetchAllBooks, fetchSingleBook} from './book/book-actions';
+import {fetchAllBooks, fetchSingleBook, getAuthors, selectBooks } from './book/book-actions';
 import { getReviewById } from './review/reviewActionCreator';
 import { fetchAllOrders, fetchSingleOrder, fetchAllOrdersForAdmin, fetchSingleOrderForAdmin, fetchShoppingCart } from './order/order-actions';
 
@@ -24,9 +24,11 @@ import ReviewListContainer from './review/reviewListContainer';
 import SingleReviewContainer from './review/singleReviewContainer';
 import SingleBookContainer from './book/singleBookContainer';
 import ShoppingCartContainer from './order/ShoppingCartContainer';
-import GenresContainer from './book/genresContainer'
-import NewUserContainer from './auth/components/newUserContainer'
-import newBookFormContainer from './book/newBookFormContainer'
+import GenresContainer from './book/genresContainer';
+import NewUserContainer from './auth/components/newUserContainer';
+import newBookFormContainer from './book/newBookFormContainer';
+import AuthorsContainer from './book/authorsContainer';
+import SelectedAuthorsContainer from './book/SelectedAuthorsContainer';
 
 // ======================== On Enter Store Dispatch Functions ======================
 
@@ -64,7 +66,7 @@ function onCartEnter() {
 }
 
 function _redirectIfLoggedOut (nextRouterState, replace) {
-  if(!store.getState().users.currentUser) {
+  if (!store.getState().users.currentUser) {
     replace('/')
   }
 }
@@ -85,11 +87,11 @@ render (
         <Route path="orderlist/:orderId" onEnter={onSingleOrderEnter} component={SingleOrderContainer} />
         <Route path="reviews" component={ReviewListContainer} />
         <Route path="reviews/:reviewId" component={SingleReviewContainer} onEnter={onSingleReviewEnter} />
+        <Route path="authorsbooks" component={SelectedAuthorsContainer} />
+        <Route path="authors" component={AuthorsContainer} />
         <IndexRoute component={GenresContainer} />
       </Route>
     </Router>
   </Provider>,
   document.getElementById('main')
 )
-
-
