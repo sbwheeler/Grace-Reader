@@ -5,8 +5,7 @@ import store from '../store';
 function mapStateToProps(state) {
   return {
     allBooks: state.books.allBooks,
-    genre: state.books.currentGenre,
-    selectedBooks: state.books.selectedBooks
+    genre: state.books.currentGenre
   };
 }
 

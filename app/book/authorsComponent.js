@@ -41,7 +41,7 @@ export default class AuthorsComponent extends Component {
           {
             this.props.allBooks && filteredAuthors.map(author => (
               <li className="list-group-item" onClick={() => this.setSelectedBooks(author)} key={author}>
-                <Link className="thumbnail"  to={`/books`}>
+                <Link className="thumbnail"  to={`/authorsbooks`}>
                 <img src={ this.imageLinks[Math.floor(Math.random() * (this.imageLinks.length))] } width="150" />
                   <div className="caption">
                     <h5>

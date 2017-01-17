@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 const SelectedAuthors = ({ allBooks, genre, selectedBooks }) => {
   //filtering books by the genre currently on the state, if there is no genre, display all books
   let books;
-  if (selectedBooks.length === 0) books = allBooks
+  if (selectedBooks === []) books = allBooks
   else {
     books = selectedBooks
   }
@@ -13,7 +13,7 @@ const SelectedAuthors = ({ allBooks, genre, selectedBooks }) => {
 
   return (
     <div>
-      <h1 id="booklisttitle">Books</h1>
+      <h1 id="authorsbooks">Books</h1>
       <Link to="/cart"> Shopping Cart </Link>
       <div className="row">
         {

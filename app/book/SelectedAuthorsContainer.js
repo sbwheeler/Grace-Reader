@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import AuthorsComponent from './authorsComponent';
+import SelectedAuthorsComponent from './SelectedAuthorsComponent';
 import store from '../store';
 
 function mapStateToProps(state) {
@@ -9,6 +9,6 @@ function mapStateToProps(state) {
   };
 }
 
-const AuthorsContainer = connect(mapStateToProps)(AuthorsComponent);
+const SelectedAuthorsContainer = connect(mapStateToProps)(SelectedAuthorsComponent);
 
-export default AuthorsContainer;
+export default SelectedAuthorsContainer;
