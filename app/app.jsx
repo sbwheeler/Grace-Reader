@@ -5,6 +5,8 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import 'bootstrap-sass';
 
+import {LoginModal} from './navbar/loginModal';
+
 import { particlesConfig } from './dummy-data/particles.data';
 import 'particles.js';
 
@@ -14,7 +16,6 @@ export class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log('IT MOUNTED')
     particlesJS('particles', particlesConfig);
   }
 
@@ -23,6 +24,7 @@ export class App extends React.Component {
     let children = this.props.children
     return (
       <div>
+        <LoginModal />
         <NavBar user={user} />
         <div id="mainDisplay" className="container">
           { children }
