@@ -9,25 +9,32 @@ class SingleOrder extends Component {
 
   render() {
     let date;
-
     return (
       <div>
+        { this.props.currentOrder.length ?
+            <div>
+              <h4> Order Placed On: {this.props.currentOrder[0].created_at.slice(0, this.props.currentOrder[0].created_at.indexOf('T')) }</h4>
+              <h4>${this.props.currentOrder.map(book => book.price * book.selectedBooks.quantity).reduce((a, b) => a + b)}</h4>
+              <hr/>
+            </div>
+          :
+            <div></div>
+        }
+
         {
           this.props.currentOrder && this.props.currentOrder.map((book,idx) => {
             date = book.created_at
           return (
             <div key={book.id}>
-              <h3>Title: {book.title}</h3>
+              <h4>{book.title}</h4>
               <img src={book.imageUrl} width="150" height="150"></img>
-              <h3>Genre: {book.genre}</h3>
-              <h3>Price: {book.price}</h3>
-              <h3>Quantity: {book.selectedBooks.quantity}</h3>
-              <h3>Total : {book.price * book.selectedBooks.quantity}</h3>
+              <h4>${book.price}</h4>
+              <h4>{book.selectedBooks.quantity === 1 ? <p>{book.selectedBooks.quantity} Copy</p> : <p>{book.selectedBooks.quantity} Copies</p>}</h4>
+              <h4>Total Cost: {book.price * book.selectedBooks.quantity}</h4>
               <hr></hr>
             </div>
           )})
         }
-        <h3>Order Placed On : {date}</h3>
       </div>
     )
   }
