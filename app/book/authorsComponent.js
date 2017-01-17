@@ -23,7 +23,13 @@ export default class AuthorsComponent extends Component {
     // console.log('~~~~~~~~~~~~~~~~~~ARRAYAUTHORS', arrayOfAuthors)
     let filteredAuthors = arrayOfAuthors.filter((author, i) => arrayOfAuthors.indexOf(author) === i
     )
-    console.log(filteredAuthors)
+
+
+
+    console.log('~~~~~~~~AUTHORS~~~~~~', filteredAuthors);
+    console.log('~~~~~~~~~~~~~~~~~~BOOKS', this.props.allBooks)
+    console.log('~~~~~~~~~~~~~~~BOOKSBYAUTHOR', )
+
     return (
       <div>
         <h1 id="authornamelist"> Authors </h1>
