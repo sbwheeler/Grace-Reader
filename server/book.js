@@ -4,6 +4,7 @@ const db = require('APP/db');
 const Book = db.model('books');
 const Review = db.model('reviews');
 const router = require('express').Router()
+const {adminOnly, selfOnly, mustBeLoggedIn, forbidden } = require('./auth.filters')
 
 router.get('/', (req, res, next) => {
   Book.findAll()
@@ -30,7 +31,7 @@ router.get('/:bookId', (req, res, next) => {
   .catch(next)
 })
 
-router.post('/', (req, res, next) => {
+router.post('/', adminOnly, (req, res, next) => {
   if (!req.body.imageUrl) delete req.body.imageUrl
   if (typeof req.body.genre === 'string') req.body.genre = req.body.genre.split(', ')
   Book.create(req.body)
@@ -38,7 +39,7 @@ router.post('/', (req, res, next) => {
   .catch(next)
 })
 
-router.delete('/:bookId', (req, res, next) => {
+router.delete('/:bookId', adminOnly, (req, res, next) => {
   Book.destroy({
     where: {
       id: req.params.bookId
@@ -51,7 +52,7 @@ router.delete('/:bookId', (req, res, next) => {
   .catch(next)
 })
 
-router.put('/:bookId', (req, res, next) => {
+router.put('/:bookId', adminOnly, (req, res, next) => {
   Book.update(req.body, {
     where: {
       id: req.params.bookId
