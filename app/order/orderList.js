@@ -9,7 +9,6 @@ class OrderListComponent extends Component {
 
   render() {
     const orders = this.props.allOrders;
-    console.log(orders)
     return (
       <div>
       <h1>Order LIST</h1>
@@ -22,6 +21,7 @@ class OrderListComponent extends Component {
                       <li key={book.id}> {book.title} </li>
                     )) }
                 </ul>
+                <h4 id="price">${order.map(book => book.price * book.selectedBooks.quantity).reduce((a, b) => a + b)} </h4>
                 <hr></hr>
               </Link>
             ))
@@ -33,5 +33,5 @@ class OrderListComponent extends Component {
 }
 
 
- // <h3 id="price">Order Total: {book.price * book.selectedBooks.quantity} </h3>
+
 export default OrderListComponent;
