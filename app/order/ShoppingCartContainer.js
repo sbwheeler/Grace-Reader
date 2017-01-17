@@ -4,7 +4,8 @@ import store from '../store';
 
 function mapStateToProps(state) {
   return {
-    shoppingCart: state.orders.shoppingCart
+    shoppingCart: state.orders.shoppingCart,
+    user: state.auth
   };
 }
 

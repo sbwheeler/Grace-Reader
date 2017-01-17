@@ -1,6 +1,7 @@
 @import 'normalize.css';
+@import "./font-awesome/scss/font-awesome";
 @import 'general';
-@import "font-awesome/scss/font-awesome";
+@import './_bootstrap';
 @import 'navigation';
 @import 'main-display';
 @import 'footer';
@@ -18,4 +19,3 @@
 #rightsidelogin {
   margin-left: 85%;
 }
-

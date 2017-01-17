@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { browserHistory } from 'react-router'
 
 /*********************************CONSTS******************************/
 
@@ -8,9 +9,10 @@ export const FETCH_SINGLE_ORDER = 'FETCH_SINGLE_ORDER';
 
 // ADMINS
 export const FETCH_ALL_ORDERS_ADMIN = 'FETCH_ALL_ORDERS_ADMIN';
-export const FETCH_SINGLE_ORDER_ADMIN = 'FETCH_ALL_ORDER_ADMIN';
+export const FETCH_SINGLE_ORDER_ADMIN = 'FETCH_SINGLE_ORDER_ADMIN';
 
 export const FETCH_SHOPPING_CART = 'FETCH_SHOPPING_CART';
+export const ORDER_CART = 'ORDER_CART';
 
 /****************************ACTION CREATORS****************************/
 
@@ -23,10 +25,10 @@ export function getAllOrders(orders) {
   }
 }
 
-export function getSingleOrder(order) {
+export function getSingleOrder(currentOrder) {
   return {
     type: FETCH_SINGLE_ORDER,
-    order
+    currentOrder
   }
 }
 
@@ -38,10 +40,10 @@ export function getShoppingCart(cart) {
 }
 
 // ADMIN ===============================
-export function getSingleOrderAdmin(order) {
+export function getSingleOrderAdmin(currentOrder) {
   return {
     type: FETCH_SINGLE_ORDER_ADMIN,
-    order
+    currentOrder
   }
 }
 
@@ -49,6 +51,13 @@ export function getAllOrdersAdmin(orders) {
   return {
     type: FETCH_ALL_ORDERS_ADMIN,
     orders
+  }
+}
+
+export function orderCart() {
+  return {
+    type: ORDER_CART,
+    cart: []
   }
 }
 
@@ -72,11 +81,11 @@ export function fetchAllOrders() {
 }
 
 // Get One Order for User
-export function fetchSingleOrder(id) {
+export function fetchSingleOrder(orderId) {
   return function (dispatch, getState) {
     const userId = getState().auth.id
 
-    axios.get(`/api/orders/${userId}/${id}`)
+    axios.get(`/api/orders/${userId}/${orderId}`)
       .then(res => res.data)
       .then(foundOrder => {
         dispatch(getSingleOrder(foundOrder))
@@ -92,6 +101,17 @@ export function fetchShoppingCart(id) {
     .then(res => res.data)
     .then(foundCart => {
       dispatch(getShoppingCart(foundCart))
+    })
+    .catch(console.error)
+  }
+}
+
+export function orderShoppingCart(id) {
+  return function(dispatch) {
+    axios.put(`/api/cart/checkout/${id}`)
+    .then(orderedCart => {
+      dispatch(orderCart())
+      browserHistory.push('/genres')
     })
     .catch(console.error)
   }
@@ -113,7 +133,7 @@ export function addToCart(bookId) {
 
 export function fetchAllOrdersForAdmin() {
   return function (dispatch, getState) {
-    axios.get('/api/orders/')
+    axios.get('/api/orders/admin')
       .then(res => res.data)
       .then(foundOrders => {
         dispatch(getAllOrdersAdmin(foundOrders))
@@ -126,7 +146,7 @@ export function fetchAllOrdersForAdmin() {
 
 export function fetchSingleOrderForAdmin(orderId) {
   return function (dispatch, getState) {
-    axios.get(`/api/orders/${orderId}`)
+    axios.get(`/api/orders/admin/${orderId}`)
       .then(res => res.data)
       .then(foundOrder => {
         dispatch(getSingleOrderAdmin(foundOrder))

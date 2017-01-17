@@ -11,6 +11,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(state) {
   return {};
 }
+
 const SingleOrderContainer = connect(mapStateToProps, mapDispatchToProps)(SingleOrder);
 
 export default SingleOrderContainer;

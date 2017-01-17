@@ -8,7 +8,7 @@ $background: #252627;
 
 
 //++++++++++++++++++++++HEIGHTS+++++++++++++++++++++
-$footer-height: 180px;
+$footer-height: 100px;
 //++++++++++++++++++++++HEIGHTS+++++++++++++++++++++
 
 html {
@@ -25,7 +25,7 @@ li {
 body {
     height: 100%;
     margin: 0;
-    background: $background;
+    background: $background !important;
     //overflow: hidden;
     display: block;
 }
@@ -44,6 +44,10 @@ a {
   background-color: transparent;
   text-decoration: none;
   color: $default-color;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 audio, canvas, iframe, img, svg, video {

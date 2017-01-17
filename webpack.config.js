@@ -15,6 +15,12 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx', '.scss']
   },
+  plugins: [
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery"
+        })
+    ],
   module: {
     loaders: [
       {

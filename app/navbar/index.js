@@ -25,29 +25,15 @@ export default class Navbar extends Component {
   render() {
     return (
       <section id="navigation">
-        <a className="logo"></a>
-        <div id='rightsidelogin'> {this.props.user ? <WhoAmI user={this.props.user}/> : <Login />} </div>
-        {!this.props.user && <Link to={'/newuser'}> Sign Up </Link> }
+        <Link className="logo fa fa-home fa-lg" to='/'></Link>
         <nav className={this.state.menuClicked ? 'show' : '' }>
-          <button><Link to="/orderlist">Orders</Link></button>
-          <Link to="/cart"> Shopping Cart </Link>
-           <Link to="/newbook"> Add New Book </Link>
-          {
-            // links && links.map( (link, index) => {
-            //   return <Link key={index} to={`/${link.to}`}><i className={`fa fa-${link.faClass}`}></i></Link>
-            // })
-          }
-
+            <Link to="/books"><i className="fa fa-book fa-lg"></i></Link>
+            <Link to="/cart"><i className="fa fa-cart-arrow-down fa-lg"></i></Link>
+            { this.props.user && <Link to="/orderlist"><i className="fa fa-usd fa-lg"></i></Link> }
         </nav>
-
         <ul>
-          {
-            // socialLinks && socialLinks.map( (el, index) => {
-            //   return (<li key={index}>
-            //             <a href={el.to} className={`fa fa-${el.faClass}`} target="_blank"></a>
-            //           </li>)
-            // })
-          }
+          <div id='login-wrap'> {this.props.user ? <WhoAmI user={this.props.user}/> : <Login id="login" />} </div>
+          {!this.props.user && <Link to={'/newuser'}> Sign Up </Link> }
         </ul>
         <a id="mobile-menu" onClick={this.showMenu} href="#">
           <i className="fa fa-bars"></i>

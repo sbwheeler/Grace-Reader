@@ -9,33 +9,29 @@ class OrderListComponent extends Component {
 
   render() {
     const orders = this.props.allOrders;
-
     return (
       <div>
       <h1>Order LIST</h1>
-        <div>
-          {
-            orders && orders.map(order => (
-              <Link to={`/orderList/${order.id}`} key={ order.id }>
-                {
-                  order.map(book => {
-                    return (
-                      <div key={book.id}>
-                        <h3>Price: {book.price}</h3>
-                        <h3>Quantity: {book.selectedBooks.quantity}</h3>
-                        <h3 id="price">Order Total: {book.price * book.selectedBooks.quantity} </h3>
-                        <hr></hr>
-                      </div>
-                    )
-                  })
-                }
+          { orders && orders.map(order => (
+            <div key={order[0].selectedBooks.order_id}>
+              <Link to={`/orderList/${order[0].selectedBooks.order_id}`}>
+                <h4>Date: {order[0].selectedBooks.created_at.slice(0, order[0].selectedBooks.created_at.indexOf('T'))}</h4>
+                <h4>{(order.map(book => book.selectedBooks.quantity).reduce((a, b) => a + b))} Books Total: </h4>
+                <ul>{ order.map(book => (
+                      <li key={book.id}> {book.title} </li>
+                    )) }
+                </ul>
+                <h4 id="price">${order.map(book => book.price * book.selectedBooks.quantity).reduce((a, b) => a + b).toFixed(2)} </h4>
+                <hr></hr>
               </Link>
+        </div>
             ))
           }
-        </div>
       </div>
     )
   }
 }
+
+
 
 export default OrderListComponent;
