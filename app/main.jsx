@@ -62,12 +62,6 @@ function onSingleOrderEnter(nextRouterState) {
   else return onAppEnter().then(() => store.dispatch(fetchSingleOrder(orderId)))
 }
 
-function onCartEnter() {
-  if (store.getState().auth.id) {
-    store.dispatch(fetchShoppingCart(store.getState().auth.id))
-  }
-}
-
 // ======================== Routes ================================================
 
 render (
