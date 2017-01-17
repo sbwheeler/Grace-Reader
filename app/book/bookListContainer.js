@@ -6,7 +6,7 @@ function mapStateToProps(state) {
   return {
     allBooks: state.books.allBooks,
     genre: state.books.currentGenre,
-    author: state.books.currentAuthor
+    selectedBooks: state.books.selectedBooks
   };
 }
 
