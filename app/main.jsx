@@ -24,9 +24,10 @@ import ReviewListContainer from './review/reviewListContainer';
 import SingleReviewContainer from './review/singleReviewContainer';
 import SingleBookContainer from './book/singleBookContainer';
 import ShoppingCartContainer from './order/ShoppingCartContainer';
-import GenresContainer from './book/genresContainer'
-import NewUserContainer from './auth/components/newUserContainer'
-import newBookFormContainer from './book/newBookFormContainer'
+import GenresContainer from './book/genresContainer';
+import NewUserContainer from './auth/components/newUserContainer';
+import newBookFormContainer from './book/newBookFormContainer';
+import AuthorsContainer from './book/authorsContainer';
 
 // ======================== On Enter Store Dispatch Functions ======================
 
@@ -61,7 +62,7 @@ function onCartEnter() {
 }
 
 function _redirectIfLoggedOut (nextRouterState, replace) {
-  if(!store.getState().users.currentUser) {
+  if (!store.getState().users.currentUser) {
     replace('/')
   }
 }
@@ -83,10 +84,9 @@ render (
         <Route path="reviews" component={ReviewListContainer} />
         <Route path="reviews/:reviewId" component={SingleReviewContainer} onEnter={onSingleReviewEnter} />
         <IndexRoute component={GenresContainer} />
+        <Route path="authors" component={AuthorsContainer} />
       </Route>
     </Router>
   </Provider>,
   document.getElementById('main')
 )
-
-
