@@ -6,7 +6,8 @@ import { browserHistory } from 'react-router'
 export const FETCH_ALL_BOOKS = 'FETCH_ALL_BOOKS';
 export const FETCH_SINGLE_BOOK = 'FETCH_SINGLE_BOOK';
 export const SET_GENRE = 'SET_GENRE';
-
+export const GET_AUTHOR = 'GET_AUTHOR';
+export const SELECTED_BOOKS = 'SELECTED_BOOKS';
 
 /****************************ACTION CREATORS****************************/
 export function getAllBooks(books) {
@@ -29,6 +30,21 @@ export function setGenre(genre) {
     genre
   }
 }
+
+export function getAuthor(author) {
+  return {
+    type: GET_AUTHOR,
+    author
+  }
+}
+
+export function selectBooks(selectedBooks) {
+  return {
+    type: SELECTED_BOOKS,
+    selectedBooks
+  }
+}
+
 
 /*************************THUNKS*********************************/
 

@@ -2,34 +2,29 @@ import React from 'react';
 import { Link } from 'react-router';
 
 
-const BookListComponent = ({ allBooks, genre }) => {
+const SelectedAuthors = ({ allBooks, genre, selectedBooks }) => {
   //filtering books by the genre currently on the state, if there is no genre, display all books
   let books;
-  if (genre === '') books = allBooks;
-  else if (allBooks) {
-    books = allBooks.filter(book => {
-      return book.genre.includes(genre)
-    })
+  if (selectedBooks === []) books = allBooks
+  else {
+    books = selectedBooks
   }
+
 
   return (
     <div>
-      {
-        genre ? <h2 id="booklisttitle">Our {genre} Books</h2> : <h2 id="booklisttitle">Our Books</h2>
-      }
-
+      <h1 id="authorsbooks">Books</h1>
+      <Link to="/cart"> Shopping Cart </Link>
       <div className="row">
         {
           books && books.map(book => (
             <div className="col-xs-6 col-sm-4 col-md-3 col-lg-2 list-item" key={ book.id }>
               <Link className="thumbnail" to={`/books/${book.id}`}>
-
-                <img src={ book.imageUrl } />
-                <div className="caption" >
-
+                <img src={ book.imageUrl } style={{"height" : '170px'}} />
+                <div className="caption">
                   <h5>
                     <strong>{ book.title }</strong>
-                    <br/>
+                    <br />
                     <span>By { book.author }</span>
                   </h5>
                 </div>
@@ -43,4 +38,4 @@ const BookListComponent = ({ allBooks, genre }) => {
 
 }
 
-export default BookListComponent;
+export default SelectedAuthors;

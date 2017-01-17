@@ -111,7 +111,7 @@ export function orderShoppingCart(id) {
     axios.put(`/api/cart/checkout/${id}`)
     .then(orderedCart => {
       dispatch(orderCart())
-      browserHistory.push('/genres')
+      browserHistory.push('/orderlist')
     })
     .catch(console.error)
   }

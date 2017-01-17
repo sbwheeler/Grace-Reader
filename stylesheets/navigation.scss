@@ -1,28 +1,18 @@
 $dark-theme: #181818;
 
 .logo {
+    text-decoration: none;
+    color: $primary-color;
+    float: left;
     width: 60px;
     height: 60px;
-    img {
-      display: block;
-      margin: 8px auto;
-      width: 24px;
-      height: auto;
-      @media (max-width: 960px) {
-            display: block;
-            margin: 5px 15px;
-            width: auto;
-            height: auto;
-      }
-    }
     background: $logo-background;
     display: block;
-    padding: 8px 0;
-
-    @media (max-width: 960px) {
-          float: left;
-          padding: 2px 0;
-          margin-right: 20px;
+    padding: 2px 0;
+    margin-right: 20px;
+    i {
+        margin: 13px 10px 13px 10px;
+        font-size: 40px;
     }
 }
 
@@ -145,24 +135,29 @@ $dark-theme: #181818;
         transition: all 0.3s ease-out;
       }
 
+
       a:first-child:after {
           content: 'Books';
       }
 
       a:first-child + a:after {
-          content: 'Cart';
-      }
-
-      a:first-child + a + a:after {
-          content: 'Orders';
-      }
-
-      a:first-child + a + a + a:after {
           content: 'Genres';
       }
 
+      a:first-child + a + a:after {
+          content: 'Cart';
+      }
+
+      a:first-child + a + a + a:after {
+          content: 'Authors';
+      }
+
       a:first-child + a + a + a + a:after {
-          content: 'CONTACT';
+          content: 'Orders';
+      }
+
+      a#sign-up:after {
+          content: 'SignUp';
       }
 
       a:hover:after{
@@ -225,3 +220,14 @@ $dark-theme: #181818;
         }
     }
 }
+
+
+#sign-up {
+        // float: right;
+    i {
+      font-size: 1.33333em;
+    }
+}
+
+
+

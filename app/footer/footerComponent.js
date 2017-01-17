@@ -8,9 +8,8 @@ export default class Footer extends Component {
   render() {
     return (
       <div id="footer">
-        <a className="logo">
-        </a>
         <ul>
+          <li>© 2016  Bogdan Polovko, Sam Wheeler, Damon Ye, John Yom</li>
         </ul>
       </div>
     );

@@ -8,7 +8,7 @@ $background: #252627;
 
 
 //++++++++++++++++++++++HEIGHTS+++++++++++++++++++++
-$footer-height: 100px;
+$footer-height: 30px;
 //++++++++++++++++++++++HEIGHTS+++++++++++++++++++++
 
 html {
@@ -38,6 +38,10 @@ body {
             height: 100%
         }
     }
+}
+
+.col-centered{
+  margin-left: 20%;
 }
 
 a {
@@ -72,3 +76,9 @@ audio, canvas, iframe, img, svg, video {
     color: #FFF;
     text-shadow: none;
 }
+
+#authornamelist {
+    text-align: center;
+}
+
+
