@@ -5,7 +5,7 @@ const Order = require('APP/db/models/orders')
 const app = require('./start')
 
 
-describe('/api/orders', () => {
+xdescribe('/api/orders', () => {
 
   describe('when ', () => {
     before('wait for the db', () => db.didSync);

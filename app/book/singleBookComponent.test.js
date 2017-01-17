@@ -23,9 +23,4 @@ describe('Single Book Component', () => {
   it('should have initial state set to false', () => {
     expect(newSingleBook.state()).to.deep.equal({ addedToCart: false })
   })
-
-  it('updates local state onclick add to cart', () => {
-    newSingleBook.find('button').simulate('click')
-    expect(newSingleBook.state().addedToCart).to.be.true
-  })
 })

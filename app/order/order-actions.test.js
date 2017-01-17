@@ -32,7 +32,7 @@ describe('Order actions', () => {
 
             expect(getSingleOrder(testOrder)).to.be.deep.equal({
                 type: 'FETCH_SINGLE_ORDER',
-                order: testOrder
+                currentOrder: testOrder
             });
 
         });
