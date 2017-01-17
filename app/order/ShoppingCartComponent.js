@@ -18,7 +18,7 @@ export default class ShoppingCartComponent extends Component {
   render () {
       return (
         <div>
-          <h1>Your Shopping Cart</h1>
+          <h2>Your Cart</h2>
             {
               this.props.shoppingCart && this.props.shoppingCart.map(book => (
                 <div className="col-xs-6 col-sm-4 col-md-3 col-lg-2 list-item" key={ book.id }>
@@ -37,7 +37,7 @@ export default class ShoppingCartComponent extends Component {
                 </div>
               ))
             }
-            { this.props.shoppingCart.length ? <button type="submit" className="btn btn-success" onClick={() => this.orderCart()}>Order</button> : <div><p>Add something to your cart!</p></div>
+            { this.props.shoppingCart.length ? <button type="submit" className="btn btn-default" onClick={() => this.orderCart()}>Order</button> : <div><p>Add something to your cart!</p></div>
             }
       </div>
     )

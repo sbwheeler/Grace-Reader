@@ -11,20 +11,26 @@ class OrderListComponent extends Component {
     const orders = this.props.allOrders;
     return (
       <div>
-      <h1>Order LIST</h1>
+      <h3>Your Orders</h3>
+        <h5>{orders.length} Orders Placed</h5>
+        <br/>
           { orders && orders.map(order => (
-            <div key={order[0].selectedBooks.order_id}>
-              <Link to={`/orderList/${order[0].selectedBooks.order_id}`}>
-                <h4>Date: {order[0].selectedBooks.created_at.slice(0, order[0].selectedBooks.created_at.indexOf('T'))}</h4>
-                <h4>{(order.map(book => book.selectedBooks.quantity).reduce((a, b) => a + b))} Books Total: </h4>
-                <ul>{ order.map(book => (
-                      <li key={book.id}> {book.title} </li>
-                    )) }
-                </ul>
-                <h4 id="price">${order.map(book => book.price * book.selectedBooks.quantity).reduce((a, b) => a + b).toFixed(2)} </h4>
-                <hr></hr>
-              </Link>
-        </div>
+            <div className="row" key={order.id}>
+              <hr/>
+              <div key={order[0].selectedBooks.order_id} className="col-md-12 col-sm-12 col-lg-12">
+                  <h4>Order Placed On {order[0].selectedBooks.created_at.slice(0, order[0].selectedBooks.created_at.indexOf('T'))}</h4>
+                  <h5>{(order.map(book => book.selectedBooks.quantity).reduce((a, b) => a + b))} Copies Total: </h5>
+                  { order.map(book => (
+                        <div key={book.id} className="col-xs-2">
+                          <p>{book.title}</p>
+                          <img style={{"height": "100px"}}src={ book.imageUrl } />
+                        </div>
+                      )) }
+                  <br/>
+                  <p id="price">${order.map(book => book.price * book.selectedBooks.quantity).reduce((a, b) => a + b).toFixed(2)} Total</p>
+                <Link to={`/orderList/${order[0].selectedBooks.order_id}`}>Order Details</Link>
+                </div>
+             </div>
             ))
           }
       </div>
