@@ -24,7 +24,7 @@ export class App extends React.Component {
     let children = this.props.children
     return (
       <div>
-        <LoginModal />
+        <LoginModal auth={user} />
         <NavBar user={user} />
         <div id="mainDisplay" className="container">
           { children }

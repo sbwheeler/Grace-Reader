@@ -4,7 +4,18 @@ import Login from '../auth/components/Login'
 import { Link } from 'react-router'
 import store from '../store'
 
-export const LoginModal = (props) => {
+export class LoginModal extends Component {
+  constructor(props) {
+    super(props)
+    console.log(this.props)
+    this.state = { auth: this.props.auth}
+  }
+
+  onLogin() {
+    this.setState({auth: this.props.auth})
+  }
+
+  render() {
     return (
       <div className="modal fade" id="myModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div className="modal-dialog" role="document">
@@ -14,7 +25,7 @@ export const LoginModal = (props) => {
               <h4 className="modal-title" id="myModalLabel">Modal title</h4>
             </div>
             <div className="modal-body">
-              <div id="login-wrap"> {props.user ? <WhoAmI user={props.user}/> : <Login id="login" />} </div>
+              <div id="login-wrap"> {this.props.auth ? <WhoAmI user={this.props.auth}/> : <Login id="login" onClick={this.onLogin}/>} </div>
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
@@ -24,4 +35,5 @@ export const LoginModal = (props) => {
         </div>
       </div>
     );
+  }
 }
