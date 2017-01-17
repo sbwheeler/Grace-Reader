@@ -64,6 +64,19 @@ function onSingleOrderEnter(nextRouterState) {
   else return onAppEnter().then(() => store.dispatch(fetchSingleOrder(orderId)))
 }
 
+function onCartEnter() {
+  if (store.getState().auth.id) {
+    store.dispatch(fetchShoppingCart(store.getState().auth.id))
+  }
+}
+
+function onOrderListEnter() {
+  const user = store.getState().auth
+
+  if (user && user.adminStatus) store.dispatch(fetchAllOrdersForAdmin())
+  else store.dispatch(fetchAllOrders())
+}
+
 // ======================== Routes ================================================
 
 render (
@@ -72,11 +85,11 @@ render (
       <Route path="/" onEnter={onAppEnter} component={App}>
         <Route path="newuser" component={NewUserContainer} />
         <Route path="newbook" component={newBookFormContainer} />
-        <Route path="cart" component={ShoppingCartContainer}  />
+        <Route path="cart" component={ShoppingCartContainer} onEnter={onCartEnter}/>
         <Route path="genres" component={GenresContainer} />
         <Route path="books" component={BookListContainer} />
         <Route path="books/:bookId" onEnter={onBookEnter} component={SingleBookContainer} />
-        <Route path="orderlist" component={OrderListContainer} />
+        <Route path="orderlist" component={OrderListContainer} onEnter={onOrderListEnter}/>
         <Route path="orderlist/:orderId" onEnter={onSingleOrderEnter} component={SingleOrderContainer} />
         <Route path="reviews" component={ReviewListContainer} />
         <Route path="reviews/:reviewId" component={SingleReviewContainer} onEnter={onSingleReviewEnter} />
