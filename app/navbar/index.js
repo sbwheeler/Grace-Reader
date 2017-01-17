@@ -25,9 +25,7 @@ export default class Navbar extends Component {
   render() {
     return (
       <section id="navigation">
-        <Link className="logo">
-         Home
-        </Link>
+        <Link className="logo fa fa-home fa-lg" to='/'></Link>
         <nav className={this.state.menuClicked ? 'show' : '' }>
             <Link to="/books"><i className="fa fa-book fa-lg"></i></Link>
             <Link to="/cart"><i className="fa fa-cart-arrow-down fa-lg"></i></Link>

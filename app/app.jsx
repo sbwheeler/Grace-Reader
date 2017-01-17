@@ -14,6 +14,7 @@ export class App extends React.Component {
   }
 
   componentDidMount() {
+    console.log('IT MOUNTED')
     particlesJS('particles', particlesConfig);
   }
 
@@ -27,7 +28,7 @@ export class App extends React.Component {
           { children }
         </div>
         <div id="particles">
-          <canvas style={{width: 100 + '%', height: 100 + '%'}}></canvas>
+          <canvas></canvas>
         </div>
         <Footer />
       </div>
