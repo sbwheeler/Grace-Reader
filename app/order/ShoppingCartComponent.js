@@ -37,7 +37,8 @@ export default class ShoppingCartComponent extends Component {
                 </div>
               ))
             }
-            <button type="submit" className="btn btn-success" onClick={() => this.orderCart()}>Order</button>
+            { this.props.shoppingCart.length ? <button type="submit" className="btn btn-success" onClick={() => this.orderCart()}>Order</button> : <div><p>Add something to your cart!</p></div>
+            }
       </div>
     )
   }
