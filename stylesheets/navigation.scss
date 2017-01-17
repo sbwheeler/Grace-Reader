@@ -150,15 +150,15 @@ $dark-theme: #181818;
       }
 
       a:first-child + a:after {
-          content: 'Cart';
+          content: 'Genres';
       }
 
       a:first-child + a + a:after {
-          content: 'Orders';
+          content: 'Cart';
       }
 
       a:first-child + a + a + a:after {
-          content: 'Genres';
+          content: 'Orders';
       }
 
       a:first-child + a + a + a + a:after {
