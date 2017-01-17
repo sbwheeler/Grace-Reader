@@ -39,7 +39,9 @@ function onAppEnter() {
     store.dispatch(fetchAllBooks()),
   ]).then(() => {
     const user = store.getState().auth
-    store.dispatch(fetchShoppingCart(user.id))
+    if (user) {
+      store.dispatch(fetchShoppingCart(user.id))
+    }
 
     if (user && user.adminStatus) store.dispatch(fetchAllOrdersForAdmin())
     else store.dispatch(fetchAllOrders())
