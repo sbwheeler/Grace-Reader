@@ -14,22 +14,17 @@ class OrderListComponent extends Component {
       <div>
       <h1>Order LIST</h1>
         <div>
-          {
-            orders && orders.map(order => (
-              <Link to={`/orderList/${order.id}`} key={ order.id }>
-                {
-                  order.map(book => {
-                    return (
-                      <div key={book.id}>
-                        <h3>Price: {book.price}</h3>
-                        <h3>Quantity: {book.selectedBooks.quantity}</h3>
-                        <h3 id="price">Order Total: {book.price * book.selectedBooks.quantity} </h3>
-                        <hr></hr>
-                      </div>
-                    )
-                  })
-                }
-              </Link>
+          { orders && orders.map(order => (
+              order.map(book => {
+                return (
+                  <Link to={`/orderList/${book.selectedBooks.order_id}`} key={book.selectedBooks.order_id}>
+                    <h3>Date: {book.created_at}</h3>
+                    <h3>Quantity: {book.selectedBooks.quantity}</h3>
+                    <h3 id="price">Order Total: {book.price * book.selectedBooks.quantity} </h3>
+                    <hr></hr>
+                  </Link>
+                )
+              })
             ))
           }
         </div>

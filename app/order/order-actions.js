@@ -23,10 +23,10 @@ export function getAllOrders(orders) {
   }
 }
 
-export function getSingleOrder(order) {
+export function getSingleOrder(currentOrder) {
   return {
     type: FETCH_SINGLE_ORDER,
-    order
+    currentOrder
   }
 }
 
@@ -72,11 +72,11 @@ export function fetchAllOrders() {
 }
 
 // Get One Order for User
-export function fetchSingleOrder(id) {
+export function fetchSingleOrder(orderId) {
   return function (dispatch, getState) {
     const userId = getState().auth.id
 
-    axios.get(`/api/orders/${userId}/${id}`)
+    axios.get(`/api/orders/${userId}/${orderId}`)
       .then(res => res.data)
       .then(foundOrder => {
         dispatch(getSingleOrder(foundOrder))
