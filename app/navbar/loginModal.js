@@ -22,7 +22,7 @@ export class LoginModal extends Component {
           <div className="modal-content">
             <div className="modal-header">
               <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 className="modal-title" id="myModalLabel">Modal title</h4>
+              <h4 className="modal-title" id="myModalLabel">Login!</h4>
             </div>
             <div className="modal-body">
               <div id="login-wrap"> {this.props.auth ? <WhoAmI user={this.props.auth}/> : <Login id="login" onClick={this.onLogin}/>} </div>

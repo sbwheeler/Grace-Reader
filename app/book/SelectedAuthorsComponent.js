@@ -14,7 +14,6 @@ const SelectedAuthors = ({ allBooks, genre, selectedBooks }) => {
   return (
     <div>
       <h1 id="authorsbooks">Books</h1>
-      <Link to="/cart"> Shopping Cart </Link>
       <div className="row">
         {
           books && books.map(book => (
