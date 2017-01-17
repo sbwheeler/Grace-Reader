@@ -16,12 +16,11 @@ const BookListComponent = ({ allBooks, genre }) => {
     <div>
       <h1 id="booklisttitle">Our Books</h1>
       <Link to="/cart"> Shopping Cart </Link>
-      <div className="row">
         {
           books && books.map(book => (
-            <div className="col-xs-2" key={ book.id }>
+            <div className="col-xs-6 col-sm-4 col-md-3 col-lg-2 list-item" key={ book.id }>
               <Link className="thumbnail" to={`/books/${book.id}`}>
-                <img src={ book.imageUrl } width="150"/>
+                <img src={ book.imageUrl }/>
                 <div className="caption">
                   <h5>
                     <strong>{ book.title }</strong>
@@ -33,7 +32,6 @@ const BookListComponent = ({ allBooks, genre }) => {
             </div>
           ))
         }
-        </div>
   </div>
   )
 

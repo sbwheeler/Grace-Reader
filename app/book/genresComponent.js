@@ -34,7 +34,7 @@ export default class GenresComponent extends Component {
         <div className="row">
           {
             this.props.allBooks && genres.map(genre => (
-              <div className="col-xs-2" onClick={() => this.setGenre(genre)} key={genre}>
+              <div className="col-xs-6 col-sm-4 col-md-3 col-lg-2 list-item" onClick={() => this.setGenre(genre)} key={genre}>
                 <Link className="thumbnail"  to={`/books`}>
                 <img src={ this.imageLinks[Math.floor(Math.random() * (this.imageLinks.length))] } width="150"/>
                   <div className="caption">
