@@ -8,7 +8,7 @@ export default function ({ handleChange, handleSubmit, rating, content }){
               <div className="form-group">
                 <label className="col-xs-2 control-label">Rating</label>
                 <div className="col-xs-10">
-                 <input type="number" name="rating" min="1" max="5" onChange={handleChange} value={rating}/>>
+                 <input type="number" name="rating" min="1" max="5" onChange={handleChange} value={rating}/>
                 </div>
               </div>
 
@@ -21,7 +21,7 @@ export default function ({ handleChange, handleSubmit, rating, content }){
 
               <div className="form-group">
                 <div className="col-xs-10 col-xs-offset-2">
-                  <button type="submit" className="btn btn-success">Add Review</button>
+                  <button type="submit" className="btn btn-default">Add Review</button>
                 </div>
               </div>
 

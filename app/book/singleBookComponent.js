@@ -23,16 +23,17 @@ class SingleBookComponent extends Component {
     const currentBook = this.props.currentBook
     return (
       <div className="currentBook container-fluid">
-        <div class="row" >
-          <div class='col-sm-5 col-centered'>
-            {this.state.addedToCart && <h1>ADDED TO CART!!</h1>}
+        <div className="row" >
+          <div className='col-sm-5 col-centered'>
+            {this.state.addedToCart && <h4>Added {currentBook.title} to your cart.</h4>}
             <div>
               <h3>{currentBook.title}</h3>
               <div>by {currentBook.author}</div>
               <div>Description : {currentBook.description}</div>
               <div>Price: $ {currentBook.price}</div>
             <div>
-              <button onClick={this.handleClick}>Add to cart</button>
+              <button onClick={this.handleClick} className="cartbutton btn btn-default">Add to cart</button>
+              <br/>
               <StarRatingComponent
                 name="rate1"
                 editing={false}

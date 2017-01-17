@@ -11,6 +11,7 @@ export default class Footer extends Component {
         <a className="logo">
         </a>
         <ul>
+          <li>© 2016  Bogdan Polovko, Sam Wheeler, Damon Ye, John Yom</li>
         </ul>
       </div>
     );
