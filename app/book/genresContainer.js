@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import GenresComponent from './GenresComponent';
+import GenresComponent from './genresComponent';
 import store from '../store';
 
 function mapStateToProps(state) {
