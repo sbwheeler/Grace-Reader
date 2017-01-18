@@ -26,7 +26,7 @@ if (!reasonableName.test(pkg.name)) {
 
 // This will load a secrets file from
 //
-//      ~/.your_app_name.env.js 
+//      ~/.your_app_name.env.js
 //   or ~/.your_app_name.env.json
 //
 // and add it to the environment.
@@ -36,7 +36,7 @@ try {
   Object.assign(env, require(secretsFile))
 } catch (error) {
   debug('%s: %s', secretsFile, error.message)
-  debug('%s: env file not found or invalid, moving on', secretsFile)  
+  debug('%s: env file not found or invalid, moving on', secretsFile)
 }
 
 module.exports = {
@@ -49,7 +49,7 @@ module.exports = {
     return env.BASE_URL || `http://localhost:${PORT}`
   },
   get port() {
-    return env.PORT || 1337
+    return process.env.PORT || 1337
   },
   package: pkg,
   env,
