@@ -65,16 +65,14 @@ function onSingleOrderEnter(nextRouterState) {
 }
 
 function onCartEnter() {
-  if (store.getState().auth.id) {
-    store.dispatch(fetchShoppingCart(store.getState().auth.id))
-  }
+  return onAppEnter().then(() => store.dispatch(fetchShoppingCart(store.getState().auth.id)))
 }
 
 function onOrderListEnter() {
   const user = store.getState().auth
 
-  if (user && user.adminStatus) store.dispatch(fetchAllOrdersForAdmin())
-  else store.dispatch(fetchAllOrders())
+  if (user && user.adminStatus) return onAppEnter().then(() => store.dispatch(fetchAllOrdersForAdmin()))
+  else return onAppEnter().then(() => store.dispatch(fetchAllOrders()))
 }
 
 // ======================== Routes ================================================
