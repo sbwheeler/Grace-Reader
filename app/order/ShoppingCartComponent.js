@@ -30,7 +30,7 @@ export default class ShoppingCartComponent extends Component {
                         <span>{ book.author }</span>
                         <span>{ book.price }</span>
                         <span>{ book.selectedBooks.quantity }</span>
-                        <span>Total price: { book.price * book.selectedBooks.quantity }</span>
+                        <span>Total price: { (book.price * book.selectedBooks.quantity).toFixed(2) }</span>
                       </h5>
                     </div>
                   </Link>
