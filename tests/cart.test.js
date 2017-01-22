@@ -1,10 +1,10 @@
 const request = require('supertest-as-promised')
+const {expect} = require('chai')
 const db = require('APP/db')
 const SelectedBooks = require('APP/db/models/selectedBooks')
 const Book = require('APP/db/models/book')
 const Orders = require('APP/db/models/orders')
-const app = require('./start')
-const {expect} = require('chai')
+const app = require('APP/server/start')
 
 
 xdescribe('Cart Routes', () => {

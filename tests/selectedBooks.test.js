@@ -1,10 +1,10 @@
 'use strict';
 
 const db = require('APP/db')
-const SelectedBooks = require('./selectedBooks')
+const SelectedBooks = require('APP/db/models/selectedBooks')
 const {expect} = require('chai')
-const Orders = require('./orders')
-const Book = require('./book');
+const Orders = require('APP/db/models/orders')
+const Book = require('APP/db/models/book');
 
 xdescribe('selectedBooks', () => {
   before('wait for the db', () => db.didSync);

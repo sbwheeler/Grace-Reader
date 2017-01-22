@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 
-import { getAllUsers, getSingleUser, FETCH_ALL_USERS, FETCH_SINGLE_USER } from './user-actions'
+import { getAllUsers, getSingleUser, FETCH_ALL_USERS, FETCH_SINGLE_USER } from 'APP/app/user/user-actions'
 
 describe('User actions', () => {
   describe('Fetch all users', () => {

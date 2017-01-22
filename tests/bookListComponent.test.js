@@ -2,7 +2,7 @@ import React from 'react';
 import {expect} from 'chai';
 import {shallow} from 'enzyme';
 import {spy} from 'sinon';
-import BookListComponent from './bookListComponent';
+import BookListComponent from 'APP/app/book/bookListComponent';
 
 
 describe('Book List Component', () => {

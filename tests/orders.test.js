@@ -2,7 +2,7 @@ const request = require('supertest-as-promised')
 const {expect} = require('chai')
 const db = require('APP/db')
 const Order = require('APP/db/models/orders')
-const app = require('./start')
+const app = require('APP/server/start')
 
 
 xdescribe('/api/orders', () => {

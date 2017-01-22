@@ -2,7 +2,7 @@ const request = require('supertest-as-promised')
 const {expect} = require('chai')
 const db = require('APP/db')
 const Review = require('APP/db/models/review')
-const app = require('./start')
+const app = require('APP/server/start')
 
 describe('Review routes', () => {
   before('wait for the db', () => db.didSync);

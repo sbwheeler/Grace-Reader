@@ -2,7 +2,7 @@ import React from 'react';
 import {expect} from 'chai';
 import {shallow} from 'enzyme';
 
-import SingleOrder from './singleOrder';
+import SingleOrder from 'APP/app/order/singleOrder';
 
 describe('<SingleOrder /> component', () => {
 

@@ -1,7 +1,7 @@
 import {expect} from 'chai';
 
 import {createStore} from 'redux';
-import bookReducer from './book-reducer.js';
+import bookReducer from 'APP/app/book/book-reducer.js';
 
 describe('Book Reducer', () => {
 

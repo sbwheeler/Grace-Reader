@@ -2,7 +2,7 @@ import React from 'react';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
 
-import SingleBookComponent from './singleBookComponent';
+import SingleBookComponent from 'APP/app/book/singleBookComponent';
 
 describe('Single Book Component', () => {
   let book = {title: 'Harry Potter', price: 15}

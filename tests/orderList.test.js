@@ -4,7 +4,7 @@ import {shallow} from 'enzyme';
 
 import { Link } from 'react-router';
 
-import OrderList from './orderList';
+import OrderList from 'APP/app/order/orderList';
 
 xdescribe('OrderList component', () => {
 

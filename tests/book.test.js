@@ -2,7 +2,7 @@ const request = require('supertest-as-promised')
 const db = require('APP/db')
 const Book = require('APP/db/models/book')
 const Review = require('APP/db/models/review')
-const app = require('./start')
+const app = require('APP/server/start')
 const {expect} = require('chai')
 
 

@@ -2,8 +2,8 @@ import React from 'react';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
 
-import ReviewListComponent from './reviewListComponent';
-import SingleReviewComponent from './singleReviewComponent';
+import ReviewListComponent from 'APP/app/review/reviewListComponent';
+import SingleReviewComponent from 'APP/app/review/singleReviewComponent';
 import { Link } from 'react-router';
 
 describe('Review List Component', () => {

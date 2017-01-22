@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import { shallow } from 'enzyme';
 import { spy } from 'sinon';
 
-import AllUsersComponent from './allUserComponent';
+import AllUsersComponent from 'APP/app/user/allUserComponent';
 
 describe('All users component', () => {
   let allUsers;

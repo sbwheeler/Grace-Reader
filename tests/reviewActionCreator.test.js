@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { RECEIVE_REVIEWS, RECEIVE_REVIEW, receiveReviews, receiveReview} from './reviewActionCreator'
+import { RECEIVE_REVIEWS, RECEIVE_REVIEW, receiveReviews, receiveReview} from 'APP/app/review/reviewActionCreator'
 
 describe('Review Action Creators', () => {
   describe('receiveReviews', () => {

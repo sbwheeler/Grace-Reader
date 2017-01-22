@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { createStore } from 'redux';
-import userReducer from './user-reducer';
-import { FETCH_SINGLE_USER, FETCH_ALL_USERS } from './user-actions';
+import userReducer from 'APP/app/user/user-reducer';
+import { FETCH_SINGLE_USER, FETCH_ALL_USERS } from 'APP/app/user/user-actions';
 
 describe('User reducer', () => {
   let testStore;

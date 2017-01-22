@@ -2,7 +2,7 @@ import React from 'react';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
 
-import SingleReviewComponent from './singleReviewComponent';
+import SingleReviewComponent from 'APP/app/review/singleReviewComponent';
 import StarRatingComponent from 'react-star-rating-component';
 
 describe('Single Review Component', () => {

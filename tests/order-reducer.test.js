@@ -1,7 +1,7 @@
 import {expect} from 'chai';
 
 import {createStore} from 'redux';
-import orderReducer from './order-reducer';
+import orderReducer from 'APP/app/order/order-reducer';
 
 describe('Order reducer', () => {
 

@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 
-import { getAllBooks, getSingleBook } from './book-actions.js';
+import { getAllBooks, getSingleBook } from 'APP/app/book/book-actions.js';
 
 describe('Book Actions', () => {
 

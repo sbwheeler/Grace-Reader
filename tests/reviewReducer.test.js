@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import { createStore } from 'redux';
 
-import reducer from './reviewReducer';
-import { RECEIVE_REVIEWS, RECEIVE_REVIEW } from './reviewActionCreator';
+import reducer from 'APP/app/review/reviewReducer';
+import { RECEIVE_REVIEWS, RECEIVE_REVIEW } from 'APP/app/review/reviewActionCreator';
 
 describe('Review Reducers', () => {
   let testStore;

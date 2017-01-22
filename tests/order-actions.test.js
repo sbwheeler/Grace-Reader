@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 
-import {getAllOrders, getSingleOrder} from './order-actions';
+import {getAllOrders, getSingleOrder} from 'APP/app/order/order-actions';
 
 
 describe('Order actions', () => {
